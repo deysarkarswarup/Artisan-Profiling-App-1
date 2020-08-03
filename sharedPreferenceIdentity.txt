@@ -1,0 +1,11 @@
+----SharedPreference Identity----
+
+MainActivity: 1
+NameActivity: 2
+AddressActivity: 3
+ArtFromActivity: 4
+ExperienceActivity: 5
+Insert_image_instructionActivity: 6
+CaptureImageActivity: 7
+Insert_video_instructionActivity: 8
+CaptureVideoActivity: 9
