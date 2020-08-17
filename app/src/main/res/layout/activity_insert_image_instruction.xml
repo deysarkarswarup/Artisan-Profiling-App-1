@@ -30,24 +30,55 @@
         android:textColor="@color/Heading"
         />
     <ImageView
+        android:id="@+id/img1"
         android:layout_width="wrap_content"
-        android:layout_height="300dp"
-        android:src="@drawable/bg"
-        android:layout_marginTop="50dp"
-        android:layout_marginBottom="50dp"
+        android:layout_height="150dp"
+        android:src="@drawable/picture"
+        android:layout_marginTop="25dp"
+        android:layout_marginBottom="5dp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
         />
-    <TextView
-        android:layout_marginTop="5dp"
+    <ImageView
+        android:id="@+id/img2"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-
-        android:textSize="30sp"
-        android:paddingLeft="80dp"
-        android:paddingRight="20dp"
-        android:textColor="@color/textColor"
+        android:layout_height="150dp"
+        android:src="@drawable/picture"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
         />
+    <ImageView
+        android:id="@+id/img3"
+        android:layout_width="wrap_content"
+        android:layout_height="150dp"
+        android:src="@drawable/picture"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        />
+    <ImageView
+        android:id="@+id/img4"
+        android:layout_width="wrap_content"
+        android:layout_height="150dp"
+        android:src="@drawable/picture"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        />
+<!--    <TextView-->
+<!--        android:layout_marginTop="5dp"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+
+<!--        android:textSize="30sp"-->
+<!--        android:paddingLeft="80dp"-->
+<!--        android:paddingRight="20dp"-->
+<!--        android:textColor="@color/textColor"-->
+<!--        />-->
 
     <Button
         android:id="@+id/submitBtn"
