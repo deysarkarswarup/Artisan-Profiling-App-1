@@ -46,7 +46,89 @@
 
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/address"
+        android:id="@+id/district"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="0dp"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox" >
+        <EditText
+            android:id="@+id/nam"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="জেলা"
+            android:maxLength="200"
+            android:inputType="text"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/addressLine1"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="0dp"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox" >
+        <EditText
+            android:id="@+id/nam1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="ঠিকানা ১"
+            android:maxLength="200"
+            android:inputType="text"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/addressLine2"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="0dp"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox" >
+        <EditText
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="ঠিকানা ২"
+            android:maxLength="200"
+            android:inputType="text"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/pinCode"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="0dp"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox" >
+        <EditText
+            android:id="@+id/nam3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="পিনকোড"
+            android:maxLength="200"
+            android:inputType="text"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/landMark"
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
 
@@ -58,10 +140,10 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox" >
 
         <EditText
-            android:id="@+id/nam"
+            android:id="@+id/nam4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/addHint"
+            android:hint="ল্যান্ডমার্ক"
             android:maxLength="200"
             android:inputType="text"
             />
