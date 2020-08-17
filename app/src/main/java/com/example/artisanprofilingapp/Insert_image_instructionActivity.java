@@ -19,6 +19,7 @@ import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 public class Insert_image_instructionActivity extends AppCompatActivity {
@@ -26,17 +27,64 @@ public class Insert_image_instructionActivity extends AppCompatActivity {
     private static final int PERMISSION_REQUEST_CODE = 100;
     SharedPreferences myPref;
     private MediaPlayer mediaPlayer;
-
+    private ImageView img1,img2,img3,img4;
+    private String selected;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_insert_image_instruction);
         submitbtn = (Button)findViewById(R.id.submitBtn);
         myPref = getApplicationContext().getSharedPreferences("MyPref",MODE_PRIVATE);
-
+        img1 = findViewById(R.id.img1);
+        img2 = findViewById(R.id.img2);
+        img3 = findViewById(R.id.img3);
+        img4 = findViewById(R.id.img4);
         mediaPlayer = MediaPlayer.create(this, R.raw.phoneno);
-
-
+        selected = myPref.getString("selected","none");
+        try {
+            switch (selected) {
+                case "saree":
+                    img1.setImageResource(R.drawable.saree1);
+                    img2.setImageResource(R.drawable.saree2);
+                    img3.setImageResource(R.drawable.saree3);
+                    img4.setVisibility(View.GONE);
+                    break;
+                case "kurta":
+                    img1.setImageResource(R.drawable.kurta1);
+                    img2.setImageResource(R.drawable.kurta2);
+                    img3.setImageResource(R.drawable.kurta3);
+                    img4.setImageResource(R.drawable.kurta4);
+                    break;
+                case "tshirt":
+                    img1.setImageResource(R.drawable.tshirt1);
+                    img2.setImageResource(R.drawable.tshirt2);
+                    img3.setVisibility(View.GONE);
+                    img4.setVisibility(View.GONE);
+                    break;
+                case "showpiece":
+                    img1.setImageResource(R.drawable.showpiece1);
+                    img2.setImageResource(R.drawable.showpiece2);
+                    img3.setImageResource(R.drawable.showpiece3);
+                    img4.setImageResource(R.drawable.showpiece4);
+                    break;
+                case "bag":
+                    img1.setImageResource(R.drawable.bag1);
+                    img2.setImageResource(R.drawable.bag2);
+                    img3.setImageResource(R.drawable.bag3);
+                    img4.setVisibility(View.GONE);
+                    break;
+                case "goina":
+                    img1.setImageResource(R.drawable.goina1);
+                    img2.setImageResource(R.drawable.goina2);
+                    img3.setImageResource(R.drawable.goina3);
+                    img4.setVisibility(View.GONE);
+                    break;
+                default:
+                    Toast.makeText(getApplicationContext(), "Some Error Occured!", Toast.LENGTH_LONG).show();
+            }
+        }catch (NullPointerException e){
+            e.printStackTrace();
+        }
         String state = Environment.getExternalStorageState();
         if (Environment.MEDIA_MOUNTED.equals(state)) {
             if (Build.VERSION.SDK_INT >= 23) {
