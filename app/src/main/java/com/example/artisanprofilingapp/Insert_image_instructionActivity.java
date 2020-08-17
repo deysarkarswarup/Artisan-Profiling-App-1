@@ -10,6 +10,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -24,6 +25,7 @@ public class Insert_image_instructionActivity extends AppCompatActivity {
     Button submitbtn;
     private static final int PERMISSION_REQUEST_CODE = 100;
     SharedPreferences myPref;
+    private MediaPlayer mediaPlayer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +33,10 @@ public class Insert_image_instructionActivity extends AppCompatActivity {
         setContentView(R.layout.activity_insert_image_instruction);
         submitbtn = (Button)findViewById(R.id.submitBtn);
         myPref = getApplicationContext().getSharedPreferences("MyPref",MODE_PRIVATE);
+
+        mediaPlayer = MediaPlayer.create(this, R.raw.phoneno);
+
+
         String state = Environment.getExternalStorageState();
         if (Environment.MEDIA_MOUNTED.equals(state)) {
             if (Build.VERSION.SDK_INT >= 23) {
@@ -38,8 +44,18 @@ public class Insert_image_instructionActivity extends AppCompatActivity {
 
                     requestPermission();
                 }
+                else{
+                    mediaPlayer.start();
+                }
             }
         }
+
+        String SelectedType = myPref.getString("selected","No data found");
+        if(SelectedType=="saree"){
+
+        }
+
+
         submitbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -156,6 +172,7 @@ public class Insert_image_instructionActivity extends AppCompatActivity {
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
 
                     Log.d("Jhingalala", "granted");
+                    mediaPlayer.start();
 
                     // do your work here
 

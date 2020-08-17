@@ -3,6 +3,7 @@ package com.example.artisanprofilingapp;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.SharedPreferences;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -22,13 +23,14 @@ import com.android.volley.toolbox.Volley;
 import com.google.android.material.textfield.TextInputLayout;
 
 public class AddressActivity extends AppCompatActivity {
-    TextInputLayout address;
-    EditText nam;//to show error msg
+    TextInputLayout district, addressLine1, addressLine2, landMark, pinCode;
+    EditText nam, nam1, nam3,nam4;//to show error msg
     Button submitbtn;
     RequestQueue requestQueue;
     ProgressDialog progressDialog;
-    String AddressHolder;
+    String AddressHolder1, AddressHolder2, AddressHolder3, AddressHolder4, AddressHolder5;
     SharedPreferences myPref;
+    private MediaPlayer mediaPlayer;
 
 
     @Override
@@ -36,9 +38,17 @@ public class AddressActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_address);
 
-        address = (TextInputLayout)findViewById(R.id.address);
-        nam = (EditText)findViewById(R.id.nam);//to show error msg
-        submitbtn = (Button)findViewById(R.id.submitBtn);
+        district = findViewById(R.id.district);
+        addressLine1 = findViewById(R.id.addressLine1);
+        addressLine2 = findViewById(R.id.addressLine2);
+        pinCode = findViewById(R.id.pinCode);
+        landMark = findViewById(R.id.landMark);
+
+        nam = findViewById(R.id.nam);//to show error msg
+        nam1 = findViewById(R.id.nam1);//to show error msg
+        nam3 = findViewById(R.id.nam3);//to show error msg
+        nam4 = findViewById(R.id.nam4);//to show error msg
+        submitbtn = findViewById(R.id.submitBtn);
 
         //Initialize of SharedPref
         myPref = getApplicationContext().getSharedPreferences("MyPref",MODE_PRIVATE);
@@ -46,6 +56,8 @@ public class AddressActivity extends AppCompatActivity {
         // Creating Volley newRequestQueue .
         requestQueue = Volley.newRequestQueue(AddressActivity.this);
         progressDialog = new ProgressDialog(AddressActivity.this);
+        mediaPlayer = MediaPlayer.create(this, R.raw.phoneno);
+        mediaPlayer.start();
 
         submitbtn.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -65,13 +77,22 @@ public class AddressActivity extends AppCompatActivity {
                 progressDialog.setMessage("Please Wait, We are Inserting Your Data on Server");
                 progressDialog.show();
 
-                AddressHolder = address.getEditText().getText().toString().trim();
-                Log.d("eirki",AddressHolder);
-                //myPref.edit().putString("phone", PhoneNoHolder).apply();
-                String dataToGet = myPref.getString("phone","No data found");
-                Log.d("eirki",dataToGet);
+                AddressHolder1 = district.getEditText().getText().toString().trim();
+                AddressHolder2 = addressLine1.getEditText().getText().toString().trim();
+                AddressHolder3 = addressLine2.getEditText().getText().toString().trim();
+                AddressHolder4 = pinCode.getEditText().getText().toString().trim();
+                AddressHolder5 = landMark.getEditText().getText().toString().trim();
 
-                String myurl = "http://192.168.43.12/Artisans-Profiling/address.php?address=" + AddressHolder +"&phoneno="+ dataToGet;
+                Log.d("eirki",AddressHolder1);
+                //myPref.edit().putString("phone", PhoneNoHolder).apply();
+                //String dataToGet = myPref.getString("phone","No data found");
+                String idToGet = myPref.getString("id","No data found");
+                String nameToGet = myPref.getString("name","No data found");
+                Log.d("eirki id->",idToGet);
+                Log.d("eirki name->",nameToGet);
+
+                String myurl = "http://192.168.43.12/Artisans-Profiling/name_address.php?name=" + nameToGet + "&district=" + AddressHolder1 +"&addressLine1="+ AddressHolder2
+                        +"&addressLine2="+ AddressHolder3 +"&pinCode="+ AddressHolder4 +"&landMark="+ AddressHolder5 +"&id="+ idToGet;
 
                 RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
                 StringRequest stringRequest = new StringRequest(Request.Method.POST, myurl,

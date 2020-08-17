@@ -18,11 +18,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ThankYouActivity"
+        <activity android:name=".ImageCaptureSelection"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity android:name=".CaptureArtformVideoActivity"
+        <activity
+            android:name=".ThankYouActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity android:name=".Insert_Artfrom_video_instructionActivity"
+        <activity
+            android:name=".CaptureArtformVideoActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name=".Insert_Artfrom_video_instructionActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".UserChoiceActivity"

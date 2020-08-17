@@ -3,6 +3,7 @@ package com.example.artisanprofilingapp;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.SharedPreferences;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -29,6 +30,7 @@ public class ExperienceActivity extends AppCompatActivity {
     ProgressDialog progressDialog;
     String ExperienceHolder;
     SharedPreferences myPref;
+    private MediaPlayer mediaPlayer;
 
 
     @Override
@@ -39,6 +41,8 @@ public class ExperienceActivity extends AppCompatActivity {
         experience = (TextInputLayout)findViewById(R.id.experi);
         nam = (EditText)findViewById(R.id.nam);//to show error msg
         submitbtn = (Button)findViewById(R.id.submitBtn);
+        mediaPlayer = MediaPlayer.create(this, R.raw.phoneno);
+        mediaPlayer.start();
 
         //Initialize of SharedPref
         myPref = getApplicationContext().getSharedPreferences("MyPref",MODE_PRIVATE);
@@ -69,7 +73,9 @@ public class ExperienceActivity extends AppCompatActivity {
                 Log.d("eirki",ExperienceHolder);
                 //myPref.edit().putString("phone", PhoneNoHolder).apply();
                 String dataToGet = myPref.getString("phone","No data found");
-                Log.d("eirki",dataToGet);
+                String artformToGet = myPref.getString("artform","No data found");
+                Log.d("eirki phone->",dataToGet);
+                Log.d("eirki artform->",artformToGet);
 
                 String myurl = "http://192.168.43.12/Artisans-Profiling/experience.php?experience=" + ExperienceHolder +"&phoneno="+ dataToGet;
 

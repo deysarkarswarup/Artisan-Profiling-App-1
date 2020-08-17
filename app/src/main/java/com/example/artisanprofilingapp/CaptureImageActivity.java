@@ -7,6 +7,7 @@ import androidx.core.content.ContextCompat;
 import android.Manifest;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.Bundle;
 
@@ -49,6 +50,7 @@ public class CaptureImageActivity extends AppCompatActivity {
     SharedPreferences myPref;
     private String dataToGet;
     private String ImageCountToGet;
+    private MediaPlayer mediaPlayer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +62,9 @@ public class CaptureImageActivity extends AppCompatActivity {
         myPref = getApplicationContext().getSharedPreferences("MyPref",MODE_PRIVATE);
         dataToGet = myPref.getString("phone","No data found");
         ImageCountToGet = myPref.getString("count","No data found");
+        mediaPlayer = MediaPlayer.create(this, R.raw.phoneno);
+        mediaPlayer.start();
+
         StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
         StrictMode.setVmPolicy(builder.build());
         button.setOnClickListener(new View.OnClickListener() {

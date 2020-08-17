@@ -10,6 +10,7 @@ import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
+import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -22,6 +23,8 @@ import android.widget.EditText;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.widget.ListAdapter;
+import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.android.volley.Request;
@@ -34,6 +37,13 @@ import com.android.volley.toolbox.Volley;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputLayout;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+
 public class MainActivity extends AppCompatActivity {
     TextInputLayout phno;
     EditText mobileno;//to show error msg
@@ -44,12 +54,14 @@ public class MainActivity extends AppCompatActivity {
     SharedPreferences myPref;
     public static int REQUEST_PERMISSION=1;
     private static final int PERMISSION_REQUEST_CODE = 100;
+    private MediaPlayer mediaPlayer;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        mediaPlayer = MediaPlayer.create(this,R.raw.phoneno);
 
         String state = Environment.getExternalStorageState();
         if (Environment.MEDIA_MOUNTED.equals(state)) {
@@ -57,7 +69,11 @@ public class MainActivity extends AppCompatActivity {
                if (!checkPermission()) {
 
                     requestPermission();
+
                 }
+               else{
+                   mediaPlayer.start();
+               }
             }
         }
 
@@ -73,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
         requestQueue = Volley.newRequestQueue(MainActivity.this);
         progressDialog = new ProgressDialog(MainActivity.this);
         //delete this
-        //startActivity(new Intent(MainActivity.this, NameActivity.class));
+        startActivity(new Intent(MainActivity.this, ImageCaptureSelection.class));
 
         submitbtn.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -87,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
 
                     Toast.makeText(MainActivity.this,"হয়েগেছে",Toast.LENGTH_LONG).show();
                     regUser();
-                    startActivity(new Intent(MainActivity.this, NameActivity.class));
+                    //startActivity(new Intent(MainActivity.this, NameActivity.class));
 
                 }
                 else{
@@ -100,27 +116,29 @@ public class MainActivity extends AppCompatActivity {
                 progressDialog.show();
 
                 PhoneNoHolder = phno.getEditText().getText().toString().trim();
-                Log.d("eirki",PhoneNoHolder);
+                Log.d("eirki phone->",PhoneNoHolder);
                 myPref.edit().putString("phone", PhoneNoHolder).apply();
                 myPref.edit().putString("count", "0").apply();
 
 
 
                 String myurl = "http://192.168.43.12/Artisans-Profiling/phoneno.php?phoneno=" + PhoneNoHolder;
-
+//String myurl = "https://artisanprofilingapp.000webhostapp.com/phoneno.php?phoneno=" + PhoneNoHolder;
                 RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
 
                 StringRequest stringRequest = new StringRequest(Request.Method.POST, myurl,
                         new Response.Listener<String>() {
                             @Override
-                            public void onResponse(String ServerResponse) {
+                            public void onResponse(String response) {
                                 // Hiding the progress dialog after all task complete.
+                                showJSON(response);
                                 progressDialog.dismiss();
                                 // Showing response message coming from server.
-                                Toast.makeText(MainActivity.this, ServerResponse, Toast.LENGTH_LONG).show();
+                                Toast.makeText(MainActivity.this, response, Toast.LENGTH_LONG).show();
                                 myPref.edit().putString("track", "1").apply();
 //                                Intent i = new Intent(getApplicationContext(), NameActivity.class);
 //                                startActivity(i);
+
                             }
                         },
                         new Response.ErrorListener() {
@@ -134,6 +152,46 @@ public class MainActivity extends AppCompatActivity {
                             }
                         });
                 queue.add(stringRequest);
+
+            }
+            private void showJSON(String response) {
+                ArrayList<HashMap<String, String>> list = new ArrayList<>();
+                try {
+                    JSONObject jsonObject = new JSONObject(response);
+                    JSONArray result = jsonObject.getJSONArray(Config.JSON_ARRAY);
+
+                    // for (int i = 0; i < result.length(); i++) {
+                    JSONObject jo = result.getJSONObject(0);
+//                String title = jo.getString(Config5.KEY_TITLE);
+//                String date = jo.getString(Config5.KEY_DATE);
+//                String data = jo.getString(Config5.KEY_DATA);
+                    String id = jo.getString(Config.KEY_ID);
+                    Log.d("eirki",id);
+                    myPref.edit().putString("id",id).apply();
+
+
+
+
+//                    final HashMap<String, String> employees = new HashMap<>();
+////                employees.put(Config5.KEY_TITLE,  "Date = "+title);
+////                employees.put(Config5.KEY_DATE, date);
+////                employees.put(Config5.KEY_DATA, data);
+//                    employees.put(Config.KEY_ID, id);
+//
+//                    list.add(employees);
+//
+//                    //}
+
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+//                ListAdapter adapter = new SimpleAdapter(
+//                        MainActivity.this, list, R.layout.activity_mylist,
+//                        new String[]{Config5.KEY_ID},
+//                        new int[]{R.id.tvid});
+//
+//                listview.setAdapter(adapter);
 
             }
 
@@ -208,6 +266,7 @@ public class MainActivity extends AppCompatActivity {
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
 
                     Log.d("Jhingalala", "granted");
+                    mediaPlayer.start();
 
                     // do your work here
 

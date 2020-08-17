@@ -22,4 +22,5 @@
     <string name="newEntry">নতুন তথ্য</string>
     <string name="ThankYou">ধন্যবাদ..</string>
     <string name="artformVideo">নিচে ক্যামেরা বাটন টিপুন আপনার আর্টফর্ম ভিডিও তোলার জন্য</string>
+    <string name="selectimageinfo">আপনি এবার আপনার নিজের তৈরী জিনিস গুলোর ফটো তুলবেন. আপনার তৈরী জিনিস টা কোন প্রকারের?</string>
 </resources>
