@@ -8,6 +8,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -30,6 +31,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
 import java.io.File;
+import java.security.PrivateKey;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -44,6 +46,7 @@ public class CaptureVideoActivity extends AppCompatActivity {
     ProgressDialog progressDialog;
     SharedPreferences myPref;
     private String dataToGet;
+    private MediaPlayer mediaPlayer;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,6 +54,8 @@ public class CaptureVideoActivity extends AppCompatActivity {
         capture = findViewById(R.id.capture);
         myPref = getApplicationContext().getSharedPreferences("MyPref",MODE_PRIVATE);
         dataToGet = myPref.getString("phone","No data found");
+        mediaPlayer = MediaPlayer.create(this, R.raw.phoneno);
+        mediaPlayer.start();
 
         // Creating Volley newRequestQueue .
         requestQueue = Volley.newRequestQueue(CaptureVideoActivity.this);
