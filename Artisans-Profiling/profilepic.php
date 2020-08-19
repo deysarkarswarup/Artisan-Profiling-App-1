@@ -7,7 +7,7 @@ if(isset($_POST["encoded_string"])){
 	
 	$decoded_string = base64_decode($encoded_string);
 	
-	$path = 'images/'.$image_name;
+	$path = 'profilepic/'.$image_name;
 	
 	$file = fopen($path, 'wb');
 	
@@ -16,8 +16,9 @@ if(isset($_POST["encoded_string"])){
 	
 	if($is_written > 0) {
 		
-		echo ($id);
-		$query = "INSERT INTO `attachmentimage` (productImageName, artisanid) VALUES('" . $image_name . "', '" . $id . "')";
+
+
+		$query = "UPDATE `artisan` SET `profilePicture` ='".$image_name."' WHERE `id`='".$id."'" ;
 		$conn = mysqli_connect('localhost', 'root', '','artisan-profiling');
 		$result = mysqli_query($conn, $query) ;
 		
