@@ -53,7 +53,8 @@ public class CaptureVideoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_capture_video);
         capture = findViewById(R.id.capture);
         myPref = getApplicationContext().getSharedPreferences("MyPref",MODE_PRIVATE);
-        dataToGet = myPref.getString("phone","No data found");
+        dataToGet = myPref.getString("id","No data found");
+        Log.d("hiii", "onCreate: "+dataToGet);
         mediaPlayer = MediaPlayer.create(this, R.raw.phoneno);
         mediaPlayer.start();
 
@@ -100,6 +101,7 @@ public class CaptureVideoActivity extends AppCompatActivity {
             Toast.makeText(this,"Video Captured Properly",Toast.LENGTH_SHORT).show();
             //makeRequest();
             uploadVideo();
+            myPref.edit().putString("track", "14").apply();
 
         }
     }
@@ -197,6 +199,7 @@ public class CaptureVideoActivity extends AppCompatActivity {
                 @Override
                 protected String doInBackground(Void... params) {
                     Upload u = new Upload();
+
                     String msg = u.upLoad2Server(file.toString(),dataToGet);
                     return msg;
                 }

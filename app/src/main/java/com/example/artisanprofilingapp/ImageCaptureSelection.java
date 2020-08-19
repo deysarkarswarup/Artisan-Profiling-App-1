@@ -22,10 +22,12 @@ public class ImageCaptureSelection extends AppCompatActivity {
         bag = findViewById(R.id.bag);
         goina = findViewById(R.id.goina);
         myPref = getApplicationContext().getSharedPreferences("MyPref",MODE_PRIVATE);
+
         saree.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 myPref.edit().putString("selected","saree").apply();
+                myPref.edit().putString("track", "9").apply();
                 startActivity(new Intent(getApplicationContext(),Insert_image_instructionActivity.class));
             }
         });
@@ -33,6 +35,7 @@ public class ImageCaptureSelection extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 myPref.edit().putString("selected","kurta").apply();
+                myPref.edit().putString("track", "9").apply();
                 startActivity(new Intent(getApplicationContext(),Insert_image_instructionActivity.class));
             }
         });
@@ -40,6 +43,7 @@ public class ImageCaptureSelection extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 myPref.edit().putString("selected","tshirt").apply();
+                myPref.edit().putString("track", "9").apply();
                 startActivity(new Intent(getApplicationContext(),Insert_image_instructionActivity.class));
             }
         });
@@ -47,6 +51,7 @@ public class ImageCaptureSelection extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 myPref.edit().putString("selected","showpiece").apply();
+                myPref.edit().putString("track", "9").apply();
                 startActivity(new Intent(getApplicationContext(),Insert_image_instructionActivity.class));
             }
         });
@@ -54,6 +59,7 @@ public class ImageCaptureSelection extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 myPref.edit().putString("selected","bag").apply();
+                myPref.edit().putString("track", "9").apply();
                 startActivity(new Intent(getApplicationContext(),Insert_image_instructionActivity.class));
             }
         });
@@ -61,6 +67,7 @@ public class ImageCaptureSelection extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 myPref.edit().putString("selected","goina").apply();
+                myPref.edit().putString("track", "9").apply();
                 startActivity(new Intent(getApplicationContext(),Insert_image_instructionActivity.class));
             }
         });

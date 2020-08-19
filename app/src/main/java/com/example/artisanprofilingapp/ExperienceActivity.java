@@ -12,6 +12,7 @@ import android.widget.EditText;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -31,7 +32,8 @@ public class ExperienceActivity extends AppCompatActivity {
     String ExperienceHolder;
     SharedPreferences myPref;
     private MediaPlayer mediaPlayer;
-
+    RadioGroup radioGroup;
+    String yesOrNo="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,12 +46,33 @@ public class ExperienceActivity extends AppCompatActivity {
         mediaPlayer = MediaPlayer.create(this, R.raw.phoneno);
         mediaPlayer.start();
 
-        //Initialize of SharedPref
+        radioGroup = (RadioGroup) findViewById(R.id.radioGroup);
+        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                switch (checkedId){
+                    case R.id.yes:
+                        yesOrNo = "হ্যাঁ";
+                        Log.d("eirki yesorno stor->",yesOrNo);
+                        //Toast.makeText(getApplicationContext(),"you selected yes", Toast.LENGTH_SHORT).show();
+                        break;
+                    case R.id.no:
+                        yesOrNo = "না";
+                        Log.d("eirki yesorno stor->",yesOrNo);
+                        //Toast.makeText(getApplicationContext(),"you selected no", Toast.LENGTH_SHORT).show();
+                        break;
+                }
+            }
+            });
+
+            //Initialize of SharedPref
         myPref = getApplicationContext().getSharedPreferences("MyPref",MODE_PRIVATE);
 
         // Creating Volley newRequestQueue .
         requestQueue = Volley.newRequestQueue(ExperienceActivity.this);
         progressDialog = new ProgressDialog(ExperienceActivity.this);
+
+
 
         submitbtn.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -57,7 +80,7 @@ public class ExperienceActivity extends AppCompatActivity {
                 if (!nam.getText().toString().equals("")){
                     //Toast.makeText(MainActivity.this,"হয়েগেছে",Toast.LENGTH_LONG).show();
                     regUser();
-                    Intent i=new Intent(ExperienceActivity.this,Insert_image_instructionActivity.class);
+                    Intent i=new Intent(ExperienceActivity.this,ImageCaptureSelection.class);
                     startActivity(i);
                 }
                 else{
@@ -72,12 +95,15 @@ public class ExperienceActivity extends AppCompatActivity {
                 ExperienceHolder = experience.getEditText().getText().toString().trim();
                 Log.d("eirki",ExperienceHolder);
                 //myPref.edit().putString("phone", PhoneNoHolder).apply();
-                String dataToGet = myPref.getString("phone","No data found");
+//                String dataToGet = myPref.getString("phone","No data found");
+                String idToGet = myPref.getString("id","No data found");
                 String artformToGet = myPref.getString("artform","No data found");
-                Log.d("eirki phone->",dataToGet);
+                Log.d("eirki id->",idToGet);
                 Log.d("eirki artform->",artformToGet);
+                Log.d("eirki ha or na->",yesOrNo);
 
-                String myurl = "http://192.168.43.12/Artisans-Profiling/experience.php?experience=" + ExperienceHolder +"&phoneno="+ dataToGet;
+                String myurl = "http://192.168.43.12/Artisans-Profiling/experience.php?experience=" + ExperienceHolder
+                       +"&orgmember="+ yesOrNo +"&id="+idToGet +"&artform="+artformToGet ;
 
                 RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
                 StringRequest stringRequest = new StringRequest(Request.Method.POST, myurl,
@@ -88,7 +114,7 @@ public class ExperienceActivity extends AppCompatActivity {
                                 progressDialog.dismiss();
                                 // Showing response message coming from server.
                                 Toast.makeText(ExperienceActivity.this, ServerResponse, Toast.LENGTH_LONG).show();
-                                myPref.edit().putString("track", "5").apply();
+                                myPref.edit().putString("track", "8").apply();
                             }
                         },
                         new Response.ErrorListener() {
