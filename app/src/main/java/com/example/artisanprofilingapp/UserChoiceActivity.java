@@ -32,7 +32,7 @@ public class UserChoiceActivity extends AppCompatActivity {
         no.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                myPref.edit().putString("track","8").apply();
+                myPref.edit().putString("track","12").apply();
                 Intent i=new Intent(UserChoiceActivity.this,Insert_video_instructionActivity.class);
                 startActivity(i);
             }

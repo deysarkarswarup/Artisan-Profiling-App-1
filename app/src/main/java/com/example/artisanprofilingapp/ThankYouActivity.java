@@ -18,7 +18,7 @@ public class ThankYouActivity extends AppCompatActivity {
         finish = (Button) findViewById(R.id.finish);
         newentry = (Button) findViewById(R.id.newEntry);
         myPref = getApplicationContext().getSharedPreferences("MyPref",MODE_PRIVATE);
-        myPref.edit().putString("track","0").apply();
+        myPref.edit().putString("track","17").apply();
         finish.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

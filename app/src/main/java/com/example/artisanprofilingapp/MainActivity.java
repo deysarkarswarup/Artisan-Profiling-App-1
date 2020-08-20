@@ -88,8 +88,9 @@ public class MainActivity extends AppCompatActivity {
         // Creating Volley newRequestQueue .
         requestQueue = Volley.newRequestQueue(MainActivity.this);
         progressDialog = new ProgressDialog(MainActivity.this);
-        //delete this
-        startActivity(new Intent(MainActivity.this, ImageCaptureSelection.class));
+
+        //DELETE THIS
+       // startActivity(new Intent(MainActivity.this, ArtformActivity3.class));
 
         submitbtn.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -103,7 +104,9 @@ public class MainActivity extends AppCompatActivity {
 
                     Toast.makeText(MainActivity.this,"হয়েগেছে",Toast.LENGTH_LONG).show();
                     regUser();
-                    //startActivity(new Intent(MainActivity.this, NameActivity.class));
+
+                    //UNCOMMENT THIS
+                    startActivity(new Intent(MainActivity.this, NameActivity.class));
 
                 }
                 else{

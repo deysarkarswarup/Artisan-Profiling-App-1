@@ -1,7 +1,7 @@
 <?php
 if(isset($_POST["encoded_string"])){
  	
- 	$phone = $_POST["phone"];
+ 	$id = $_POST["id"];
 	$encoded_string = $_POST["encoded_string"];
 	$image_name = $_POST["image_name"];
 	
@@ -16,9 +16,9 @@ if(isset($_POST["encoded_string"])){
 	
 	if($is_written > 0) {
 		
-		
-		$query = "INSERT INTO photos(phoneno,name,path) VALUES('" . $phone . "', '" . $image_name . "','" . $path . "')";
-		$conn = mysqli_connect('localhost', 'root', '','artisans-profiling');
+		echo ($id);
+		$query = "INSERT INTO `attachmentimage` (productImageName, artisanid) VALUES('" . $image_name . "', '" . $id . "')";
+		$conn = mysqli_connect('localhost', 'root', '','artisan-profiling');
 		$result = mysqli_query($conn, $query) ;
 		
 		if($result){

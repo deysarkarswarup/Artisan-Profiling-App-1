@@ -52,7 +52,8 @@ public class CaptureArtformVideoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_capture_artform_video);
         capture = findViewById(R.id.capture);
         myPref = getApplicationContext().getSharedPreferences("MyPref",MODE_PRIVATE);
-        dataToGet = myPref.getString("phone","No data found");
+        dataToGet = myPref.getString("id","No data found");
+        Log.d("hiiii artform", "onCreate: "+dataToGet);
         mediaPlayer = MediaPlayer.create(this, R.raw.phoneno);
         mediaPlayer.start();
 
@@ -99,7 +100,7 @@ public class CaptureArtformVideoActivity extends AppCompatActivity {
             Toast.makeText(this,"Video Captured Properly",Toast.LENGTH_SHORT).show();
             //makeRequest();
             uploadVideo();
-
+            myPref.edit().putString("track", "16").apply();
         }
     }
 

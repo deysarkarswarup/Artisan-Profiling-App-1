@@ -1,5 +1,4 @@
 package com.example.artisanprofilingapp;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -20,6 +19,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+
+import android.widget.TextView;
+
 import android.widget.Toast;
 
 public class Insert_image_instructionActivity extends AppCompatActivity {
@@ -28,6 +30,9 @@ public class Insert_image_instructionActivity extends AppCompatActivity {
     SharedPreferences myPref;
     private MediaPlayer mediaPlayer;
     private ImageView img1,img2,img3,img4;
+
+    private TextView inst;
+
     private String selected;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,45 +40,120 @@ public class Insert_image_instructionActivity extends AppCompatActivity {
         setContentView(R.layout.activity_insert_image_instruction);
         submitbtn = (Button)findViewById(R.id.submitBtn);
         myPref = getApplicationContext().getSharedPreferences("MyPref",MODE_PRIVATE);
+
         img1 = findViewById(R.id.img1);
         img2 = findViewById(R.id.img2);
         img3 = findViewById(R.id.img3);
         img4 = findViewById(R.id.img4);
+
+        inst = findViewById(R.id.picInstruction);
+
+
         mediaPlayer = MediaPlayer.create(this, R.raw.phoneno);
         selected = myPref.getString("selected","none");
         try {
             switch (selected) {
                 case "saree":
+
+                    inst.setText("শাড়ীর ছবি তোলার নির্দেশাবলী:-\n"+
+                            "\n" +
+                            "- শাড়ীর প্রতি টা অংশ ছবি তে পরিষ্কার ভাবে দেখা যাবে\n" +
+                            "- পুরো শাড়ী টা নিয়ে একটা ছবি তুলুন\n" +
+                            "- শাড়ীর ওপরে করা ডিজাইন টার একটা সামনে থেকে ছবি তুলুন \n" +
+                            "- ছবি গুলো সোজা করে পরিষ্কার করে তুলবেন\n" +
+                            "- ছবি গুলো ঠিকঠাক আলোতে রেখে তুলবেন\n" +
+                            "- ছবি গুলো তোলার সময়ে ব্যাকগ্রাউন্ড টা হালকা রং এর থাকবে\n"+
+                            "\n" +
+                            "শাড়ীর কয়েকটা স্যাম্পল ছবি:-");
+
                     img1.setImageResource(R.drawable.saree1);
                     img2.setImageResource(R.drawable.saree2);
                     img3.setImageResource(R.drawable.saree3);
                     img4.setVisibility(View.GONE);
                     break;
                 case "kurta":
+
+                    inst.setText("কুর্তার ছবি তোলার নির্দেশাবলী:-  \n" +
+                            "\n" +
+                            "- পুরো কুর্তা টার ছবি তুলুন, সামনে এবং পিছন থেকে \n" +
+                            "- কুর্তার ওপর করা ডিজাইন টার একটা সামনে থেকে ছবি তুলুন\n" +
+                            "- কুর্তার গলা টার একটা সামনে থেকে ছবি তুলুন\n" +
+                            "- কুর্তার হাতা দুটোর সামনে থেকে ছবি তুলুন\n" +
+                            "- ছবি গুলো সোজা করে পরিষ্কার করে তুলবেন\n" +
+                            "- ছবি গুলো ঠিকঠাক আলোতে রেখে তুলবেন\n" +
+                            "- ছবি গুলো তোলার সময়ে ব্যাকগ্রাউন্ড টা হালকা রং এর থাকবে\n" +
+                            "\n" +
+                            "কুর্তার কয়েকটা স্যাম্পল ছবি:-\n");
+
                     img1.setImageResource(R.drawable.kurta1);
                     img2.setImageResource(R.drawable.kurta2);
                     img3.setImageResource(R.drawable.kurta3);
                     img4.setImageResource(R.drawable.kurta4);
                     break;
                 case "tshirt":
+
+                    inst.setText("টি-শার্টের ছবি তোলার নির্দেশাবলী:-\n" +
+                            "\n" +
+                            "- পুরো টি-শার্ট টার ছবি তুলুন, সামনে এবং পিছন থেকে\n" +
+                            "- টি-শার্ট এর ওপরে করা ডিজাইন টার সামনে থেকে ছবি তুলুন\n" +
+                            "- ছবি গুলো সোজা করে পরিষ্কার করে তুলবেন\n" +
+                            "- ছবি গুলো ঠিকঠাক আলোতে রেখে তুলবেন\n" +
+                            "- ছবি গুলো তোলার সময়ে ব্যাকগ্রাউন্ড টা হালকা রং এর থাকবে\n" +
+                            "\n" +
+                            "টি-শার্টের কয়েকটা স্যাম্পল ছবি:-\n");
+
                     img1.setImageResource(R.drawable.tshirt1);
                     img2.setImageResource(R.drawable.tshirt2);
                     img3.setVisibility(View.GONE);
                     img4.setVisibility(View.GONE);
                     break;
                 case "showpiece":
+
+                    inst.setText("শো পিস্ এর ছবি তোলার নির্দেশাবলী:-\n" +
+                            "\n" +
+                            "- পুরো জিনিস টার  ছবি তুলবেন\n" +
+                            "- ছবি গুলো সোজা করে পরিষ্কার করে তুলবেন\n" +
+                            "- ছবি গুলো ঠিকঠাক আলোতে রেখে তুলবেন\n" +
+                            "- ছবি গুলো তোলার সময়ে ব্যাকগ্রাউন্ড টা হালকা রং এর থাকবে\n" +
+                            "\n" +
+                            "- কিছু স্যাম্পল ছবি:-\n");
+
                     img1.setImageResource(R.drawable.showpiece1);
                     img2.setImageResource(R.drawable.showpiece2);
                     img3.setImageResource(R.drawable.showpiece3);
                     img4.setImageResource(R.drawable.showpiece4);
                     break;
                 case "bag":
+
+                    inst.setText("ব্যাগের ছবি তোলার নির্দেশাবলী:-\n" +
+                            "\n" +
+                            "- ব্যাগের সামনে এবং পিছন থেকে ছবি তুলুন\n" +
+                            "- ব্যাগের সাইড থেকে একটা ছবি তুলুন'\n" +
+                            "- ব্যাগের ওপর করা ডিজাইন এর সামনে থেকে ছবি তুলুন\n" +
+                            "- ব্যাগ এর হ্যান্ডেল এর ছবি তুলুন\n" +
+                            "- ব্যাগ টা খুলে, ব্যাগের ভিতরের ছবি তুলুন\n" +
+                            "- ছবি গুলো সোজা করে পরিষ্কার করে তুলবেন\n" +
+                            "- ছবি গুলো ঠিকঠাক আলোতে রেখে তুলবেন\n" +
+                            "- ছবি গুলো তোলার সময়ে ব্যাকগ্রাউন্ড টা হালকা রং এর থাকবে\n" +
+                            "\n" +
+                            "ব্যাগের কিছু স্যাম্পল ছবি:-  \n");
+
                     img1.setImageResource(R.drawable.bag1);
                     img2.setImageResource(R.drawable.bag2);
                     img3.setImageResource(R.drawable.bag3);
                     img4.setVisibility(View.GONE);
                     break;
                 case "goina":
+
+                    inst.setText("গয়নার ছবি তোলার নির্দেশাবলী:-\n" +
+                            "\n" +
+                            "- পুরো গয়না টার ছবি তুলুন\n" +
+                            "- ছবি গুলো সোজা করে পরিষ্কার করে তুলবেন\n" +
+                            "- ছবি গুলো ঠিকঠাক আলোতে রেখে তুলবেন\n" +
+                            "- ছবি গুলো তোলার সময়ে ব্যাকগ্রাউন্ড টা হালকা রং এর থাকবে\n" +
+                            "\n" +
+                            "গয়নার কিছু স্যাম্পল ছবি:-\n");
+
                     img1.setImageResource(R.drawable.goina1);
                     img2.setImageResource(R.drawable.goina2);
                     img3.setImageResource(R.drawable.goina3);
@@ -98,16 +178,16 @@ public class Insert_image_instructionActivity extends AppCompatActivity {
             }
         }
 
-        String SelectedType = myPref.getString("selected","No data found");
-        if(SelectedType=="saree"){
-
-        }
+//        String SelectedType = myPref.getString("selected","No data found");
+//        if(SelectedType=="saree"){
+//
+//        }
 
 
         submitbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                myPref.edit().putString("track", "10").apply();
                 Intent i = new Intent(Insert_image_instructionActivity.this, CaptureImageActivity.class);
                 startActivity(i);
 
@@ -115,7 +195,7 @@ public class Insert_image_instructionActivity extends AppCompatActivity {
             }
 
 
-            });
+        });
     }
 
     private boolean checkPermission() {

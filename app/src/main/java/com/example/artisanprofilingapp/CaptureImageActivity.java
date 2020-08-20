@@ -7,6 +7,8 @@ import androidx.core.content.ContextCompat;
 import android.Manifest;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.graphics.Matrix;
+import android.media.ExifInterface;
 import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.Bundle;
@@ -35,8 +37,10 @@ import com.android.volley.toolbox.Volley;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 
 public class CaptureImageActivity extends AppCompatActivity {
@@ -48,7 +52,7 @@ public class CaptureImageActivity extends AppCompatActivity {
     private File file;
     private Uri file_uri;
     SharedPreferences myPref;
-    private String dataToGet;
+    private String dataToGet, idToGet;
     private String ImageCountToGet;
     private MediaPlayer mediaPlayer;
 
@@ -61,6 +65,7 @@ public class CaptureImageActivity extends AppCompatActivity {
         button = (Button) findViewById(R.id.start);
         myPref = getApplicationContext().getSharedPreferences("MyPref",MODE_PRIVATE);
         dataToGet = myPref.getString("phone","No data found");
+        idToGet = myPref.getString("id","No Data found");
         ImageCountToGet = myPref.getString("count","No data found");
         mediaPlayer = MediaPlayer.create(this, R.raw.phoneno);
         mediaPlayer.start();
@@ -114,12 +119,47 @@ public class CaptureImageActivity extends AppCompatActivity {
             new Encode_image().execute();
         }
     }
-
+    public static Bitmap rotateImage(Bitmap source, float angle) {
+        Matrix matrix = new Matrix();
+        matrix.postRotate(angle);
+        return Bitmap.createBitmap(source, 0, 0, source.getWidth(), source.getHeight(),
+                matrix, true);
+    }
     private class Encode_image extends AsyncTask<Void, Void, Void> {
         @Override
         protected Void doInBackground(Void... voids) {
 
             bitmap = BitmapFactory.decodeFile(file_uri.getPath());
+            ExifInterface ei = null;
+            try {
+                ei = new ExifInterface(Objects.requireNonNull(file_uri.getPath()));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            assert ei != null;
+            int orientation = ei.getAttributeInt(ExifInterface.TAG_ORIENTATION,
+                    ExifInterface.ORIENTATION_UNDEFINED);
+
+            Bitmap rotatedBitmap = null;
+            switch(orientation) {
+
+                case ExifInterface.ORIENTATION_ROTATE_90:
+                    rotatedBitmap = rotateImage(bitmap, 90);
+                    break;
+
+                case ExifInterface.ORIENTATION_ROTATE_180:
+                    rotatedBitmap = rotateImage(bitmap, 180);
+                    break;
+
+                case ExifInterface.ORIENTATION_ROTATE_270:
+                    rotatedBitmap = rotateImage(bitmap, 270);
+                    break;
+
+                case ExifInterface.ORIENTATION_NORMAL:
+                default:
+                    rotatedBitmap = bitmap;
+            }
+            bitmap = rotatedBitmap;
             ByteArrayOutputStream stream = new ByteArrayOutputStream();
             bitmap.compress(Bitmap.CompressFormat.JPEG, 50, stream);//compress image as per ur need
             bitmap.recycle();
@@ -133,7 +173,7 @@ public class CaptureImageActivity extends AppCompatActivity {
             makeRequest();
             Toast.makeText(CaptureImageActivity.this, "picture submitted successfully!", Toast.LENGTH_LONG).show();
 
-            myPref.edit().putString("track", "7").apply();
+            myPref.edit().putString("track", "11").apply();
             Intent i=new Intent(CaptureImageActivity.this,UserChoiceActivity.class);
             startActivity(i);
         }
@@ -159,7 +199,8 @@ public class CaptureImageActivity extends AppCompatActivity {
                 HashMap<String,String> map = new HashMap<>();
                 map.put("encoded_string",encoded_string);
                 map.put("image_name",count+image_name);
-                map.put("phone",dataToGet);
+                Log.d("eirki id-->", idToGet);
+                map.put("id",idToGet);
 
 
                 return map;

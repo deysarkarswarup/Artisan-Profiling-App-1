@@ -61,7 +61,8 @@ public class NameActivity extends AppCompatActivity {
                     //myPref.edit().putString("phone", PhoneNoHolder).apply();
                     myPref.edit().putString("name",NameHolder).apply();
                     //regUser();
-                    Intent i=new Intent(NameActivity.this,AddressActivity.class);
+                    myPref.edit().putString("track", "2").apply();
+                    Intent i=new Intent(NameActivity.this,AgeActivity.class);
                     startActivity(i);
                 }
                 else{

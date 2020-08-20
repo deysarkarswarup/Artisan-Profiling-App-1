@@ -32,7 +32,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
-        android:text="@string/art_form"
+        android:text="আপনি কোন শিল্প নিয়ে কাজ করেন?"
         android:textSize="25sp"
         android:paddingLeft="20dp"
         android:paddingRight="20dp"
@@ -47,39 +47,20 @@
         android:id="@+id/txtVw"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="50dp"
-        android:layout_marginTop="150dp"
-        android:text="Select User:"
+        android:layout_gravity="center"
+        android:layout_marginTop="50dp"
+        android:text="শিল্প:"
         android:textStyle="bold"
-        android:textSize="15dp" />
+        android:textSize="25dp" />
     <Spinner
         android:id="@+id/spinner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_gravity="center"
         android:layout_alignBottom="@+id/txtVw"
         android:layout_toRightOf="@+id/txtVw" />
 
-<!--    <com.google.android.material.textfield.TextInputLayout-->
-<!--        android:id="@+id/artform"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_width="match_parent"-->
-
-<!--        android:layout_marginTop="50dp"-->
-<!--        android:layout_marginLeft="20dp"-->
-<!--        android:layout_marginRight="20dp"-->
-<!--        android:paddingStart="10dp"-->
-<!--        android:paddingEnd="0dp"-->
-<!--        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox" >-->
-
-<!--        <EditText-->
-<!--            android:id="@+id/nam"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:hint="@string/art_form_hint"-->
-<!--            android:maxLength="20"-->
-<!--            android:inputType="text"-->
-<!--            android:autofillHints="" />-->
-<!--    </com.google.android.material.textfield.TextInputLayout>-->
 
     <Button
         android:id="@+id/submitBtn"

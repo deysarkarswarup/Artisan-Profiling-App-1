@@ -71,7 +71,7 @@ public class ArtformActivity extends AppCompatActivity implements AdapterView.On
                 if (flag){
                     //Toast.makeText(MainActivity.this,"হয়েগেছে",Toast.LENGTH_LONG).show();
                     //regUser();
-                    Intent i=new Intent(ArtformActivity.this,ExperienceActivity.class);
+                    Intent i=new Intent(ArtformActivity.this,ArtformActivity2.class);
                     startActivity(i);
                 }
                 else{
@@ -90,7 +90,7 @@ public class ArtformActivity extends AppCompatActivity implements AdapterView.On
         StringRequest stringRequest = new StringRequest(url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-
+                myPref.edit().putString("track", "5").apply();
                 showJSON(response);
             }
         },
@@ -162,8 +162,9 @@ public class ArtformActivity extends AppCompatActivity implements AdapterView.On
         }
         artFormName = list1.toArray(new String[list1.size()]);
 
-        ArrayAdapter<String> adapter1 = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, artFormName);
-        adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        ArrayAdapter<String> adapter1 = new ArrayAdapter<>(this, R.layout.spinner_layout, artFormName);
+        adapter1.setDropDownViewResource(R.layout.spinner_layout);
+//        ArrayAdapter adapter1 = ArrayAdapter.createFromResource(this,artFormName,R.layout.spinner_layout);
         spin.setAdapter(adapter1);
         spin.setOnItemSelectedListener(this);
 
