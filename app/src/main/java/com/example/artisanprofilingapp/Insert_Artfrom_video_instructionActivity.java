@@ -35,7 +35,7 @@ public class Insert_Artfrom_video_instructionActivity extends AppCompatActivity 
         setContentView(R.layout.activity_insert__artfrom_video_instruction);
         submitbtn = (Button)findViewById(R.id.submitBtn);
         myPref = getApplicationContext().getSharedPreferences("MyPref",MODE_PRIVATE);
-        mediaPlayer = MediaPlayer.create(this, R.raw.profilevideoinst);
+        mediaPlayer = MediaPlayer.create(this, R.raw.productvideoinst);
         mediaPlayer.start();
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);

@@ -54,7 +54,7 @@ public class CaptureArtformVideoActivity extends AppCompatActivity {
         myPref = getApplicationContext().getSharedPreferences("MyPref",MODE_PRIVATE);
         dataToGet = myPref.getString("id","No data found");
         Log.d("hiiii artform", "onCreate: "+dataToGet);
-        mediaPlayer = MediaPlayer.create(this, R.raw.phoneno);
+        mediaPlayer = MediaPlayer.create(this, R.raw.productvideocaptureinst);
         mediaPlayer.start();
 
         // Creating Volley newRequestQueue .
@@ -187,6 +187,7 @@ public class CaptureArtformVideoActivity extends AppCompatActivity {
                 Toast.makeText(CaptureArtformVideoActivity.this, s, Toast.LENGTH_LONG).show();
 //                    textViewResponse.setText(Html.fromHtml("<b>Uploaded at <a href='" + s + "'>" + s + "</a></b>"));
 //                    textViewResponse.setMovementMethod(LinkMovementMethod.getInstance());
+                mediaPlayer.stop();
                 Intent i=new Intent(CaptureArtformVideoActivity.this,ThankYouActivity.class);
                 startActivity(i);
             }

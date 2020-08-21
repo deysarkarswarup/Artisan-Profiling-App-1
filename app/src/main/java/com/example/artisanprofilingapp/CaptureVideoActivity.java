@@ -55,7 +55,7 @@ public class CaptureVideoActivity extends AppCompatActivity {
         myPref = getApplicationContext().getSharedPreferences("MyPref",MODE_PRIVATE);
         dataToGet = myPref.getString("id","No data found");
         Log.d("hiii", "onCreate: "+dataToGet);
-        mediaPlayer = MediaPlayer.create(this, R.raw.phoneno);
+        mediaPlayer = MediaPlayer.create(this, R.raw.profilevideocaptureinst);
         mediaPlayer.start();
 
         // Creating Volley newRequestQueue .
@@ -190,6 +190,7 @@ public class CaptureVideoActivity extends AppCompatActivity {
 //                    textViewResponse.setText(Html.fromHtml("<b>Uploaded at <a href='" + s + "'>" + s + "</a></b>"));
 //                    textViewResponse.setMovementMethod(LinkMovementMethod.getInstance());
                     myPref.edit().putString("track", "10").apply();
+                    mediaPlayer.stop();
                     Intent i=new Intent(CaptureVideoActivity.this,Insert_Artfrom_video_instructionActivity.class);
                     startActivity(i);
                 }

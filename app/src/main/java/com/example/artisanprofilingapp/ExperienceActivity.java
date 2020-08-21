@@ -43,7 +43,7 @@ public class ExperienceActivity extends AppCompatActivity {
         experience = (TextInputLayout)findViewById(R.id.experi);
         nam = (EditText)findViewById(R.id.nam);//to show error msg
         submitbtn = (Button)findViewById(R.id.submitBtn);
-        mediaPlayer = MediaPlayer.create(this, R.raw.phoneno);
+        mediaPlayer = MediaPlayer.create(this, R.raw.experienceinst);
         mediaPlayer.start();
 
         radioGroup = (RadioGroup) findViewById(R.id.radioGroup);
@@ -80,6 +80,7 @@ public class ExperienceActivity extends AppCompatActivity {
                 if (!nam.getText().toString().equals("")){
                     //Toast.makeText(MainActivity.this,"হয়েগেছে",Toast.LENGTH_LONG).show();
                     regUser();
+                    mediaPlayer.stop();
                     Intent i=new Intent(ExperienceActivity.this,ImageCaptureSelection.class);
                     startActivity(i);
                 }

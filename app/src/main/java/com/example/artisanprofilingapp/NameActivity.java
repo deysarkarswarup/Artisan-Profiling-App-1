@@ -41,7 +41,7 @@ public class NameActivity extends AppCompatActivity {
         name = (TextInputLayout)findViewById(R.id.name);
         nam = (EditText)findViewById(R.id.nam);//to show error msg
         submitbtn = (Button)findViewById(R.id.submitBtn);
-        mediaPlayer = MediaPlayer.create(this, R.raw.phoneno);
+        mediaPlayer = MediaPlayer.create(this, R.raw.nameinst);
         mediaPlayer.start();
 
         //Initialize of SharedPref
@@ -62,6 +62,7 @@ public class NameActivity extends AppCompatActivity {
                     myPref.edit().putString("name",NameHolder).apply();
                     //regUser();
                     myPref.edit().putString("track", "2").apply();
+                    mediaPlayer.stop();
                     Intent i=new Intent(NameActivity.this,AgeActivity.class);
                     startActivity(i);
                 }

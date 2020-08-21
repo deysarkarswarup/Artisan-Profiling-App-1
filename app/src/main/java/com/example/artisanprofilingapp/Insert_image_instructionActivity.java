@@ -19,20 +19,16 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-
 import android.widget.TextView;
-
 import android.widget.Toast;
 
 public class Insert_image_instructionActivity extends AppCompatActivity {
     Button submitbtn;
     private static final int PERMISSION_REQUEST_CODE = 100;
     SharedPreferences myPref;
-    private MediaPlayer mediaPlayer;
+    private MediaPlayer sareemediaPlayer, kurtamediaPlayer, tshirtmediaPlayer, bagmediaPlayer, showpiecemediaPlayer, goinamediaPlayer;
     private ImageView img1,img2,img3,img4;
-
     private TextView inst;
-
     private String selected;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,16 +41,20 @@ public class Insert_image_instructionActivity extends AppCompatActivity {
         img2 = findViewById(R.id.img2);
         img3 = findViewById(R.id.img3);
         img4 = findViewById(R.id.img4);
-
         inst = findViewById(R.id.picInstruction);
 
+        sareemediaPlayer = MediaPlayer.create(this, R.raw.sareeinst);
+        bagmediaPlayer = MediaPlayer.create(this, R.raw.baginst);
+        tshirtmediaPlayer = MediaPlayer.create(this, R.raw.tshirtinst);
+        goinamediaPlayer = MediaPlayer.create(this, R.raw.goinainst);
+        kurtamediaPlayer = MediaPlayer.create(this, R.raw.kurtainst);
+        showpiecemediaPlayer = MediaPlayer.create(this, R.raw.showpieceinst);
 
-        mediaPlayer = MediaPlayer.create(this, R.raw.phoneno);
+
         selected = myPref.getString("selected","none");
         try {
             switch (selected) {
                 case "saree":
-
                     inst.setText("শাড়ীর ছবি তোলার নির্দেশাবলী:-\n"+
                             "\n" +
                             "- শাড়ীর প্রতি টা অংশ ছবি তে পরিষ্কার ভাবে দেখা যাবে\n" +
@@ -65,14 +65,13 @@ public class Insert_image_instructionActivity extends AppCompatActivity {
                             "- ছবি গুলো তোলার সময়ে ব্যাকগ্রাউন্ড টা হালকা রং এর থাকবে\n"+
                             "\n" +
                             "শাড়ীর কয়েকটা স্যাম্পল ছবি:-");
-
                     img1.setImageResource(R.drawable.saree1);
                     img2.setImageResource(R.drawable.saree2);
                     img3.setImageResource(R.drawable.saree3);
                     img4.setVisibility(View.GONE);
+                    sareemediaPlayer.start();
                     break;
                 case "kurta":
-
                     inst.setText("কুর্তার ছবি তোলার নির্দেশাবলী:-  \n" +
                             "\n" +
                             "- পুরো কুর্তা টার ছবি তুলুন, সামনে এবং পিছন থেকে \n" +
@@ -84,14 +83,13 @@ public class Insert_image_instructionActivity extends AppCompatActivity {
                             "- ছবি গুলো তোলার সময়ে ব্যাকগ্রাউন্ড টা হালকা রং এর থাকবে\n" +
                             "\n" +
                             "কুর্তার কয়েকটা স্যাম্পল ছবি:-\n");
-
                     img1.setImageResource(R.drawable.kurta1);
                     img2.setImageResource(R.drawable.kurta2);
                     img3.setImageResource(R.drawable.kurta3);
                     img4.setImageResource(R.drawable.kurta4);
+                    kurtamediaPlayer.start();
                     break;
                 case "tshirt":
-
                     inst.setText("টি-শার্টের ছবি তোলার নির্দেশাবলী:-\n" +
                             "\n" +
                             "- পুরো টি-শার্ট টার ছবি তুলুন, সামনে এবং পিছন থেকে\n" +
@@ -101,14 +99,13 @@ public class Insert_image_instructionActivity extends AppCompatActivity {
                             "- ছবি গুলো তোলার সময়ে ব্যাকগ্রাউন্ড টা হালকা রং এর থাকবে\n" +
                             "\n" +
                             "টি-শার্টের কয়েকটা স্যাম্পল ছবি:-\n");
-
                     img1.setImageResource(R.drawable.tshirt1);
                     img2.setImageResource(R.drawable.tshirt2);
                     img3.setVisibility(View.GONE);
                     img4.setVisibility(View.GONE);
+                    tshirtmediaPlayer.start();
                     break;
                 case "showpiece":
-
                     inst.setText("শো পিস্ এর ছবি তোলার নির্দেশাবলী:-\n" +
                             "\n" +
                             "- পুরো জিনিস টার  ছবি তুলবেন\n" +
@@ -117,14 +114,13 @@ public class Insert_image_instructionActivity extends AppCompatActivity {
                             "- ছবি গুলো তোলার সময়ে ব্যাকগ্রাউন্ড টা হালকা রং এর থাকবে\n" +
                             "\n" +
                             "- কিছু স্যাম্পল ছবি:-\n");
-
                     img1.setImageResource(R.drawable.showpiece1);
                     img2.setImageResource(R.drawable.showpiece2);
                     img3.setImageResource(R.drawable.showpiece3);
                     img4.setImageResource(R.drawable.showpiece4);
+                    showpiecemediaPlayer.start();
                     break;
                 case "bag":
-
                     inst.setText("ব্যাগের ছবি তোলার নির্দেশাবলী:-\n" +
                             "\n" +
                             "- ব্যাগের সামনে এবং পিছন থেকে ছবি তুলুন\n" +
@@ -137,14 +133,13 @@ public class Insert_image_instructionActivity extends AppCompatActivity {
                             "- ছবি গুলো তোলার সময়ে ব্যাকগ্রাউন্ড টা হালকা রং এর থাকবে\n" +
                             "\n" +
                             "ব্যাগের কিছু স্যাম্পল ছবি:-  \n");
-
                     img1.setImageResource(R.drawable.bag1);
                     img2.setImageResource(R.drawable.bag2);
                     img3.setImageResource(R.drawable.bag3);
                     img4.setVisibility(View.GONE);
+                    bagmediaPlayer.start();
                     break;
                 case "goina":
-
                     inst.setText("গয়নার ছবি তোলার নির্দেশাবলী:-\n" +
                             "\n" +
                             "- পুরো গয়না টার ছবি তুলুন\n" +
@@ -153,11 +148,11 @@ public class Insert_image_instructionActivity extends AppCompatActivity {
                             "- ছবি গুলো তোলার সময়ে ব্যাকগ্রাউন্ড টা হালকা রং এর থাকবে\n" +
                             "\n" +
                             "গয়নার কিছু স্যাম্পল ছবি:-\n");
-
                     img1.setImageResource(R.drawable.goina1);
                     img2.setImageResource(R.drawable.goina2);
                     img3.setImageResource(R.drawable.goina3);
                     img4.setVisibility(View.GONE);
+                    goinamediaPlayer.start();
                     break;
                 default:
                     Toast.makeText(getApplicationContext(), "Some Error Occured!", Toast.LENGTH_LONG).show();
@@ -173,7 +168,7 @@ public class Insert_image_instructionActivity extends AppCompatActivity {
                     requestPermission();
                 }
                 else{
-                    mediaPlayer.start();
+                    //mediaPlayer.start();
                 }
             }
         }
@@ -188,6 +183,13 @@ public class Insert_image_instructionActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 myPref.edit().putString("track", "10").apply();
+                sareemediaPlayer.stop();
+                tshirtmediaPlayer.stop();
+                bagmediaPlayer.stop();
+                goinamediaPlayer.stop();
+                showpiecemediaPlayer.stop();
+                kurtamediaPlayer.stop();
+
                 Intent i = new Intent(Insert_image_instructionActivity.this, CaptureImageActivity.class);
                 startActivity(i);
 
@@ -300,7 +302,7 @@ public class Insert_image_instructionActivity extends AppCompatActivity {
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
 
                     Log.d("Jhingalala", "granted");
-                    mediaPlayer.start();
+                    //mediaPlayer.start();
 
                     // do your work here
 

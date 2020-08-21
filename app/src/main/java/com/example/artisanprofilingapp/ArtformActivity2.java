@@ -39,7 +39,7 @@ public class ArtformActivity2 extends AppCompatActivity {
         artlearned = (TextInputLayout)findViewById(R.id.artlearned);
         nam = (EditText)findViewById(R.id.nam);//to show error msg
         submitbtn = (Button)findViewById(R.id.submitBtn);
-        mediaPlayer = MediaPlayer.create(this, R.raw.phoneno);
+        mediaPlayer = MediaPlayer.create(this, R.raw.artform2inst);
         mediaPlayer.start();
 
         //Initialize of SharedPref
@@ -59,6 +59,7 @@ public class ArtformActivity2 extends AppCompatActivity {
                     Log.d("eirki artlearned stor->",ArtLearnedHolder);
                     myPref.edit().putString("artlearned",ArtLearnedHolder).apply();
                     myPref.edit().putString("track", "6").apply();
+                    mediaPlayer.stop();
                     Intent i=new Intent(ArtformActivity2.this,ArtformActivity3.class);
                     startActivity(i);
                 }

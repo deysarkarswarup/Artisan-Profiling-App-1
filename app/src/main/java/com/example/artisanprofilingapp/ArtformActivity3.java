@@ -50,7 +50,7 @@ public class ArtformActivity3 extends AppCompatActivity {
 //        yes = findViewById(R.id.yes);
 //        no = findViewById(R.id.no);
         inst = findViewById(R.id.txt);
-        mediaPlayer = MediaPlayer.create(this, R.raw.phoneno);
+        mediaPlayer = MediaPlayer.create(this, R.raw.artform3inst);
         mediaPlayer.start();
 
 
@@ -117,7 +117,7 @@ public class ArtformActivity3 extends AppCompatActivity {
                             }
                         });
                 queue.add(stringRequest);
-
+                mediaPlayer.stop();
                 Intent i=new Intent(ArtformActivity3.this,ExperienceActivity.class);
                 startActivity(i);
 
@@ -136,6 +136,7 @@ public class ArtformActivity3 extends AppCompatActivity {
   //                  Log.d("eirki Nocoworker stor->",NOofCoWorkersHolder);
 //                    myPref.edit().putString("coworker",NOofCoWorkersHolder).apply();
                     myPref.edit().putString("track", "7").apply();
+                    mediaPlayer.stop();
                     Intent i=new Intent(ArtformActivity3.this,ExperienceActivity.class);
                     startActivity(i);
                 }

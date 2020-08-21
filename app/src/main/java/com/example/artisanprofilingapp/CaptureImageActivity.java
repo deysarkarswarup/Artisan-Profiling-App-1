@@ -67,7 +67,7 @@ public class CaptureImageActivity extends AppCompatActivity {
         dataToGet = myPref.getString("phone","No data found");
         idToGet = myPref.getString("id","No Data found");
         ImageCountToGet = myPref.getString("count","No data found");
-        mediaPlayer = MediaPlayer.create(this, R.raw.phoneno);
+        mediaPlayer = MediaPlayer.create(this, R.raw.captureimageinst);
         mediaPlayer.start();
 
         StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
@@ -174,6 +174,7 @@ public class CaptureImageActivity extends AppCompatActivity {
             Toast.makeText(CaptureImageActivity.this, "picture submitted successfully!", Toast.LENGTH_LONG).show();
 
             myPref.edit().putString("track", "11").apply();
+            mediaPlayer.stop();
             Intent i=new Intent(CaptureImageActivity.this,UserChoiceActivity.class);
             startActivity(i);
         }

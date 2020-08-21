@@ -106,6 +106,7 @@ public class MainActivity extends AppCompatActivity {
                     regUser();
 
                     //UNCOMMENT THIS
+                    mediaPlayer.stop();
                     startActivity(new Intent(MainActivity.this, NameActivity.class));
 
                 }

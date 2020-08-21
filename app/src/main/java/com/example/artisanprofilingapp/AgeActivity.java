@@ -31,7 +31,7 @@ public class AgeActivity extends AppCompatActivity {
         age = (TextInputLayout)findViewById(R.id.age);
         nam = (EditText)findViewById(R.id.nam);//to show error msg
         submitbtn = (Button)findViewById(R.id.submitBtn);
-        mediaPlayer = MediaPlayer.create(this, R.raw.phoneno);
+        mediaPlayer = MediaPlayer.create(this, R.raw.ageinst);
         mediaPlayer.start();
 
         //Initialize of SharedPref
@@ -51,6 +51,7 @@ public class AgeActivity extends AppCompatActivity {
                     Log.d("eirki age stor->",AgeHolder);
                     myPref.edit().putString("age",AgeHolder).apply();
                     myPref.edit().putString("track", "3").apply();
+                    mediaPlayer.stop();
                     Intent i=new Intent(AgeActivity.this,AddressActivity.class);
                     startActivity(i);
                 }
