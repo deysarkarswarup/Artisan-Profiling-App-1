@@ -28,6 +28,7 @@ public class ThankYouActivity extends AppCompatActivity {
             public void onClick(View view) {
 //                ThankYouActivity.this.finish();
 //                System.exit(0);
+                mediaPlayer.stop();
                 finishAffinity();
                 System.exit(0);
             }
