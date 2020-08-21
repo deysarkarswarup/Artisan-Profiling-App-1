@@ -35,7 +35,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
-        android:text="ছবি তোলার নির্দেশাবলী:-"
+        android:text="@string/capturepicinstn"
         android:textSize="25sp"
         android:paddingLeft="20dp"
         android:paddingRight="20dp"

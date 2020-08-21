@@ -9,9 +9,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    android:layout_height="wrap_content"
+    tools:context=".MainActivity">
     <!--    android:background="@drawable/bg">-->
     <LinearLayout
         android:layout_width="match_parent"
@@ -60,7 +59,7 @@
             android:id="@+id/nam"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="জেলা"
+            android:hint="@string/zilla"
             android:maxLength="200"
             android:inputType="text"
             />
@@ -81,7 +80,7 @@
             android:id="@+id/nam1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="ঠিকানা ১"
+            android:hint="@string/address1"
             android:maxLength="200"
             android:inputType="text"
             />
@@ -101,7 +100,7 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="ঠিকানা ২"
+            android:hint="@string/address2"
             android:maxLength="200"
             android:inputType="text"
             />
@@ -121,7 +120,7 @@
             android:id="@+id/nam3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="পিনকোড"
+            android:hint="@string/pincode"
             android:maxLength="200"
             android:inputType="number"
             />
@@ -142,7 +141,7 @@
             android:id="@+id/nam4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="ল্যান্ডমার্ক"
+            android:hint="@string/landmark"
             android:maxLength="200"
             android:inputType="text"
             />
@@ -164,7 +163,7 @@
             android:id="@+id/nam5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="কতদিন ধরে এই এলাকায় থাকছেন?"
+            android:hint="@string/instt"
             android:maxLength="200"
             android:inputType="number"
             />

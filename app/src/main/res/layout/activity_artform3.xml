@@ -33,7 +33,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="100dp"
-            android:text="আপনি কি একাই এই কাজ করেন নাকি কোন লোক নিযুক্ত করেছেন আপনার সাথে কাজ করার জন্য?"
+            android:text="@string/uworkalone"
             android:textSize="25sp"
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
@@ -53,7 +53,7 @@
             android:id="@+id/yes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="হ্যাঁ, একাই কাজ করি"
+            android:text="@string/haaa"
             android:layout_marginTop="20dp"
             android:textSize="20dp" />
 
@@ -62,7 +62,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="না, লোক নিযুক্ত করেছি "
+            android:text="@string/naa"
             android:layout_marginTop="10dp"
             android:textSize="20dp" />
 
@@ -73,7 +73,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
-            android:text="কত জন নিযুক্ত করেছেন?"
+            android:text="@string/howmany"
             android:textSize="25sp"
             android:paddingLeft="20dp"
             android:paddingRight="20dp"

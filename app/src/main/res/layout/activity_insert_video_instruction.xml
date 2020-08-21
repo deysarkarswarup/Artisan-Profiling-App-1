@@ -34,12 +34,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
-            android:text="ভিডিও তোলার নির্দেশাবলী:-\n
-\n
-- পুরো ভিডিও টা ২-৩ মিনিটের হবে\n
-- আপনার পরিচিত কাউকে ভিডিও তা তুলে দিতে অনুরোধ করুন\n
-- ভিডিও  যেন পর্যাপ্ত আলোয় তোলা হয়\n
-- আপনার ভিডিও তে খানিক্ষন আপনি নিজের পরিচিতি দেবেন"
+            android:text="@string/videocaptureinstnn"
             android:textSize="21sp"
             android:paddingLeft="20dp"
             android:paddingRight="20dp"

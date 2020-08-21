@@ -32,7 +32,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="100dp"
-            android:text="নিচে আপনার বয়স টাইপ করুন"
+            android:text="@string/agee"
             android:textSize="25sp"
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
@@ -60,7 +60,7 @@
                 android:id="@+id/nam"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="বয়স"
+                android:hint="@string/aiu"
                 android:maxLength="5"
                 android:inputType="number"
                 />

@@ -4,14 +4,12 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:fillViewport="false">
-    <LinearLayout
-        android:orientation="vertical"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    <LinearLayout android:orientation="vertical"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".MainActivity"
-        xmlns:android="http://schemas.android.com/apk/res/android">
+        android:layout_height="wrap_content"
+        tools:context=".MainActivity">
         <!--    android:background="@drawable/bg">-->
         <LinearLayout
             android:layout_width="match_parent"
@@ -24,8 +22,8 @@
             android:layout_height="wrap_content"
             android:text="@string/app_name"
             android:textSize="30sp"
-            android:paddingLeft="80dp"
-            android:paddingRight="20dp"
+            android:paddingStart="80dp"
+            android:paddingEnd="20dp"
             android:textColor="@color/Heading"
             />
 
@@ -33,7 +31,7 @@
             android:layout_marginTop="120dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="নিচে ক্যামেরা বাটন টিপুন আপনার ছবি তোলার জন্য"
+            android:text="@string/profilepicinstn"
             android:textSize="30sp"
             android:layout_gravity="center"
             android:paddingLeft="40dp"
