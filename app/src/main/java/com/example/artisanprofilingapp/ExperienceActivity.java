@@ -43,7 +43,7 @@ public class ExperienceActivity extends AppCompatActivity {
         experience = (TextInputLayout)findViewById(R.id.experi);
         nam = (EditText)findViewById(R.id.nam);//to show error msg
         submitbtn = (Button)findViewById(R.id.submitBtn);
-        mediaPlayer = MediaPlayer.create(this, R.raw.phoneno);
+        mediaPlayer = MediaPlayer.create(this, R.raw.experienceinst);
         mediaPlayer.start();
 
         radioGroup = (RadioGroup) findViewById(R.id.radioGroup);
