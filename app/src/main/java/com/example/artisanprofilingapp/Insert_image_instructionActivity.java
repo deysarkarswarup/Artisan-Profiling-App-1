@@ -26,7 +26,7 @@ public class Insert_image_instructionActivity extends AppCompatActivity {
     Button submitbtn;
     private static final int PERMISSION_REQUEST_CODE = 100;
     SharedPreferences myPref;
-    private MediaPlayer mediaPlayer;
+    private MediaPlayer sareemediaPlayer, kurtamediaPlayer, tshirtmediaPlayer, bagmediaPlayer, showpiecemediaPlayer, goinamediaPlayer;
     private ImageView img1,img2,img3,img4;
     private TextView inst;
     private String selected;
@@ -43,7 +43,14 @@ public class Insert_image_instructionActivity extends AppCompatActivity {
         img4 = findViewById(R.id.img4);
         inst = findViewById(R.id.picInstruction);
 
-        mediaPlayer = MediaPlayer.create(this, R.raw.phoneno);
+        sareemediaPlayer = MediaPlayer.create(this, R.raw.sareeinst);
+        bagmediaPlayer = MediaPlayer.create(this, R.raw.baginst);
+        tshirtmediaPlayer = MediaPlayer.create(this, R.raw.tshirtinst);
+        goinamediaPlayer = MediaPlayer.create(this, R.raw.goinainst);
+        kurtamediaPlayer = MediaPlayer.create(this, R.raw.kurtainst);
+        showpiecemediaPlayer = MediaPlayer.create(this, R.raw.showpieceinst);
+
+
         selected = myPref.getString("selected","none");
         try {
             switch (selected) {
@@ -62,6 +69,7 @@ public class Insert_image_instructionActivity extends AppCompatActivity {
                     img2.setImageResource(R.drawable.saree2);
                     img3.setImageResource(R.drawable.saree3);
                     img4.setVisibility(View.GONE);
+                    sareemediaPlayer.start();
                     break;
                 case "kurta":
                     inst.setText("কুর্তার ছবি তোলার নির্দেশাবলী:-  \n" +
@@ -79,6 +87,7 @@ public class Insert_image_instructionActivity extends AppCompatActivity {
                     img2.setImageResource(R.drawable.kurta2);
                     img3.setImageResource(R.drawable.kurta3);
                     img4.setImageResource(R.drawable.kurta4);
+                    kurtamediaPlayer.start();
                     break;
                 case "tshirt":
                     inst.setText("টি-শার্টের ছবি তোলার নির্দেশাবলী:-\n" +
@@ -94,6 +103,7 @@ public class Insert_image_instructionActivity extends AppCompatActivity {
                     img2.setImageResource(R.drawable.tshirt2);
                     img3.setVisibility(View.GONE);
                     img4.setVisibility(View.GONE);
+                    tshirtmediaPlayer.start();
                     break;
                 case "showpiece":
                     inst.setText("শো পিস্ এর ছবি তোলার নির্দেশাবলী:-\n" +
@@ -108,6 +118,7 @@ public class Insert_image_instructionActivity extends AppCompatActivity {
                     img2.setImageResource(R.drawable.showpiece2);
                     img3.setImageResource(R.drawable.showpiece3);
                     img4.setImageResource(R.drawable.showpiece4);
+                    showpiecemediaPlayer.start();
                     break;
                 case "bag":
                     inst.setText("ব্যাগের ছবি তোলার নির্দেশাবলী:-\n" +
@@ -126,6 +137,7 @@ public class Insert_image_instructionActivity extends AppCompatActivity {
                     img2.setImageResource(R.drawable.bag2);
                     img3.setImageResource(R.drawable.bag3);
                     img4.setVisibility(View.GONE);
+                    bagmediaPlayer.start();
                     break;
                 case "goina":
                     inst.setText("গয়নার ছবি তোলার নির্দেশাবলী:-\n" +
@@ -140,6 +152,7 @@ public class Insert_image_instructionActivity extends AppCompatActivity {
                     img2.setImageResource(R.drawable.goina2);
                     img3.setImageResource(R.drawable.goina3);
                     img4.setVisibility(View.GONE);
+                    goinamediaPlayer.start();
                     break;
                 default:
                     Toast.makeText(getApplicationContext(), "Some Error Occured!", Toast.LENGTH_LONG).show();
@@ -155,7 +168,7 @@ public class Insert_image_instructionActivity extends AppCompatActivity {
                     requestPermission();
                 }
                 else{
-                    mediaPlayer.start();
+                    //mediaPlayer.start();
                 }
             }
         }
@@ -282,7 +295,7 @@ public class Insert_image_instructionActivity extends AppCompatActivity {
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
 
                     Log.d("Jhingalala", "granted");
-                    mediaPlayer.start();
+                    //mediaPlayer.start();
 
                     // do your work here
 

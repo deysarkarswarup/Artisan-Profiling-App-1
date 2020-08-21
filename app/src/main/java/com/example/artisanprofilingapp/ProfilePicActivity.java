@@ -79,7 +79,7 @@ public class ProfilePicActivity extends AppCompatActivity {
                 }
             }
         }
-        mediaPlayer.start();
+        //mediaPlayer.start();
 
         StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
         StrictMode.setVmPolicy(builder.build());
@@ -87,7 +87,7 @@ public class ProfilePicActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                            mediaPlayer.start();
+                            //mediaPlayer.start();
 
                     getFileUri();
 
