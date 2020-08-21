@@ -54,7 +54,7 @@ public class ArtformActivity extends AppCompatActivity implements AdapterView.On
         spin = (Spinner) findViewById(R.id.spinner);
         nam = (EditText)findViewById(R.id.nam);//to show error msg
         submitbtn = (Button)findViewById(R.id.submitBtn);
-        mediaPlayer = MediaPlayer.create(this, R.raw.phoneno);
+        mediaPlayer = MediaPlayer.create(this, R.raw.artforminst);
         mediaPlayer.start();
 
         //Initialize of SharedPref
@@ -75,7 +75,7 @@ public class ArtformActivity extends AppCompatActivity implements AdapterView.On
                     startActivity(i);
                 }
                 else{
-                    nam.setError("আপনার শিল্প আকৃতি টাইপ করুন");
+                    nam.setError("আপনি কোন শিল্প নিয়ে কাজ করেন?");
                 }
             }
 

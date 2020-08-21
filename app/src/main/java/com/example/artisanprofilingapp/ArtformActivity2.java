@@ -39,7 +39,7 @@ public class ArtformActivity2 extends AppCompatActivity {
         artlearned = (TextInputLayout)findViewById(R.id.artlearned);
         nam = (EditText)findViewById(R.id.nam);//to show error msg
         submitbtn = (Button)findViewById(R.id.submitBtn);
-        mediaPlayer = MediaPlayer.create(this, R.raw.phoneno);
+        mediaPlayer = MediaPlayer.create(this, R.raw.artform2inst);
         mediaPlayer.start();
 
         //Initialize of SharedPref

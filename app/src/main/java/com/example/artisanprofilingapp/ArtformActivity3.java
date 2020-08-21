@@ -50,7 +50,7 @@ public class ArtformActivity3 extends AppCompatActivity {
 //        yes = findViewById(R.id.yes);
 //        no = findViewById(R.id.no);
         inst = findViewById(R.id.txt);
-        mediaPlayer = MediaPlayer.create(this, R.raw.phoneno);
+        mediaPlayer = MediaPlayer.create(this, R.raw.artform3inst);
         mediaPlayer.start();
 
 

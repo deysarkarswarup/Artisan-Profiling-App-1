@@ -31,7 +31,7 @@ public class AgeActivity extends AppCompatActivity {
         age = (TextInputLayout)findViewById(R.id.age);
         nam = (EditText)findViewById(R.id.nam);//to show error msg
         submitbtn = (Button)findViewById(R.id.submitBtn);
-        mediaPlayer = MediaPlayer.create(this, R.raw.phoneno);
+        mediaPlayer = MediaPlayer.create(this, R.raw.ageinst);
         mediaPlayer.start();
 
         //Initialize of SharedPref
