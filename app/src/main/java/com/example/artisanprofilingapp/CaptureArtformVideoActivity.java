@@ -54,7 +54,7 @@ public class CaptureArtformVideoActivity extends AppCompatActivity {
         myPref = getApplicationContext().getSharedPreferences("MyPref",MODE_PRIVATE);
         dataToGet = myPref.getString("id","No data found");
         Log.d("hiiii artform", "onCreate: "+dataToGet);
-        mediaPlayer = MediaPlayer.create(this, R.raw.phoneno);
+        mediaPlayer = MediaPlayer.create(this, R.raw.profilevideocaptureinst);
         mediaPlayer.start();
 
         // Creating Volley newRequestQueue .
