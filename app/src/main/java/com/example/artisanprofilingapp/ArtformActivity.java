@@ -71,6 +71,7 @@ public class ArtformActivity extends AppCompatActivity implements AdapterView.On
                 if (flag){
                     //Toast.makeText(MainActivity.this,"হয়েগেছে",Toast.LENGTH_LONG).show();
                     //regUser();
+                    mediaPlayer.stop();
                     Intent i=new Intent(ArtformActivity.this,ArtformActivity2.class);
                     startActivity(i);
                 }

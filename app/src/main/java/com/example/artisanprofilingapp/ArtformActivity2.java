@@ -59,6 +59,7 @@ public class ArtformActivity2 extends AppCompatActivity {
                     Log.d("eirki artlearned stor->",ArtLearnedHolder);
                     myPref.edit().putString("artlearned",ArtLearnedHolder).apply();
                     myPref.edit().putString("track", "6").apply();
+                    mediaPlayer.stop();
                     Intent i=new Intent(ArtformActivity2.this,ArtformActivity3.class);
                     startActivity(i);
                 }

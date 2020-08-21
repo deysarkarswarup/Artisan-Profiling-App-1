@@ -32,6 +32,7 @@ public class ImageCaptureSelection extends AppCompatActivity {
             public void onClick(View v) {
                 myPref.edit().putString("selected","saree").apply();
                 myPref.edit().putString("track", "9").apply();
+                mediaPlayer.stop();
                 startActivity(new Intent(getApplicationContext(),Insert_image_instructionActivity.class));
             }
         });
@@ -40,6 +41,7 @@ public class ImageCaptureSelection extends AppCompatActivity {
             public void onClick(View v) {
                 myPref.edit().putString("selected","kurta").apply();
                 myPref.edit().putString("track", "9").apply();
+                mediaPlayer.stop();
                 startActivity(new Intent(getApplicationContext(),Insert_image_instructionActivity.class));
             }
         });
@@ -48,6 +50,7 @@ public class ImageCaptureSelection extends AppCompatActivity {
             public void onClick(View v) {
                 myPref.edit().putString("selected","tshirt").apply();
                 myPref.edit().putString("track", "9").apply();
+                mediaPlayer.stop();
                 startActivity(new Intent(getApplicationContext(),Insert_image_instructionActivity.class));
             }
         });
@@ -56,6 +59,7 @@ public class ImageCaptureSelection extends AppCompatActivity {
             public void onClick(View v) {
                 myPref.edit().putString("selected","showpiece").apply();
                 myPref.edit().putString("track", "9").apply();
+                mediaPlayer.stop();
                 startActivity(new Intent(getApplicationContext(),Insert_image_instructionActivity.class));
             }
         });
@@ -64,6 +68,7 @@ public class ImageCaptureSelection extends AppCompatActivity {
             public void onClick(View v) {
                 myPref.edit().putString("selected","bag").apply();
                 myPref.edit().putString("track", "9").apply();
+                mediaPlayer.stop();
                 startActivity(new Intent(getApplicationContext(),Insert_image_instructionActivity.class));
             }
         });
@@ -72,6 +77,7 @@ public class ImageCaptureSelection extends AppCompatActivity {
             public void onClick(View v) {
                 myPref.edit().putString("selected","goina").apply();
                 myPref.edit().putString("track", "9").apply();
+                mediaPlayer.stop();
                 startActivity(new Intent(getApplicationContext(),Insert_image_instructionActivity.class));
             }
         });

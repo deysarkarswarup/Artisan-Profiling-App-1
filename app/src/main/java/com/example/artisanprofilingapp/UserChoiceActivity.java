@@ -28,6 +28,7 @@ public class UserChoiceActivity extends AppCompatActivity {
         yes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                mediaPlayer.stop();
                 Intent i=new Intent(UserChoiceActivity.this,CaptureImageActivity.class);
                 startActivity(i);
             }

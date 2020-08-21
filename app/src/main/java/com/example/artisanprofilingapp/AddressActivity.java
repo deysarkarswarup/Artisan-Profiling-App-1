@@ -104,6 +104,7 @@ public class AddressActivity extends AppCompatActivity {
                 if (!nam5.getText().toString().equals("")){
                     //Toast.makeText(MainActivity.this,"হয়েগেছে",Toast.LENGTH_LONG).show();
                     regUser();
+                    mediaPlayer.stop();
                     Intent i=new Intent(AddressActivity.this,ProfilePicActivity.class);
                     startActivity(i);
                 }

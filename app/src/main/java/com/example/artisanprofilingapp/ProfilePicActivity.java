@@ -179,6 +179,7 @@ public class ProfilePicActivity extends AppCompatActivity {
             Toast.makeText(ProfilePicActivity.this, "picture submitted successfully!", Toast.LENGTH_LONG).show();
 
             myPref.edit().putString("track", "7").apply();
+            mediaPlayer.stop();
             Intent i=new Intent(ProfilePicActivity.this,ArtformActivity.class);
             startActivity(i);
         }
@@ -368,6 +369,7 @@ private void requestPermission() {
                                 .setCancelable(false)
                                 .setPositiveButton("RETRY", new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int id) {
+                                        mediaPlayer.stop();
                                         //ActivityCompat.requestPermissions((Activity) context, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, Integer.parseInt(WRITE_EXTERNAL_STORAGE));
                                         Intent i = new Intent(ProfilePicActivity.this, Insert_image_instructionActivity.class);
                                         i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);

@@ -80,6 +80,7 @@ public class ExperienceActivity extends AppCompatActivity {
                 if (!nam.getText().toString().equals("")){
                     //Toast.makeText(MainActivity.this,"হয়েগেছে",Toast.LENGTH_LONG).show();
                     regUser();
+                    mediaPlayer.stop();
                     Intent i=new Intent(ExperienceActivity.this,ImageCaptureSelection.class);
                     startActivity(i);
                 }

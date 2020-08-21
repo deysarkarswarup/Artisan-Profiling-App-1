@@ -51,6 +51,7 @@ public class AgeActivity extends AppCompatActivity {
                     Log.d("eirki age stor->",AgeHolder);
                     myPref.edit().putString("age",AgeHolder).apply();
                     myPref.edit().putString("track", "3").apply();
+                    mediaPlayer.stop();
                     Intent i=new Intent(AgeActivity.this,AddressActivity.class);
                     startActivity(i);
                 }

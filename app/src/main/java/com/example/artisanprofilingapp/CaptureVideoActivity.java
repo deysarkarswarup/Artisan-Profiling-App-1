@@ -190,6 +190,7 @@ public class CaptureVideoActivity extends AppCompatActivity {
 //                    textViewResponse.setText(Html.fromHtml("<b>Uploaded at <a href='" + s + "'>" + s + "</a></b>"));
 //                    textViewResponse.setMovementMethod(LinkMovementMethod.getInstance());
                     myPref.edit().putString("track", "10").apply();
+                    mediaPlayer.stop();
                     Intent i=new Intent(CaptureVideoActivity.this,Insert_Artfrom_video_instructionActivity.class);
                     startActivity(i);
                 }

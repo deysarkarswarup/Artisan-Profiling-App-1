@@ -183,6 +183,13 @@ public class Insert_image_instructionActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 myPref.edit().putString("track", "10").apply();
+                sareemediaPlayer.stop();
+                tshirtmediaPlayer.stop();
+                bagmediaPlayer.stop();
+                goinamediaPlayer.stop();
+                showpiecemediaPlayer.stop();
+                kurtamediaPlayer.stop();
+
                 Intent i = new Intent(Insert_image_instructionActivity.this, CaptureImageActivity.class);
                 startActivity(i);
 

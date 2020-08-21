@@ -117,7 +117,7 @@ public class ArtformActivity3 extends AppCompatActivity {
                             }
                         });
                 queue.add(stringRequest);
-
+                mediaPlayer.stop();
                 Intent i=new Intent(ArtformActivity3.this,ExperienceActivity.class);
                 startActivity(i);
 
@@ -136,6 +136,7 @@ public class ArtformActivity3 extends AppCompatActivity {
   //                  Log.d("eirki Nocoworker stor->",NOofCoWorkersHolder);
 //                    myPref.edit().putString("coworker",NOofCoWorkersHolder).apply();
                     myPref.edit().putString("track", "7").apply();
+                    mediaPlayer.stop();
                     Intent i=new Intent(ArtformActivity3.this,ExperienceActivity.class);
                     startActivity(i);
                 }

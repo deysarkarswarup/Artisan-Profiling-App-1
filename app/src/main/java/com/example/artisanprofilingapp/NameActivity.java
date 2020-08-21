@@ -62,6 +62,7 @@ public class NameActivity extends AppCompatActivity {
                     myPref.edit().putString("name",NameHolder).apply();
                     //regUser();
                     myPref.edit().putString("track", "2").apply();
+                    mediaPlayer.stop();
                     Intent i=new Intent(NameActivity.this,AgeActivity.class);
                     startActivity(i);
                 }
