@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -12,6 +13,7 @@ public class UserChoiceActivity extends AppCompatActivity {
 
     Button yes,no;
     SharedPreferences myPref;
+    private MediaPlayer mediaPlayer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +22,8 @@ public class UserChoiceActivity extends AppCompatActivity {
         yes = (Button) findViewById(R.id.yesBtn);
         no = (Button) findViewById(R.id.noBtn);
         myPref = getApplicationContext().getSharedPreferences("MyPref",MODE_PRIVATE);
+        mediaPlayer = MediaPlayer.create(this, R.raw.userchoiceinst);
+        mediaPlayer.start();
 
         yes.setOnClickListener(new View.OnClickListener() {
             @Override
