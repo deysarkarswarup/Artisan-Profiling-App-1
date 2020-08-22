@@ -163,6 +163,7 @@ public class ProfilePicActivity extends AppCompatActivity {
                 default:
                     rotatedBitmap = bitmap;
             }
+            bitmap = rotatedBitmap;
             bitmap = BitmapFactory.decodeFile(file_uri.getPath());
 //            Log.d("hi", "doInBackground: "+bitmap.toString());
             ByteArrayOutputStream stream = new ByteArrayOutputStream();
