@@ -23,8 +23,8 @@
         android:layout_height="wrap_content"
         android:text="@string/app_name"
         android:textSize="30sp"
-        android:paddingLeft="80dp"
-        android:paddingRight="20dp"
+        android:layout_gravity="center"
+        android:gravity="center"
         android:textColor="@color/Heading"
         />
 
