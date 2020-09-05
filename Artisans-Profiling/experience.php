@@ -2,8 +2,7 @@
 		$con=mysqli_connect("localhost","root","","artisan-profiling");
 	//	$con1= new mysqli("localhost","root","","artisan-profiling");
 
-//$con=mysqli_connect("localhost","id14527893_root","grB8e0[@rJ[\OOi=","id14527893_artisansprofiling");
-//$con1=new mysqli("localhost","id14527893_root","grB8e0[@rJ[\OOi=","id14527893_artisansprofiling");
+
 		
 		$ex = $_GET['exp'];
 		$org = $_GET['orgmember'];
