@@ -45,15 +45,24 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <VideoView
+        <!--        <VideoView-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="300dp"-->
+        <!--            android:layout_marginTop="50dp"-->
+        <!--            android:layout_marginBottom="30dp"-->
+        <!--            android:layout_marginStart="20dp"-->
+        <!--            android:layout_marginEnd="20dp"-->
+        <!--            android:id="@+id/videoview"-->
+        <!--            />-->
+        <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+            android:id="@+id/youtube_player_view"
             android:layout_width="match_parent"
-            android:layout_height="300dp"
+            android:layout_height="250dp"
+            app:showYouTubeButton="false"
             android:layout_marginTop="50dp"
-            android:layout_marginBottom="30dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
-            android:id="@+id/videoview"
-            />
+            app:videoId="S0Q4gqBUs7c"
+            app:autoPlay="false"
+            app:showFullScreenButton="false" />
 
 
         <Button
@@ -66,7 +75,7 @@
             android:textSize="30sp"
             android:padding="10dp"
             android:background="@drawable/btn_round"
-            android:layout_marginTop="0dp" />
+            android:layout_marginTop="30dp" />
 
     </LinearLayout>
 </ScrollView>
