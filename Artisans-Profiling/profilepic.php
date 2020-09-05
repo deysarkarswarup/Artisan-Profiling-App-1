@@ -19,7 +19,6 @@ if(isset($_POST["encoded_string"])){
 
 
 		$query = "UPDATE `artisan` SET `profilePicture` ='".$image_name."' WHERE `id`='".$id."'" ;
-//		$conn = mysqli_connect("localhost","id14527893_root","grB8e0[@rJ[\OOi=","id14527893_artisansprofiling");
 		$conn = mysqli_connect('localhost', 'root', '','artisan-profiling');
 		$result = mysqli_query($conn, $query) ;
 		
