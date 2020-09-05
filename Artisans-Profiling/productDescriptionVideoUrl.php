@@ -1,5 +1,4 @@
 <?php
-//$con=new mysqli("localhost","id14527893_root","grB8e0[@rJ[\OOi=","id14527893_artisansprofiling");
  //$con=new mysqli("localhost","root","","artisan-profiling");
 $con= mysqli_connect("localhost","root","","artisan-profiling");
 
