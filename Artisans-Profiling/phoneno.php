@@ -1,9 +1,5 @@
 <?php
 		$con=new mysqli("localhost","root","","artisan-profiling");
-//		$con=new mysqli("localhost","id14527893_root","grB8e0[@rJ[\OOi=","id14527893_artisansprofiling");
-
-		//$con=new mysqli("sql205.epizy.com","epiz_26421101","IRVQ2pAayLMC","epiz_26421101_artisansprofiling");
-		//$con=new mysqli("localhost","id14527893_root","^KdR@5CK?^]_uAdQ","id14527893_artisansprofiling");
 //		$st_check=$con->prepare("SELECT * FROM artisan WHERE phone=?");
 //		$st_check->bind_param("s", $_GET["phoneno"]);
 //		$st_check->execute();
