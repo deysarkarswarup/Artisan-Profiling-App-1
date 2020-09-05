@@ -2,8 +2,11 @@ package com.example.artisanprofilingapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.media.MediaPlayer;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -54,20 +57,28 @@ public class NameActivity extends AppCompatActivity {
         submitbtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                if (!nam.getText().toString().equals("")){
-                    //Toast.makeText(MainActivity.this,"হয়েগেছে",Toast.LENGTH_LONG).show();
-                    NameHolder = name.getEditText().getText().toString().trim();
-                    Log.d("eirki name->",NameHolder);
-                    //myPref.edit().putString("phone", PhoneNoHolder).apply();
-                    myPref.edit().putString("name",NameHolder).apply();
-                    //regUser();
-                    myPref.edit().putString("track", "2").apply();
-                    mediaPlayer.stop();
-                    Intent i=new Intent(NameActivity.this,AgeActivity.class);
-                    startActivity(i);
+                ConnectivityManager con = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+                NetworkInfo networkInfo = con.getActiveNetworkInfo();
+                if (networkInfo != null && networkInfo.isConnected()) {
+                    if (!nam.getText().toString().equals("")) {
+                        //Toast.makeText(MainActivity.this,"হয়েগেছে",Toast.LENGTH_LONG).show();
+                        NameHolder = name.getEditText().getText().toString().trim();
+                        Log.d("eirki name->", NameHolder);
+                        //myPref.edit().putString("phone", PhoneNoHolder).apply();
+                        myPref.edit().putString("name", NameHolder).apply();
+                        //regUser();
+                        myPref.edit().putString("track", "2").apply();
+                        mediaPlayer.stop();
+                        Intent i = new Intent(NameActivity.this, AgeActivity.class);
+                        startActivity(i);
+                    } else {
+                        nam.setError("আপনার নাম টাইপ করুন");
+                    }
                 }
                 else{
-                    nam.setError("আপনার নাম টাইপ করুন");
+                    Intent intent = new Intent(NameActivity.this, InternetCheckActivity.class);
+                    startActivity(intent);
+                    finish();
                 }
             }
 
@@ -116,5 +127,14 @@ public class NameActivity extends AppCompatActivity {
         });
 
     }
-
+    @Override
+    public void onBackPressed() {
+        mediaPlayer.stop();
+        super.onBackPressed();
+    }
+    @Override
+    public void onUserLeaveHint(){
+        mediaPlayer.stop();
+        super.onUserLeaveHint();
+    }
 }

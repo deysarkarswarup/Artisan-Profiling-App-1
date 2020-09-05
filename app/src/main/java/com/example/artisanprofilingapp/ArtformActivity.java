@@ -2,8 +2,11 @@ package com.example.artisanprofilingapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.media.MediaPlayer;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -68,15 +71,23 @@ public class ArtformActivity extends AppCompatActivity implements AdapterView.On
         submitbtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                if (flag){
-                    //Toast.makeText(MainActivity.this,"হয়েগেছে",Toast.LENGTH_LONG).show();
-                    //regUser();
-                    mediaPlayer.stop();
-                    Intent i=new Intent(ArtformActivity.this,ArtformActivity2.class);
-                    startActivity(i);
+                ConnectivityManager con = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+                NetworkInfo networkInfo = con.getActiveNetworkInfo();
+                if (networkInfo != null && networkInfo.isConnected()) {
+                    if (flag) {
+                        //Toast.makeText(MainActivity.this,"হয়েগেছে",Toast.LENGTH_LONG).show();
+                        //regUser();
+                        mediaPlayer.stop();
+                        Intent i = new Intent(ArtformActivity.this, ArtformActivity2.class);
+                        startActivity(i);
+                    } else {
+                        nam.setError("আপনি কোন শিল্প নিয়ে কাজ করেন?");
+                    }
                 }
                 else{
-                    nam.setError("আপনি কোন শিল্প নিয়ে কাজ করেন?");
+                    Intent intent = new Intent(ArtformActivity.this, InternetCheckActivity.class);
+                    startActivity(intent);
+                    finish();
                 }
             }
 
@@ -87,7 +98,9 @@ public class ArtformActivity extends AppCompatActivity implements AdapterView.On
     }
 
     private void getData() {
-        String url ="http://192.168.43.12/Artisans-Profiling/artform.php";
+//        String url ="http://192.168.43.12/Artisans-Profiling/artform.php";
+        String url ="https://artisanprofilingapp.000webhostapp.com/artform.php";
+
         StringRequest stringRequest = new StringRequest(url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -171,7 +184,7 @@ public class ArtformActivity extends AppCompatActivity implements AdapterView.On
 
     }
     public void onItemSelected(AdapterView<?> arg0, View arg1, int position,long id) {
-        Toast.makeText(getApplicationContext(), "Selected User: "+artFormName[position] ,Toast.LENGTH_SHORT).show();
+       // Toast.makeText(getApplicationContext(), "Selected User: "+artFormName[position] ,Toast.LENGTH_SHORT).show();
         myPref.edit().putString("artform",artFormName[position]).apply();
         flag = true;
 
@@ -224,4 +237,15 @@ public class ArtformActivity extends AppCompatActivity implements AdapterView.On
 //
 //
 //    }
+
+    @Override
+    public void onBackPressed() {
+        mediaPlayer.stop();
+        super.onBackPressed();
+    }
+    @Override
+    public void onUserLeaveHint(){
+        mediaPlayer.stop();
+        super.onUserLeaveHint();
+    }
 }

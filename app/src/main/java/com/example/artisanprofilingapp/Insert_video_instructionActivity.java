@@ -3,10 +3,13 @@ package com.example.artisanprofilingapp;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.media.MediaPlayer;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -47,82 +50,91 @@ private MediaPlayer mediaPlayer, mediaPlayer2;
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 //        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE);
             myPref = getApplicationContext().getSharedPreferences("MyPref",MODE_PRIVATE);
-        videoView =(VideoView)findViewById(R.id.videoview);
+//        videoView =(VideoView)findViewById(R.id.videoview);
         final MediaController mediaController= new MediaController(this);
 
-        final Uri uri=Uri.parse("android.resource://"+getPackageName()+"/"+R.raw.bikasdas);
+//        final Uri uri=Uri.parse("android.resource://"+getPackageName()+"/"+R.raw.bikasdas);
 
 
 //        videoView.requestFocus();
 
 //        onPause();
+        ConnectivityManager con = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = con.getActiveNetworkInfo();
+        if (networkInfo != null && networkInfo.isConnected()) {
 
-        mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-            @Override
-            public void onCompletion(MediaPlayer mp) {
-                mediaController.setAnchorView(videoView);
-                videoView.setMediaController(mediaController);
-                videoView.setVideoURI(uri);
-                videoView.requestFocus();
-                videoView.start();
-            }
-        });
-        submitbtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                myPref.edit().putString("track", "13").apply();
-                mediaPlayer.stop();
-                videoView.stopPlayback();
-                Intent i=new Intent(Insert_video_instructionActivity.this,CaptureVideoActivity.class);
-                startActivity(i);
-            }
-        });
-
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-        mResumed = false;
-        if (mControlResumed) {
-            if (null != videoView)
-                videoView.pause();
-            stopPosition = videoView.getCurrentPosition();
-            mControlResumed = false;
-
+//            mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+//                @Override
+//                public void onCompletion(MediaPlayer mp) {
+//                    mediaController.setAnchorView(videoView);
+//                    videoView.setMediaController(mediaController);
+//                    videoView.setVideoURI(uri);
+//                    videoView.requestFocus();
+//                    videoView.start();
+//                }
+//            });
+            submitbtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    myPref.edit().putString("track", "13").apply();
+                    mediaPlayer.stop();
+                    //videoView.stopPlayback();
+                    Intent i = new Intent(Insert_video_instructionActivity.this, CaptureVideoActivity.class);
+                    startActivity(i);
+                }
+            });
         }
-    }
-
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        mResumed = true;
-        if (mFocused && mResumed && !mControlResumed) {
-            if(null != videoView) {
-                //videoView.resume();
-                mediaPlayer.stop();
-                videoView.seekTo(stopPosition);
-                videoView.start();
-            }
-            mControlResumed = true;
+        else{
+            Intent intent = new Intent(Insert_video_instructionActivity.this, InternetCheckActivity.class);
+            startActivity(intent);
+            finish();
         }
+
     }
-
-
-    @Override
-    public void onWindowFocusChanged(boolean hasFocus) {
-        mFocused = hasFocus;
-        if (mFocused && mResumed && !mControlResumed) {
-            if (null != videoView) {
-                //videoView.resume();
-                videoView.seekTo(stopPosition);
-                videoView.start();
-            }
-            mControlResumed = true;
-
-        }
-    }
+//
+//    @Override
+//    public void onPause() {
+//        super.onPause();
+//        mResumed = false;
+//        if (mControlResumed) {
+//            if (null != videoView)
+//                videoView.pause();
+//            stopPosition = videoView.getCurrentPosition();
+//            mControlResumed = false;
+//
+//        }
+//    }
+//
+//
+//    @Override
+//    public void onResume() {
+//        super.onResume();
+//        mResumed = true;
+//        if (mFocused && mResumed && !mControlResumed) {
+//            if(null != videoView) {
+//                //videoView.resume();
+//                mediaPlayer.stop();
+//                videoView.seekTo(stopPosition);
+//                videoView.start();
+//            }
+//            mControlResumed = true;
+//        }
+//    }
+//
+//
+//    @Override
+//    public void onWindowFocusChanged(boolean hasFocus) {
+//        mFocused = hasFocus;
+//        if (mFocused && mResumed && !mControlResumed) {
+//            if (null != videoView) {
+//                //videoView.resume();
+//                videoView.seekTo(stopPosition);
+//                videoView.start();
+//            }
+//            mControlResumed = true;
+//
+//        }
+//    }
 
 //        setContentView(R.layout.activity_insert_video_instruction);
 //        submitbtn = (Button)findViewById(R.id.submitBtn);
@@ -154,6 +166,16 @@ private MediaPlayer mediaPlayer, mediaPlayer2;
 //                pd.dismiss();
 //            }
 //        });
+@Override
+public void onBackPressed() {
+    mediaPlayer.stop();
+    super.onBackPressed();
+}
 
+@Override
+    public void onUserLeaveHint(){
+        mediaPlayer.stop();
+        super.onUserLeaveHint();
+}
 
     }

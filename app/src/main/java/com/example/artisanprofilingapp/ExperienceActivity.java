@@ -2,8 +2,11 @@ package com.example.artisanprofilingapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.media.MediaPlayer;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -77,15 +80,23 @@ public class ExperienceActivity extends AppCompatActivity {
         submitbtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                if (!nam.getText().toString().equals("")){
-                    //Toast.makeText(MainActivity.this,"হয়েগেছে",Toast.LENGTH_LONG).show();
-                    regUser();
-                    mediaPlayer.stop();
-                    Intent i=new Intent(ExperienceActivity.this,ImageCaptureSelection.class);
-                    startActivity(i);
+                ConnectivityManager con = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+                NetworkInfo networkInfo = con.getActiveNetworkInfo();
+                if (networkInfo != null && networkInfo.isConnected()) {
+                    if (!nam.getText().toString().equals("")) {
+                        //Toast.makeText(MainActivity.this,"হয়েগেছে",Toast.LENGTH_LONG).show();
+                        regUser();
+                        mediaPlayer.stop();
+                        Intent i = new Intent(ExperienceActivity.this, ImageCaptureSelection.class);
+                        startActivity(i);
+                    } else {
+                        nam.setError("আপনার অভিজ্ঞতা টাইপ করুন");
+                    }
                 }
                 else{
-                    nam.setError("আপনার অভিজ্ঞতা টাইপ করুন");
+                    Intent intent = new Intent(ExperienceActivity.this, InternetCheckActivity.class);
+                    startActivity(intent);
+                    finish();
                 }
             }
 
@@ -103,8 +114,27 @@ public class ExperienceActivity extends AppCompatActivity {
                 Log.d("eirki artform->",artformToGet);
                 Log.d("eirki ha or na->",yesOrNo);
 
-                String myurl = "http://192.168.43.12/Artisans-Profiling/experience.php?experience=" + ExperienceHolder
-                       +"&orgmember="+ yesOrNo +"&id="+idToGet +"&artform="+artformToGet ;
+//                String myurl = "http://192.168.43.12/Artisans-Profiling/experience.php?exp=" + ExperienceHolder
+//                       +"&orgmember="+ yesOrNo +"&id="+idToGet;
+
+                ExperienceHolder = ExperienceHolder.replaceAll(" ","%20");
+                yesOrNo = yesOrNo.replaceAll(" ","%20");
+                idToGet = idToGet.replaceAll(" ","%20");
+
+                String characterFilter = "[^\\p{L}\\p{M}\\p{N}\\p{P}\\p{Z}\\p{Cf}\\p{Cs}\\s]";
+                ExperienceHolder = ExperienceHolder.replaceAll(characterFilter,"");
+                yesOrNo = yesOrNo.replaceAll(characterFilter,"");
+                idToGet = idToGet.replaceAll(characterFilter,"");
+
+
+
+//                String myurl = "http://192.168.43.12/Artisans-Profiling/experience.php?exp=" + ExperienceHolder
+//                        +"&orgmember="+ yesOrNo +"&id="+idToGet;
+
+//                Log.d("eirki myurl", myurl);
+                String myurl = "https://artisanprofilingapp.000webhostapp.com/experience.php?exp=" + ExperienceHolder
+                        +"&orgmember="+ yesOrNo +"&id="+idToGet;
+
 
                 RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
                 StringRequest stringRequest = new StringRequest(Request.Method.POST, myurl,
@@ -136,4 +166,14 @@ public class ExperienceActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onBackPressed() {
+        mediaPlayer.stop();
+        super.onBackPressed();
+    }
+    @Override
+    public void onUserLeaveHint(){
+        mediaPlayer.stop();
+        super.onUserLeaveHint();
+    }
 }

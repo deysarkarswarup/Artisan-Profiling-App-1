@@ -6,16 +6,21 @@ import androidx.core.content.ContextCompat;
 
 import android.Manifest;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.media.MediaPlayer;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.Settings;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -88,92 +93,152 @@ public class MainActivity extends AppCompatActivity {
         // Creating Volley newRequestQueue .
         requestQueue = Volley.newRequestQueue(MainActivity.this);
         progressDialog = new ProgressDialog(MainActivity.this);
-
+        final boolean[] flag = {true};
         //DELETE THIS
        // startActivity(new Intent(MainActivity.this, ArtformActivity3.class));
+//        mobileno.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+//            @Override
+//            public void onFocusChange(View v, boolean hasFocus) {
+//                if(mobileno.getText().toString().length()!=10) {
+//                    mobileno.setError("১০ ডিজিটের ফোন নম্বর টাইপ করুন");
+//                    flag[0] = false;
+//                }
+//            }
+//        });
+        mobileno.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if(mobileno.getText().toString().length()!=10) {
+                    mobileno.setError("১০ ডিজিটের ফোন নম্বর টাইপ করুন");
+                    flag[0] = false;
+                }else{
+                    //regUser();
+                }
+            }
+        });
         submitbtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                if (!mobileno.getText().toString().equals("")){
+                ConnectivityManager con = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+                NetworkInfo networkInfo = con.getActiveNetworkInfo();
+                if (networkInfo != null && networkInfo.isConnected()) {
+                    if (!mobileno.getText().toString().equals("")) {
 
 //                            if (!checkPermission()) {
 //Log.d("hiii","hello");
 //                                requestPermission();
 //                            }
 
-                    Toast.makeText(MainActivity.this,"হয়েগেছে",Toast.LENGTH_LONG).show();
-                    regUser();
+                        //Toast.makeText(MainActivity.this,"হয়েগেছে",Toast.LENGTH_LONG).show();
+//                        if(flag[0]) {
+                            regUser();
 
-                    //UNCOMMENT THIS
-                    mediaPlayer.stop();
-                    startActivity(new Intent(MainActivity.this, NameActivity.class));
 
+                            //UNCOMMENT THIS
+                            mediaPlayer.stop();
+                            startActivity(new Intent(MainActivity.this, NameActivity.class));
+//                        }
+
+                    } else {
+                        mobileno.setError("ফোন নম্বর টাইপ করুন");
+                    }
                 }
                 else{
-                    mobileno.setError("ফোন নম্বর টাইপ করুন");
+                    Intent intent = new Intent(MainActivity.this, InternetCheckActivity.class);
+                    startActivity(intent);
+                    finish();
                 }
             }
 
-            private void regUser() {
-                progressDialog.setMessage("Please Wait, We are Inserting Your Data on Server");
-                progressDialog.show();
-
-                PhoneNoHolder = phno.getEditText().getText().toString().trim();
-                Log.d("eirki phone->",PhoneNoHolder);
-                myPref.edit().putString("phone", PhoneNoHolder).apply();
-                myPref.edit().putString("count", "0").apply();
 
 
 
-                String myurl = "http://192.168.43.12/Artisans-Profiling/phoneno.php?phoneno=" + PhoneNoHolder;
+        });
+//        Intent i = new Intent(getApplicationContext(), NameActivity.class);
+//        startActivity(i);
+    }
+
+    private void regUser() {
+
+            progressDialog.setMessage("Please Wait, We are Inserting Your Data on Server");
+            progressDialog.show();
+
+            PhoneNoHolder = phno.getEditText().getText().toString().trim();
+
+            //private boolean isValidMobile(String phone) {
+//                    boolean flag = android.util.Patterns.PHONE.matcher(PhoneNoHolder).matches();
+            //}
+
+            Log.d("eirki phone->",PhoneNoHolder);
+            myPref.edit().putString("phone", PhoneNoHolder).apply();
+            myPref.edit().putString("count", "0").apply();
+
+
+            PhoneNoHolder = PhoneNoHolder.replaceAll(" ","%20");
+
+        String characterFilter = "[^\\p{L}\\p{M}\\p{N}\\p{P}\\p{Z}\\p{Cf}\\p{Cs}\\s]";
+        PhoneNoHolder = PhoneNoHolder.replaceAll(characterFilter,"");
+
+            String myurl = "https://artisanprofilingapp.000webhostapp.com/phoneno.php?phoneno=" + PhoneNoHolder;
+//                String myurl = "http://192.168.43.12/Artisans-Profiling/phoneno.php?phoneno=" + PhoneNoHolder;
+
 //String myurl = "https://artisanprofilingapp.000webhostapp.com/phoneno.php?phoneno=" + PhoneNoHolder;
-                RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
+            RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
 
-                StringRequest stringRequest = new StringRequest(Request.Method.POST, myurl,
-                        new Response.Listener<String>() {
-                            @Override
-                            public void onResponse(String response) {
-                                // Hiding the progress dialog after all task complete.
-                                showJSON(response);
-                                progressDialog.dismiss();
-                                // Showing response message coming from server.
-                                Toast.makeText(MainActivity.this, response, Toast.LENGTH_LONG).show();
-                                myPref.edit().putString("track", "1").apply();
+            StringRequest stringRequest = new StringRequest(Request.Method.POST, myurl,
+                    new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
+                            // Hiding the progress dialog after all task complete.
+                            showJSON(response);
+                            progressDialog.dismiss();
+                            // Showing response message coming from server.
+                            //Toast.makeText(MainActivity.this, response, Toast.LENGTH_LONG).show();
+                            myPref.edit().putString("track", "1").apply();
 //                                Intent i = new Intent(getApplicationContext(), NameActivity.class);
 //                                startActivity(i);
 
-                            }
-                        },
-                        new Response.ErrorListener() {
-                            @Override
-                            public void onErrorResponse(VolleyError volleyError) {
-                                // Hiding the progress dialog after all task complete.
-                                progressDialog.dismiss();
-                                // Showing error message if something goes wrong.
-                                Toast.makeText(MainActivity.this, volleyError.toString(), Toast.LENGTH_LONG).show();
+                        }
+                    },
+                    new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError volleyError) {
+                            // Hiding the progress dialog after all task complete.
+                            progressDialog.dismiss();
+                            // Showing error message if something goes wrong.
+                            Toast.makeText(MainActivity.this, volleyError.toString(), Toast.LENGTH_LONG).show();
 
-                            }
-                        });
-                queue.add(stringRequest);
+                        }
+                    });
+            queue.add(stringRequest);
 
-            }
-            private void showJSON(String response) {
-                ArrayList<HashMap<String, String>> list = new ArrayList<>();
-                try {
-                    JSONObject jsonObject = new JSONObject(response);
-                    JSONArray result = jsonObject.getJSONArray(Config.JSON_ARRAY);
 
-                    // for (int i = 0; i < result.length(); i++) {
-                    JSONObject jo = result.getJSONObject(0);
+    }
+
+    private void showJSON(String response) {
+            ArrayList<HashMap<String, String>> list = new ArrayList<>();
+            try {
+                JSONObject jsonObject = new JSONObject(response);
+                JSONArray result = jsonObject.getJSONArray(Config.JSON_ARRAY);
+
+                // for (int i = 0; i < result.length(); i++) {
+                JSONObject jo = result.getJSONObject(0);
 //                String title = jo.getString(Config5.KEY_TITLE);
 //                String date = jo.getString(Config5.KEY_DATE);
 //                String data = jo.getString(Config5.KEY_DATA);
-                    String id = jo.getString(Config.KEY_ID);
-                    Log.d("eirki",id);
-                    myPref.edit().putString("id",id).apply();
-
-
+                String id = jo.getString(Config.KEY_ID);
+                Log.d("eirki",id);
+                myPref.edit().putString("id",id).apply();
 
 
 //                    final HashMap<String, String> employees = new HashMap<>();
@@ -187,9 +252,9 @@ public class MainActivity extends AppCompatActivity {
 //                    //}
 
 
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
 //                ListAdapter adapter = new SimpleAdapter(
 //                        MainActivity.this, list, R.layout.activity_mylist,
 //                        new String[]{Config5.KEY_ID},
@@ -197,12 +262,9 @@ public class MainActivity extends AppCompatActivity {
 //
 //                listview.setAdapter(adapter);
 
-            }
 
-        });
-//        Intent i = new Intent(getApplicationContext(), NameActivity.class);
-//        startActivity(i);
     }
+
     private boolean checkPermission() {
         int result = ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.CAMERA);
 
@@ -324,5 +386,15 @@ public class MainActivity extends AppCompatActivity {
                 }
                 break;
         }
+    }
+    @Override
+    public void onBackPressed() {
+        mediaPlayer.stop();
+        super.onBackPressed();
+    }
+    @Override
+    public void onUserLeaveHint(){
+        mediaPlayer.stop();
+        super.onUserLeaveHint();
     }
 }

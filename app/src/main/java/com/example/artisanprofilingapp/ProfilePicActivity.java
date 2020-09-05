@@ -7,12 +7,15 @@ import androidx.core.content.ContextCompat;
 
 import android.Manifest;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Matrix;
 import android.media.ExifInterface;
 import android.media.MediaPlayer;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Build;
 import android.os.Bundle;
 
@@ -88,16 +91,24 @@ public class ProfilePicActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                             //mediaPlayer.start();
-
+                ConnectivityManager con = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+                NetworkInfo networkInfo = con.getActiveNetworkInfo();
+                if (networkInfo != null && networkInfo.isConnected()) {
                     getFileUri();
 
-                count = Integer.parseInt(ImageCountToGet) +1;
-                Log.d("count",String.valueOf(count));
-                ImageCountToGet = String.valueOf(count);
-                myPref.edit().putString("count", ImageCountToGet).apply();
-                Intent i = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                i.putExtra(MediaStore.EXTRA_OUTPUT, file_uri);
-                startActivityForResult(i, 10);
+                    count = Integer.parseInt(ImageCountToGet) + 1;
+                    Log.d("count", String.valueOf(count));
+                    ImageCountToGet = String.valueOf(count);
+                    myPref.edit().putString("count", ImageCountToGet).apply();
+                    Intent i = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                    i.putExtra(MediaStore.EXTRA_OUTPUT, file_uri);
+                    startActivityForResult(i, 10);
+                }
+                else{
+                    Intent intent = new Intent(ProfilePicActivity.this, InternetCheckActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
             }
         });
     }
@@ -119,7 +130,7 @@ public class ProfilePicActivity extends AppCompatActivity {
 
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 10 && resultCode == RESULT_OK) {
-            new ProfilePicActivity.Encode_image().execute();
+            new Encode_image().execute();
         }
     }
 
@@ -164,7 +175,7 @@ public class ProfilePicActivity extends AppCompatActivity {
                     rotatedBitmap = bitmap;
             }
             bitmap = rotatedBitmap;
-            bitmap = BitmapFactory.decodeFile(file_uri.getPath());
+  //          bitmap = BitmapFactory.decodeFile(file_uri.getPath());
 //            Log.d("hi", "doInBackground: "+bitmap.toString());
             ByteArrayOutputStream stream = new ByteArrayOutputStream();
             bitmap.compress(Bitmap.CompressFormat.JPEG, 50, stream);//compress image as per ur need
@@ -189,7 +200,11 @@ public class ProfilePicActivity extends AppCompatActivity {
     private void makeRequest() {
         RequestQueue requestQueue = Volley.newRequestQueue(this);
 
-        StringRequest request = new StringRequest(Request.Method.POST, "http://192.168.43.12/Artisans-Profiling/profilepic.php",
+//        StringRequest request = new StringRequest(Request.Method.POST, "http://192.168.43.12/Artisans-Profiling/profilepic.php",
+
+        StringRequest request = new StringRequest(Request.Method.POST, "https://artisanprofilingapp.000webhostapp.com/profilepic.php",
+
+
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -391,5 +406,14 @@ private void requestPermission() {
                 break;
         }
     }
-
+    @Override
+    public void onBackPressed() {
+        mediaPlayer.stop();
+        super.onBackPressed();
+    }
+    @Override
+    public void onUserLeaveHint(){
+        mediaPlayer.stop();
+        super.onUserLeaveHint();
+    }
 }
