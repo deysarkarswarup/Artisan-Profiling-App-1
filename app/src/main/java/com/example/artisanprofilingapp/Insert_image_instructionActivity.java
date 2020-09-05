@@ -5,11 +5,14 @@ import androidx.core.content.ContextCompat;
 
 import android.Manifest;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.media.MediaPlayer;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -182,19 +185,29 @@ public class Insert_image_instructionActivity extends AppCompatActivity {
         submitbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                myPref.edit().putString("track", "10").apply();
-                sareemediaPlayer.stop();
-                tshirtmediaPlayer.stop();
-                bagmediaPlayer.stop();
-                goinamediaPlayer.stop();
-                showpiecemediaPlayer.stop();
-                kurtamediaPlayer.stop();
+                ConnectivityManager con = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+                NetworkInfo networkInfo = con.getActiveNetworkInfo();
+                if (networkInfo != null && networkInfo.isConnected()) {
+                    myPref.edit().putString("track", "10").apply();
+                    sareemediaPlayer.stop();
+                    tshirtmediaPlayer.stop();
+                    bagmediaPlayer.stop();
+                    goinamediaPlayer.stop();
+                    showpiecemediaPlayer.stop();
+                    kurtamediaPlayer.stop();
 
-                Intent i = new Intent(Insert_image_instructionActivity.this, CaptureImageActivity.class);
-                startActivity(i);
+                    Intent i = new Intent(Insert_image_instructionActivity.this, CaptureImageActivity.class);
+                    startActivity(i);
 
 
+                }
+                else{
+                    Intent intent = new Intent(Insert_image_instructionActivity.this, InternetCheckActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
             }
+
 
 
         });
@@ -210,7 +223,16 @@ public class Insert_image_instructionActivity extends AppCompatActivity {
         }
     }
 
-
+    @Override
+    public void onBackPressed(){
+        sareemediaPlayer.stop();
+        tshirtmediaPlayer.stop();
+        bagmediaPlayer.stop();
+        goinamediaPlayer.stop();
+        showpiecemediaPlayer.stop();
+        kurtamediaPlayer.stop();
+        super.onBackPressed();
+    }
 //    private void requestPermission() {
 //        int i=0;
 //        if (ActivityCompat.shouldShowRequestPermissionRationale(Insert_image_instructionActivity.this, android.Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
@@ -301,7 +323,7 @@ public class Insert_image_instructionActivity extends AppCompatActivity {
             case 666: // Allowed was selected so Permission granted
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
 
-                    Log.d("Jhingalala", "granted");
+                    //Log.d("Jhingalala", "granted");
                     //mediaPlayer.start();
 
                     // do your work here
@@ -357,5 +379,6 @@ public class Insert_image_instructionActivity extends AppCompatActivity {
                 break;
         }
     }
+
 
 }

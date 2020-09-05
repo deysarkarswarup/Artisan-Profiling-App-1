@@ -21,7 +21,7 @@ public class InternetCheckActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_internet_check);
 
-        mediaPlayer = MediaPlayer.create(this, R.raw.thankyouinst);
+        mediaPlayer = MediaPlayer.create(this, R.raw.nointernetinst);
         mediaPlayer.start();
 
         finish = (Button) findViewById(R.id.finish);
@@ -49,5 +49,14 @@ public class InternetCheckActivity extends AppCompatActivity {
         });
 
     }
-
+    @Override
+    public void onBackPressed() {
+        mediaPlayer.stop();
+        super.onBackPressed();
+    }
+    @Override
+    public void onUserLeaveHint(){
+        mediaPlayer.stop();
+        super.onUserLeaveHint();
+    }
 }

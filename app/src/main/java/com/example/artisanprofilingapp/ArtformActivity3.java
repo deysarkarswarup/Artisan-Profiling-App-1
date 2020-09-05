@@ -3,9 +3,12 @@ package com.example.artisanprofilingapp;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.media.MediaPlayer;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -91,8 +94,40 @@ public class ArtformActivity3 extends AppCompatActivity {
                 NOofCoWorkersHolder = "0";
                 String artlearnedToGet = myPref.getString("artlearned","No data found");
                 String idToGet = myPref.getString("id","No data found");
-                String myurl = "http://192.168.43.12/Artisans-Profiling/artformextras.php?artlearned=" + artlearnedToGet
-                        +"&hascoworker="+ yesOrNo +"&noofcoworker="+NOofCoWorkersHolder+"&id="+idToGet;
+
+                progressDialog.setMessage("Please Wait, We are Inserting Your Data on Server");
+                progressDialog.show();
+
+                //NOofCoWorkersHolder = noofcoworkers.getEditText().getText().toString().trim();
+                //Log.d("eirki",NOofCoWorkersHolder);
+                //myPref.edit().putString("phone", PhoneNoHolder).apply();
+
+                String artformToGet = myPref.getString("artform","No Data Found");
+                //String artformToGet = myPref.getString("artform","No data found");
+                Log.d("eirki artlearned->",artlearnedToGet);
+                //Log.d("eirki artform->",artformToGet);
+                Log.d("eirki hascoworker->",yesOrNo);
+                //Log.d("eirki No od co-worker->",NOofCoWorkersHolder);
+
+                artlearnedToGet = artlearnedToGet.replaceAll(" ","%20");
+                yesOrNo = yesOrNo.replaceAll(" ","%20");
+                //NOofCoWorkersHolder = NOofCoWorkersHolder.replaceAll(" ","%20");
+                idToGet = idToGet.replaceAll(" ","%20");
+                artformToGet = artformToGet.replaceAll(" ","%20");
+
+                String characterFilter = "[^\\p{L}\\p{M}\\p{N}\\p{P}\\p{Z}\\p{Cf}\\p{Cs}\\s]";
+                artlearnedToGet = artlearnedToGet.replaceAll(characterFilter,"");
+                yesOrNo = yesOrNo.replaceAll(characterFilter,"");
+                //NOofCoWorkersHolder = NOofCoWorkersHolder.replaceAll(characterFilter,"");
+                idToGet = idToGet.replaceAll(characterFilter,"");
+                artformToGet = artformToGet.replaceAll(characterFilter,"");
+
+
+//                String myurl = "http://192.168.43.12/Artisans-Profiling/artformextras.php?artlearned=" + artlearnedToGet
+//                        +"&hascoworker="+ yesOrNo +"&noofcoworker="+NOofCoWorkersHolder+"&id="+idToGet+"&artform="+artformToGet;
+
+                String myurl = "https://artisanprofilingapp.000webhostapp.com/artformextras.php?artlearned=" + artlearnedToGet
+                        +"&hascoworker="+ yesOrNo +"&noofcoworker="+NOofCoWorkersHolder+"&id="+idToGet+"&artform="+artformToGet;
 
                 RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
                 StringRequest stringRequest = new StringRequest(Request.Method.POST, myurl,
@@ -129,19 +164,27 @@ public class ArtformActivity3 extends AppCompatActivity {
         submitbtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                if (!nam.getText().toString().equals("")){
-                    //Toast.makeText(MainActivity.this,"হয়েগেছে",Toast.LENGTH_LONG).show();
-                    regUser();
+                ConnectivityManager con = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+                NetworkInfo networkInfo = con.getActiveNetworkInfo();
+                if (networkInfo != null && networkInfo.isConnected()) {
+                    if (!nam.getText().toString().equals("")) {
+                        //Toast.makeText(MainActivity.this,"হয়েগেছে",Toast.LENGTH_LONG).show();
+                        regUser();
 //                    NOofCoWorkersHolder = noofcoworkers.getEditText().getText().toString().trim();
-  //                  Log.d("eirki Nocoworker stor->",NOofCoWorkersHolder);
+                        //                  Log.d("eirki Nocoworker stor->",NOofCoWorkersHolder);
 //                    myPref.edit().putString("coworker",NOofCoWorkersHolder).apply();
-                    myPref.edit().putString("track", "7").apply();
-                    mediaPlayer.stop();
-                    Intent i=new Intent(ArtformActivity3.this,ExperienceActivity.class);
-                    startActivity(i);
+                        myPref.edit().putString("track", "7").apply();
+                        mediaPlayer.stop();
+                        Intent i = new Intent(ArtformActivity3.this, ExperienceActivity.class);
+                        startActivity(i);
+                    } else {
+                        nam.setError("কত জন নিযুক্ত করেছেন?");
+                    }
                 }
                 else{
-                    nam.setError("কত জন নিযুক্ত করেছেন?");
+                    Intent intent = new Intent(ArtformActivity3.this, InternetCheckActivity.class);
+                    startActivity(intent);
+                    finish();
                 }
             }
 
@@ -218,14 +261,34 @@ public class ArtformActivity3 extends AppCompatActivity {
                 //myPref.edit().putString("phone", PhoneNoHolder).apply();
                 String artlearnedToGet = myPref.getString("artlearned","No data found");
                 String idToGet = myPref.getString("id","No data found");
+                String artformToGet = myPref.getString("artform","No Data Found");
                 //String artformToGet = myPref.getString("artform","No data found");
                 Log.d("eirki artlearned->",artlearnedToGet);
                 //Log.d("eirki artform->",artformToGet);
                 Log.d("eirki hascoworker->",yesOrNo);
                 Log.d("eirki No od co-worker->",NOofCoWorkersHolder);
 
-                String myurl = "http://192.168.43.12/Artisans-Profiling/artformextras.php?artlearned=" + artlearnedToGet
-                        +"&hascoworker="+ yesOrNo +"&noofcoworker="+NOofCoWorkersHolder+"&id="+idToGet;
+                artlearnedToGet = artlearnedToGet.replaceAll(" ","%20");
+                yesOrNo = yesOrNo.replaceAll(" ","%20");
+                NOofCoWorkersHolder = NOofCoWorkersHolder.replaceAll(" ","%20");
+                idToGet = idToGet.replaceAll(" ","%20");
+                artformToGet = artformToGet.replaceAll(" ","%20");
+
+                String characterFilter = "[^\\p{L}\\p{M}\\p{N}\\p{P}\\p{Z}\\p{Cf}\\p{Cs}\\s]";
+                artlearnedToGet = artlearnedToGet.replaceAll(characterFilter,"");
+                yesOrNo = yesOrNo.replaceAll(characterFilter,"");
+                NOofCoWorkersHolder = NOofCoWorkersHolder.replaceAll(characterFilter,"");
+                idToGet = idToGet.replaceAll(characterFilter,"");
+                artformToGet = artformToGet.replaceAll(characterFilter,"");
+
+
+//                String myurl = "http://192.168.43.12/Artisans-Profiling/artformextras.php?artlearned=" + artlearnedToGet
+//                        +"&hascoworker="+ yesOrNo +"&noofcoworker="+NOofCoWorkersHolder+"&id="+idToGet+"&artform="+artformToGet;
+
+                String myurl = "https://artisanprofilingapp.000webhostapp.com/artformextras.php?artlearned=" + artlearnedToGet
+                        +"&hascoworker="+ yesOrNo +"&noofcoworker="+NOofCoWorkersHolder+"&id="+idToGet+"&artform="+artformToGet;
+
+                Log.d("eirki myurl", myurl);
 
                 RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
                 StringRequest stringRequest = new StringRequest(Request.Method.POST, myurl,
@@ -256,4 +319,15 @@ public class ArtformActivity3 extends AppCompatActivity {
         });
 
     }
+    @Override
+    public void onBackPressed() {
+        mediaPlayer.stop();
+        super.onBackPressed();
+    }
+    @Override
+    public void onUserLeaveHint(){
+        mediaPlayer.stop();
+        super.onUserLeaveHint();
+    }
+
 }

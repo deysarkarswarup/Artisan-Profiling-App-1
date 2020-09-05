@@ -20,7 +20,7 @@ public class ArtformUpload {
 
     public String upLoad2Server(String sourceFileUri, String dataToGet) {
         Log.d("hmm in upload", sourceFileUri);
-        String fileName = sourceFileUri;
+        String fileName = sourceFileUri+"*"+dataToGet;
         HttpURLConnection conn = null;
         DataOutputStream dos = null;
         String lineEnd = "\r\n";
@@ -51,7 +51,7 @@ public class ArtformUpload {
             conn.setRequestProperty("Content-Type", "multipart/form-data;boundary=" + boundary);
             conn.setRequestProperty("myFile", fileName);
 
-            conn.setRequestProperty("phoneno", dataToGet);
+            conn.setRequestProperty("id", dataToGet);
             Log.d("hmm filename",fileName);
             dos = new DataOutputStream(conn.getOutputStream());
 
@@ -115,4 +115,10 @@ public class ArtformUpload {
             return "Could not upload";
         }
     }
+//
+//    @Override
+//    public void onBackPressed() {
+//        mediaPlayer.stop();
+//        super.onBackPressed();
+//    }
 }

@@ -2,9 +2,12 @@ package com.example.artisanprofilingapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.media.MediaPlayer;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -23,65 +26,84 @@ public class ImageCaptureSelection extends AppCompatActivity {
         showpiece = findViewById(R.id.showPiece);
         bag = findViewById(R.id.bag);
         goina = findViewById(R.id.goina);
-        myPref = getApplicationContext().getSharedPreferences("MyPref",MODE_PRIVATE);
+        myPref = getApplicationContext().getSharedPreferences("MyPref", MODE_PRIVATE);
         mediaPlayer = MediaPlayer.create(this, R.raw.captureselectioninst);
         mediaPlayer.start();
+        ConnectivityManager con = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = con.getActiveNetworkInfo();
+        if (networkInfo != null && networkInfo.isConnected()) {
+            saree.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    myPref.edit().putString("selected", "saree").apply();
+                    myPref.edit().putString("track", "9").apply();
+                    mediaPlayer.stop();
+                    startActivity(new Intent(getApplicationContext(), Insert_image_instructionActivity.class));
+                }
+            });
+            kurtya.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    myPref.edit().putString("selected", "kurta").apply();
+                    myPref.edit().putString("track", "9").apply();
+                    mediaPlayer.stop();
+                    startActivity(new Intent(getApplicationContext(), Insert_image_instructionActivity.class));
+                }
+            });
+            tshirt.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    myPref.edit().putString("selected", "tshirt").apply();
+                    myPref.edit().putString("track", "9").apply();
+                    mediaPlayer.stop();
+                    startActivity(new Intent(getApplicationContext(), Insert_image_instructionActivity.class));
+                }
+            });
+            showpiece.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    myPref.edit().putString("selected", "showpiece").apply();
+                    myPref.edit().putString("track", "9").apply();
+                    mediaPlayer.stop();
+                    startActivity(new Intent(getApplicationContext(), Insert_image_instructionActivity.class));
+                }
+            });
+            bag.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    myPref.edit().putString("selected", "bag").apply();
+                    myPref.edit().putString("track", "9").apply();
+                    mediaPlayer.stop();
+                    startActivity(new Intent(getApplicationContext(), Insert_image_instructionActivity.class));
+                }
+            });
+            goina.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    myPref.edit().putString("selected", "goina").apply();
+                    myPref.edit().putString("track", "9").apply();
+                    mediaPlayer.stop();
+                    startActivity(new Intent(getApplicationContext(), Insert_image_instructionActivity.class));
+                }
+            });
 
-        saree.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                myPref.edit().putString("selected","saree").apply();
-                myPref.edit().putString("track", "9").apply();
-                mediaPlayer.stop();
-                startActivity(new Intent(getApplicationContext(),Insert_image_instructionActivity.class));
-            }
-        });
-        kurtya.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                myPref.edit().putString("selected","kurta").apply();
-                myPref.edit().putString("track", "9").apply();
-                mediaPlayer.stop();
-                startActivity(new Intent(getApplicationContext(),Insert_image_instructionActivity.class));
-            }
-        });
-        tshirt.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                myPref.edit().putString("selected","tshirt").apply();
-                myPref.edit().putString("track", "9").apply();
-                mediaPlayer.stop();
-                startActivity(new Intent(getApplicationContext(),Insert_image_instructionActivity.class));
-            }
-        });
-        showpiece.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                myPref.edit().putString("selected","showpiece").apply();
-                myPref.edit().putString("track", "9").apply();
-                mediaPlayer.stop();
-                startActivity(new Intent(getApplicationContext(),Insert_image_instructionActivity.class));
-            }
-        });
-        bag.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                myPref.edit().putString("selected","bag").apply();
-                myPref.edit().putString("track", "9").apply();
-                mediaPlayer.stop();
-                startActivity(new Intent(getApplicationContext(),Insert_image_instructionActivity.class));
-            }
-        });
-        goina.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                myPref.edit().putString("selected","goina").apply();
-                myPref.edit().putString("track", "9").apply();
-                mediaPlayer.stop();
-                startActivity(new Intent(getApplicationContext(),Insert_image_instructionActivity.class));
-            }
-        });
+        }
+        else{
+            Intent intent = new Intent(ImageCaptureSelection.this, InternetCheckActivity.class);
+            startActivity(intent);
+            finish();
+        }
+    }
 
+    @Override
+    public void onBackPressed() {
+        mediaPlayer.stop();
+        super.onBackPressed();
+    }
+    @Override
+    public void onUserLeaveHint(){
+        mediaPlayer.stop();
+        super.onUserLeaveHint();
     }
 
 

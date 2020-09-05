@@ -5,11 +5,14 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Matrix;
 import android.media.ExifInterface;
 import android.media.MediaPlayer;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Build;
 import android.os.Bundle;
 
@@ -75,20 +78,28 @@ public class CaptureImageActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String state = Environment.getExternalStorageState();
-                if (Environment.MEDIA_MOUNTED.equals(state)) {
-                    if (Build.VERSION.SDK_INT >= 23) {
-                        if (checkPermission()) {
-                            getFileUri();
-                        } else {
-                            requestPermission(); // Code for permission
-                            //getFileUri();
+                ConnectivityManager con = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+                NetworkInfo networkInfo = con.getActiveNetworkInfo();
+                if (networkInfo != null && networkInfo.isConnected()) {
+                    String state = Environment.getExternalStorageState();
+                    if (Environment.MEDIA_MOUNTED.equals(state)) {
+                        if (Build.VERSION.SDK_INT >= 23) {
+                            if (checkPermission()) {
+                                getFileUri();
+                            } else {
+                                requestPermission(); // Code for permission
+                                //getFileUri();
+                            }
                         }
-                    }
-                }
-                    else {
+                    } else {
                         getFileUri();
                     }
+                }
+                else{
+                    Intent intent = new Intent(CaptureImageActivity.this, InternetCheckActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
                     count = Integer.parseInt(ImageCountToGet) +1;
                     Log.d("count",String.valueOf(count));
                 ImageCountToGet = String.valueOf(count);
@@ -183,7 +194,10 @@ public class CaptureImageActivity extends AppCompatActivity {
     private void makeRequest() {
         RequestQueue requestQueue = Volley.newRequestQueue(this);
 
-        StringRequest request = new StringRequest(Request.Method.POST, "http://192.168.43.12/Artisans-Profiling/imageupload.php",
+//        StringRequest request = new StringRequest(Request.Method.POST, "http://192.168.43.12/Artisans-Profiling/imageupload.php",
+
+StringRequest request = new StringRequest(Request.Method.POST, "https://artisanprofilingapp.000webhostapp.com/imageupload.php",
+
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -251,5 +265,16 @@ public class CaptureImageActivity extends AppCompatActivity {
                 }
                 break;
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        mediaPlayer.stop();
+        super.onBackPressed();
+    }
+    @Override
+    public void onUserLeaveHint(){
+        mediaPlayer.stop();
+        super.onUserLeaveHint();
     }
 }

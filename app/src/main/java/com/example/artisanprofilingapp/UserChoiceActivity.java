@@ -2,9 +2,12 @@ package com.example.artisanprofilingapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.media.MediaPlayer;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -24,27 +27,43 @@ public class UserChoiceActivity extends AppCompatActivity {
         myPref = getApplicationContext().getSharedPreferences("MyPref",MODE_PRIVATE);
         mediaPlayer = MediaPlayer.create(this, R.raw.userchoiceinst);
         mediaPlayer.start();
+        ConnectivityManager con = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = con.getActiveNetworkInfo();
+        if (networkInfo != null && networkInfo.isConnected()) {
 
-        yes.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                mediaPlayer.stop();
-                Intent i=new Intent(UserChoiceActivity.this,CaptureImageActivity.class);
-                startActivity(i);
-            }
+            yes.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    mediaPlayer.stop();
+                    Intent i = new Intent(UserChoiceActivity.this, CaptureImageActivity.class);
+                    startActivity(i);
+                }
             });
 
-        no.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                myPref.edit().putString("track","12").apply();
-                mediaPlayer.stop();
-                Intent i=new Intent(UserChoiceActivity.this,Insert_video_instructionActivity.class);
-                startActivity(i);
-            }
-        });
-
-
-
+            no.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    myPref.edit().putString("track", "12").apply();
+                    mediaPlayer.stop();
+                    Intent i = new Intent(UserChoiceActivity.this, Insert_video_instructionActivity.class);
+                    startActivity(i);
+                }
+            });
+        }
+        else{
+            Intent intent = new Intent(UserChoiceActivity.this, InternetCheckActivity.class);
+            startActivity(intent);
+            finish();
+        }
+    }
+    @Override
+    public void onBackPressed() {
+        mediaPlayer.stop();
+        super.onBackPressed();
+    }
+    @Override
+    public void onUserLeaveHint(){
+        mediaPlayer.stop();
+        super.onUserLeaveHint();
     }
 }

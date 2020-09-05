@@ -3,9 +3,12 @@ package com.example.artisanprofilingapp;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.media.MediaPlayer;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -52,19 +55,27 @@ public class ArtformActivity2 extends AppCompatActivity {
         submitbtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                if (!nam.getText().toString().equals("")){
-                    //Toast.makeText(MainActivity.this,"হয়েগেছে",Toast.LENGTH_LONG).show();
-                    //regUser();
-                    ArtLearnedHolder = artlearned.getEditText().getText().toString().trim();
-                    Log.d("eirki artlearned stor->",ArtLearnedHolder);
-                    myPref.edit().putString("artlearned",ArtLearnedHolder).apply();
-                    myPref.edit().putString("track", "6").apply();
-                    mediaPlayer.stop();
-                    Intent i=new Intent(ArtformActivity2.this,ArtformActivity3.class);
-                    startActivity(i);
+                ConnectivityManager con = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+                NetworkInfo networkInfo = con.getActiveNetworkInfo();
+                if (networkInfo != null && networkInfo.isConnected()) {
+                    if (!nam.getText().toString().equals("")) {
+                        //Toast.makeText(MainActivity.this,"হয়েগেছে",Toast.LENGTH_LONG).show();
+                        //regUser();
+                        ArtLearnedHolder = artlearned.getEditText().getText().toString().trim();
+                        Log.d("eirki artlearned stor->", ArtLearnedHolder);
+                        myPref.edit().putString("artlearned", ArtLearnedHolder).apply();
+                        myPref.edit().putString("track", "6").apply();
+                        mediaPlayer.stop();
+                        Intent i = new Intent(ArtformActivity2.this, ArtformActivity3.class);
+                        startActivity(i);
+                    } else {
+                        nam.setError("আপনি কোথা থেকে এই শিল্প শিখেছেন?");
+                    }
                 }
                 else{
-                    nam.setError("আপনি কোথা থেকে এই শিল্প শিখেছেন?");
+                    Intent intent = new Intent(ArtformActivity2.this, InternetCheckActivity.class);
+                    startActivity(intent);
+                    finish();
                 }
             }
 
@@ -109,6 +120,17 @@ public class ArtformActivity2 extends AppCompatActivity {
 //            }
 
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        mediaPlayer.stop();
+        super.onBackPressed();
+    }
+    @Override
+    public void onUserLeaveHint(){
+        mediaPlayer.stop();
+        super.onUserLeaveHint();
     }
 }
 

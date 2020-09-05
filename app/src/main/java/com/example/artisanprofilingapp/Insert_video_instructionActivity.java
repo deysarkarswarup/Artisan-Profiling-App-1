@@ -3,10 +3,13 @@ package com.example.artisanprofilingapp;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.media.MediaPlayer;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -57,26 +60,37 @@ private MediaPlayer mediaPlayer, mediaPlayer2;
 
 //        onPause();
 
-//        mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-//            @Override
-//            public void onCompletion(MediaPlayer mp) {
-//                mediaController.setAnchorView(videoView);
-//                videoView.setMediaController(mediaController);
-//                videoView.setVideoURI(uri);
-//                videoView.requestFocus();
-//                videoView.start();
-//            }
-//        });
-        submitbtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                myPref.edit().putString("track", "13").apply();
-                mediaPlayer.stop();
-//                videoView.stopPlayback();
-                Intent i=new Intent(Insert_video_instructionActivity.this,CaptureVideoActivity.class);
-                startActivity(i);
-            }
-        });
+        ConnectivityManager con = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = con.getActiveNetworkInfo();
+        if (networkInfo != null && networkInfo.isConnected()) {
+
+//            mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+//                @Override
+//                public void onCompletion(MediaPlayer mp) {
+//                    mediaController.setAnchorView(videoView);
+//                    videoView.setMediaController(mediaController);
+//                    videoView.setVideoURI(uri);
+//                    videoView.requestFocus();
+//                    videoView.start();
+//                }
+//            });
+            submitbtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    myPref.edit().putString("track", "13").apply();
+                    mediaPlayer.stop();
+                    //videoView.stopPlayback();
+                    Intent i = new Intent(Insert_video_instructionActivity.this, CaptureVideoActivity.class);
+                    startActivity(i);
+                }
+            });
+        }
+        else{
+            Intent intent = new Intent(Insert_video_instructionActivity.this, InternetCheckActivity.class);
+            startActivity(intent);
+            finish();
+        }
+
 
     }
 //
@@ -154,6 +168,16 @@ private MediaPlayer mediaPlayer, mediaPlayer2;
 //                pd.dismiss();
 //            }
 //        });
+@Override
+public void onBackPressed() {
+    mediaPlayer.stop();
+    super.onBackPressed();
+}
 
+@Override
+    public void onUserLeaveHint(){
+        mediaPlayer.stop();
+        super.onUserLeaveHint();
+}
 
     }
