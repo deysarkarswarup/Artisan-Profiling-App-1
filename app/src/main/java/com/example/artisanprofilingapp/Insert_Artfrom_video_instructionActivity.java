@@ -53,6 +53,7 @@ public class Insert_Artfrom_video_instructionActivity extends AppCompatActivity 
 //        videoView.requestFocus();
 
 //        onPause();
+
         ConnectivityManager con = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = con.getActiveNetworkInfo();
         if (networkInfo != null && networkInfo.isConnected()) {
@@ -84,6 +85,8 @@ public class Insert_Artfrom_video_instructionActivity extends AppCompatActivity 
         }
 
     }
+
+
 
 //    @Override
 //    public void onPause() {

@@ -59,6 +59,7 @@ private MediaPlayer mediaPlayer, mediaPlayer2;
 //        videoView.requestFocus();
 
 //        onPause();
+
         ConnectivityManager con = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = con.getActiveNetworkInfo();
         if (networkInfo != null && networkInfo.isConnected()) {
@@ -89,6 +90,7 @@ private MediaPlayer mediaPlayer, mediaPlayer2;
             startActivity(intent);
             finish();
         }
+
 
     }
 //
