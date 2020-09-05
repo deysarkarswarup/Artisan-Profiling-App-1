@@ -1,6 +1,4 @@
-<?php
-
-//$con=new mysqli("localhost","id14527893_root","grB8e0[@rJ[\OOi=","id14527893_artisansprofiling");		
+<?php	
 $con=new mysqli("localhost","root","","artisan-profiling");
 $sql = "SELECT * FROM artform";
 $res = mysqli_query($con,$sql);
