@@ -1,7 +1,7 @@
 <?php
  // $con=new mysqli("localhost","root","","artisan-profiling");
 $con= mysqli_connect("localhost","root","","artisan-profiling");
-//$con=new mysqli("localhost","id14527893_root","grB8e0[@rJ[\OOi=","id14527893_artisansprofiling");
+
 	if($_SERVER['REQUEST_METHOD']=='POST'){
 		$file = $_FILES['myFile']['name'];
 		// $file_size = $_FILES['myFile']['size'];
@@ -30,9 +30,6 @@ $con= mysqli_connect("localhost","root","","artisan-profiling");
 	}else{
 		echo "Error";
 	}
-//issues run kora, file name ta dekhhmmmm eitai dekhache filename e
-//volley timeout error in experience.php
-//video not previewing in new phone
-//need to update php files for insert statement 
+
 	?>
 
