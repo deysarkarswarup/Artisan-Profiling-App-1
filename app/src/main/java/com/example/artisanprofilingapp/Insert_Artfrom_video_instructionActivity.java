@@ -18,19 +18,22 @@ import android.widget.Button;
 import android.widget.MediaController;
 import android.widget.VideoView;
 
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView;
+
 import java.util.concurrent.TimeUnit;
 
 public class Insert_Artfrom_video_instructionActivity extends AppCompatActivity {
     Button submitbtn;
     SharedPreferences myPref;
     private MediaPlayer mediaPlayer;
-    MediaController mediaController;
-    VideoView videoview;
-    private boolean mResumed = false;
-    private boolean mFocused = false;
-    private boolean mControlResumed = false;
-    private VideoView videoView = null;
-    private int stopPosition = 0;
+    private YouTubePlayerView yt;
+//    MediaController mediaController;
+//
+//    private boolean mResumed = false;
+//    private boolean mFocused = false;
+//    private boolean mControlResumed = false;
+
+//    private int stopPosition = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,7 +43,7 @@ public class Insert_Artfrom_video_instructionActivity extends AppCompatActivity 
         myPref = getApplicationContext().getSharedPreferences("MyPref",MODE_PRIVATE);
         mediaPlayer = MediaPlayer.create(this, R.raw.productvideoinst);
         mediaPlayer.start();
-
+        yt = findViewById(R.id.youtube_player_view);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 //        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE);
         myPref = getApplicationContext().getSharedPreferences("MyPref",MODE_PRIVATE);
