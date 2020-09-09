@@ -61,7 +61,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/phoneHint"
-                android:maxLength="5"
+                android:maxLength="15"
                 android:inputType="number"
                 />
         </com.google.android.material.textfield.TextInputLayout>
@@ -98,8 +98,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/nameHint"
-                android:maxLength="5"
-                android:inputType="number"
+                android:maxLength="100"
+                android:inputType="text"
                 />
         </com.google.android.material.textfield.TextInputLayout>
 
