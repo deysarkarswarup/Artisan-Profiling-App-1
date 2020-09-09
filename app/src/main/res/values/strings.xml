@@ -42,4 +42,12 @@
     <string name="capturepicinstn">ছবি তোলার নির্দেশাবলী:-</string>
     <string name="videocaptureinstnn">ভিডিও তোলার নির্দেশাবলী:-\n \n - পুরো ভিডিও টা ২-৩ মিনিটের হবে\n - আপনার পরিচিত কাউকে ভিডিও তা তুলে দিতে অনুরোধ করুন\n - ভিডিও যেন পর্যাপ্ত আলোয় তোলা হয়\n - আপনার ভিডিও তে খানিক্ষন আপনি নিজের পরিচিতি দেবেন</string>
     <string name="profilepicinstn">নিচে ক্যামেরা বাটন টিপুন আপনার ছবি তোলার জন্য</string>
+    <string name="user_type">আপনি কি নতুন রেজিস্ট্রেশন করতে চান নাকি পুরোনো তথ্য আপডেট করতে চান ?</string>
+    <string name="register">রেজিস্টার</string>
+    <string name="update">আপডেট</string>
+    <string name="updateSelection">আপনি কি পাল্টাতে চান?</string>
+    <string name="phoneNo">ফোন নম্বর</string>
+    <string name="nam">নাম</string>
+    <string name="ageupdate">বয়স</string>
+    <string name="addressupdate">ঠিকানা</string>
 </resources>

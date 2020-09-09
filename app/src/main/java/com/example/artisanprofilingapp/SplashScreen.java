@@ -26,7 +26,7 @@ public class SplashScreen extends AppCompatActivity {
         //Log.d("oirki", getconnectionresponse);
 //        getActivity().registerReceiver(receiver, filter);
         myPref = getApplicationContext().getSharedPreferences("MyPref",MODE_PRIVATE);
-        final String s = myPref.getString("track","1");
+        final String s = myPref.getString("track","0");
 
 
         ConnectivityManager con = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -47,6 +47,9 @@ public class SplashScreen extends AppCompatActivity {
 
                     if (s != null)
                         switch (s) {
+                            case "0":
+                                startActivity(new Intent(SplashScreen.this, UserTypeActivity.class));
+                                break;
                             case "1":
                                 i = new Intent(SplashScreen.this, MainActivity.class);
                                 startActivity(i);

@@ -19,7 +19,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
+        <activity android:name=".UpdateSelectionAcivity"></activity>
+        <activity android:name=".UpdateUserAuthActivity" />
+        <activity android:name=".UserTypeActivity" />
 
         <provider
             android:name="androidx.core.content.FileProvider"
