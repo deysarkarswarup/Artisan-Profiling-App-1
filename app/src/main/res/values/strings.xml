@@ -45,4 +45,9 @@
     <string name="user_type">আপনি কি নতুন রেজিস্ট্রেশন করতে চান নাকি পুরোনো তথ্য আপডেট করতে চান ?</string>
     <string name="register">রেজিস্টার</string>
     <string name="update">আপডেট</string>
+    <string name="updateSelection">আপনি কি পাল্টাতে চান?</string>
+    <string name="phoneNo">ফোন নম্বর</string>
+    <string name="nam">নাম</string>
+    <string name="ageupdate">বয়স</string>
+    <string name="addressupdate">ঠিকানা</string>
 </resources>
