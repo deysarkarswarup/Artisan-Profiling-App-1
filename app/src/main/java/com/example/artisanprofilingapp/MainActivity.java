@@ -140,14 +140,17 @@ public class MainActivity extends AppCompatActivity {
 //                            }
 
                         //Toast.makeText(MainActivity.this,"হয়েগেছে",Toast.LENGTH_LONG).show();
-//                        if(flag[0]) {
+                        if(flag[0]) {
                             regUser();
 
 
                             //UNCOMMENT THIS
                             mediaPlayer.stop();
                             startActivity(new Intent(MainActivity.this, NameActivity.class));
-//                        }
+                        }
+                        else{
+                            mobileno.setError("১০ ডিজিটের ফোন নম্বর টাইপ করুন");
+                        }
 
                     } else {
                         mobileno.setError("ফোন নম্বর টাইপ করুন");

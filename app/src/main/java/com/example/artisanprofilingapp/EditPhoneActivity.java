@@ -20,11 +20,12 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.Settings;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -42,30 +43,23 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class UpdateUserAuthActivity extends AppCompatActivity {
-    TextInputLayout phone, name;
-    EditText nam,ph;//to show error msg
+public class EditPhoneActivity extends AppCompatActivity {
+    TextInputLayout phno;
+    EditText mobileno;//to show error msg
     Button submitbtn;
     RequestQueue requestQueue;
     ProgressDialog progressDialog;
-    String PhoneNoHolder, NameHolder;
+    String PhoneNoHolder;
     SharedPreferences myPref;
+    public static int REQUEST_PERMISSION=1;
+    private static final int PERMISSION_REQUEST_CODE = 100;
     private MediaPlayer mediaPlayer;
-    String rowcount="0";
 
-    String yesOrNo="";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_update_user_auth);
-
-        phone = (TextInputLayout)findViewById(R.id.phone);
-        name = (TextInputLayout)findViewById(R.id.name);
-        nam = (EditText)findViewById(R.id.nam);
-        ph = (EditText)findViewById(R.id.ph);
-        submitbtn = (Button)findViewById(R.id.submitBtn);
-        mediaPlayer = MediaPlayer.create(this, R.raw.experienceinst);
-        mediaPlayer.start();
+        setContentView(R.layout.activity_edit_phone);
 
         String state = Environment.getExternalStorageState();
         if (Environment.MEDIA_MOUNTED.equals(state)) {
@@ -76,42 +70,84 @@ public class UpdateUserAuthActivity extends AppCompatActivity {
 
                 }
                 else{
-//                    mediaPlayer.start();
-                    Log.d("Check", "onCreate: Okay");
+                    mediaPlayer.start();
                 }
             }
         }
 
+
+        phno = (TextInputLayout)findViewById(R.id.phoneno);
+        mobileno = (EditText)findViewById(R.id.mobileNO);//to show error msg
+        submitbtn = (Button)findViewById(R.id.submitBtn);
+
+        //Initialize of SharedPref
         myPref = getApplicationContext().getSharedPreferences("MyPref",MODE_PRIVATE);
 
         // Creating Volley newRequestQueue .
-        requestQueue = Volley.newRequestQueue(UpdateUserAuthActivity.this);
-        progressDialog = new ProgressDialog(UpdateUserAuthActivity.this);
+        requestQueue = Volley.newRequestQueue(EditPhoneActivity.this);
+        progressDialog = new ProgressDialog(EditPhoneActivity.this);
+        final boolean[] flag = {true};
+        //DELETE THIS
+        // startActivity(new Intent(MainActivity.this, ArtformActivity3.class));
+//        mobileno.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+//            @Override
+//            public void onFocusChange(View v, boolean hasFocus) {
+//                if(mobileno.getText().toString().length()!=10) {
+//                    mobileno.setError("১০ ডিজিটের ফোন নম্বর টাইপ করুন");
+//                    flag[0] = false;
+//                }
+//            }
+//        });
+        mobileno.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if(mobileno.getText().toString().length()!=10) {
+                    mobileno.setError("১০ ডিজিটের ফোন নম্বর টাইপ করুন");
+                    flag[0] = false;
+                }else{
+                    //regUser();
+                }
+            }
+        });
         submitbtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
                 ConnectivityManager con = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
                 NetworkInfo networkInfo = con.getActiveNetworkInfo();
                 if (networkInfo != null && networkInfo.isConnected()) {
-                    if (!ph.getText().toString().equals("") && !nam.getText().toString().equals("")) {
+                    if (!mobileno.getText().toString().equals("")) {
 
+//                            if (!checkPermission()) {
+//Log.d("hiii","hello");
+//                                requestPermission();
+//                            }
 
+                        //Toast.makeText(MainActivity.this,"হয়েগেছে",Toast.LENGTH_LONG).show();
+//                        if(flag[0]) {
                         regUser();
 
 
                         //UNCOMMENT THIS
                         mediaPlayer.stop();
-                        Log.d("onclick e rowcount",rowcount);
-
-
+                        startActivity(new Intent(EditPhoneActivity.this, NameActivity.class));
+//                        }
 
                     } else {
-                        ph.setError("ফোন নম্বর টাইপ করুন");
+                        mobileno.setError("ফোন নম্বর টাইপ করুন");
                     }
                 }
                 else{
-                    Intent intent = new Intent(UpdateUserAuthActivity.this, InternetCheckActivity.class);
+                    Intent intent = new Intent(EditPhoneActivity.this, InternetCheckActivity.class);
                     startActivity(intent);
                     finish();
                 }
@@ -127,11 +163,10 @@ public class UpdateUserAuthActivity extends AppCompatActivity {
 
     private void regUser() {
 
-        progressDialog.setMessage("Fetching Data..");
+        progressDialog.setMessage("Please Wait, We are Inserting Your Data on Server");
         progressDialog.show();
 
-        PhoneNoHolder = phone.getEditText().getText().toString().trim();
-        NameHolder = name.getEditText().getText().toString().trim();
+        PhoneNoHolder = phno.getEditText().getText().toString().trim();
 
         //private boolean isValidMobile(String phone) {
 //                    boolean flag = android.util.Patterns.PHONE.matcher(PhoneNoHolder).matches();
@@ -141,27 +176,23 @@ public class UpdateUserAuthActivity extends AppCompatActivity {
         myPref.edit().putString("phone", PhoneNoHolder).apply();
         myPref.edit().putString("count", "0").apply();
 
-        PhoneNoHolder = PhoneNoHolder.replaceAll(" ","%20");
-        NameHolder = NameHolder.replaceAll(" ","%20");
 
+        PhoneNoHolder = PhoneNoHolder.replaceAll(" ","%20");
 
         String characterFilter = "[^\\p{L}\\p{M}\\p{N}\\p{P}\\p{Z}\\p{Cf}\\p{Cs}\\s]";
         PhoneNoHolder = PhoneNoHolder.replaceAll(characterFilter,"");
-        NameHolder = NameHolder.replaceAll(characterFilter,"");
 
-        String myurl = "https://artisanprofilingapp.000webhostapp.com/checkUser.php?phone=" + PhoneNoHolder +
-                "&name="+ NameHolder;
+        String myurl = "https://artisanprofilingapp.000webhostapp.com/phoneno.php?phoneno=" + PhoneNoHolder;
 //                String myurl = "http://192.168.43.12/Artisans-Profiling/phoneno.php?phoneno=" + PhoneNoHolder;
 
 //String myurl = "https://artisanprofilingapp.000webhostapp.com/phoneno.php?phoneno=" + PhoneNoHolder;
         RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
-        Log.d("eirki json", myurl);
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, myurl,
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, myurl,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         // Hiding the progress dialog after all task complete.
-                        Log.d("eirki dhukche", response);
                         showJSON(response);
                         progressDialog.dismiss();
                         // Showing response message coming from server.
@@ -178,7 +209,7 @@ public class UpdateUserAuthActivity extends AppCompatActivity {
                         // Hiding the progress dialog after all task complete.
                         progressDialog.dismiss();
                         // Showing error message if something goes wrong.
-                        Toast.makeText(UpdateUserAuthActivity.this, volleyError.toString(), Toast.LENGTH_LONG).show();
+                        Toast.makeText(EditPhoneActivity.this, volleyError.toString(), Toast.LENGTH_LONG).show();
 
                     }
                 });
@@ -188,10 +219,8 @@ public class UpdateUserAuthActivity extends AppCompatActivity {
     }
 
     private void showJSON(String response) {
-
         ArrayList<HashMap<String, String>> list = new ArrayList<>();
         try {
-            Log.d("eirki dhukche", response);
             JSONObject jsonObject = new JSONObject(response);
             JSONArray result = jsonObject.getJSONArray(Config.JSON_ARRAY);
 
@@ -201,17 +230,8 @@ public class UpdateUserAuthActivity extends AppCompatActivity {
 //                String date = jo.getString(Config5.KEY_DATE);
 //                String data = jo.getString(Config5.KEY_DATA);
             String id = jo.getString(Config.KEY_ID);
-            rowcount = jo.getString(Config.ROW_COUNT);
-            Log.d("json e rowcount",jo.getString(Config.ROW_COUNT));
-            if (rowcount.equals("1")) {
-                startActivity(new Intent(UpdateUserAuthActivity.this, NameActivity.class));
-            }
-            else{
-                startActivity(new Intent(UpdateUserAuthActivity.this, UpdateSelectionAcivity.class));
-            }
             Log.d("eirki",id);
             myPref.edit().putString("id",id).apply();
-
 
 
 //                    final HashMap<String, String> employees = new HashMap<>();
@@ -238,12 +258,8 @@ public class UpdateUserAuthActivity extends AppCompatActivity {
 
     }
 
-
-
-
-
     private boolean checkPermission() {
-        int result = ContextCompat.checkSelfPermission(UpdateUserAuthActivity.this, Manifest.permission.CAMERA);
+        int result = ContextCompat.checkSelfPermission(EditPhoneActivity.this, Manifest.permission.CAMERA);
 
         if (result == PackageManager.PERMISSION_GRANTED) {
             return true;
@@ -268,7 +284,7 @@ public class UpdateUserAuthActivity extends AppCompatActivity {
                     .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            ActivityCompat.requestPermissions(UpdateUserAuthActivity.this,new String[]{Manifest.permission.CAMERA},666);
+                            ActivityCompat.requestPermissions(EditPhoneActivity.this,new String[]{Manifest.permission.CAMERA},666);
                         }
                     })
                     .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -309,7 +325,7 @@ public class UpdateUserAuthActivity extends AppCompatActivity {
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
 
                     Log.d("Jhingalala", "granted");
-//                    mediaPlayer.start();
+                    mediaPlayer.start();
 
                     // do your work here
 
@@ -345,7 +361,7 @@ public class UpdateUserAuthActivity extends AppCompatActivity {
                                 .setPositiveButton("RETRY", new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int id) {
                                         //ActivityCompat.requestPermissions((Activity) context, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, Integer.parseInt(WRITE_EXTERNAL_STORAGE));
-                                        Intent i = new Intent(UpdateUserAuthActivity.this, UpdateUserAuthActivity.class);
+                                        Intent i = new Intent(EditPhoneActivity.this, EditPhoneActivity.class);
                                         i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                                         startActivity(i);
                                     }
@@ -363,5 +379,15 @@ public class UpdateUserAuthActivity extends AppCompatActivity {
                 }
                 break;
         }
+    }
+    @Override
+    public void onBackPressed() {
+        mediaPlayer.stop();
+        super.onBackPressed();
+    }
+    @Override
+    public void onUserLeaveHint(){
+        mediaPlayer.stop();
+        super.onUserLeaveHint();
     }
 }

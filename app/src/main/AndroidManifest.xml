@@ -19,13 +19,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".UpdateSelectionAcivity"
+        <activity android:name=".EditExperienceActivity"></activity>
+        <activity android:name=".EditAddressActivity" />
+        <activity android:name=".EditAgeActivity" />
+        <activity android:name=".EditNameActivity" />
+        <activity android:name=".EditPhoneActivity" />
+        <activity
+            android:name=".UpdateSelectionAcivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity android:name=".UpdateUserAuthActivity"
+        <activity
+            android:name=".UpdateUserAuthActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity android:name=".UserTypeActivity"
+        <activity
+            android:name=".UserTypeActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
 

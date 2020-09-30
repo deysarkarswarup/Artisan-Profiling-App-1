@@ -20,4 +20,4 @@
 		$st1->execute();
 
 		echo "data uploaded successfully!";
-		?>
+?>
