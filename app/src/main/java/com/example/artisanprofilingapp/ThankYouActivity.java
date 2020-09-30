@@ -44,7 +44,7 @@ public class ThankYouActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     mediaPlayer.stop();
-                    Intent i = new Intent(ThankYouActivity.this, MainActivity.class);
+                    Intent i = new Intent(ThankYouActivity.this, UserTypeActivity.class);
                     startActivity(i);
                 }
             });

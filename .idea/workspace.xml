@@ -12,6 +12,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="239a1a4f-c135-4eb9-9a79-73f4d961c39a" name="Default Changelist" comment="">
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.bin" afterDir="false" />
@@ -23,13 +24,21 @@
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/artisanprofilingapp/UpdateSelectionAcivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/artisanprofilingapp/UpdateSelectionAcivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/artisanprofilingapp/UpdateUserAuthActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/artisanprofilingapp/UpdateUserAuthActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_update_selection_acivity.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_update_selection_acivity.xml" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/app/app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/app/app.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/artisanprofilingapp/Insert_Artfrom_video_instructionActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/artisanprofilingapp/Insert_Artfrom_video_instructionActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/artisanprofilingapp/ThankYouActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/artisanprofilingapp/ThankYouActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_insert__artfrom_video_instruction.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_insert__artfrom_video_instruction.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_insert_video_instruction.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_insert_video_instruction.xml" afterDir="false" />
+>>>>>>> b0ad44acde622547039cb24d4c4d1a9f6346e9d4
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="949a2883" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />

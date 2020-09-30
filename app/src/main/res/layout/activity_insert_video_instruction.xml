@@ -63,14 +63,14 @@
 
             app:showYouTubeButton="false"
             android:layout_marginTop="50dp"
-            
-            app:showFullScreenButton="false" />
-
-
-            app:showYouTubeButton="true"
             app:videoId="S0Q4gqBUs7c"
             app:autoPlay="false"
             app:showFullScreenButton="false" />
+
+
+<!--            app:showYouTubeButton="true"-->
+<!--            -->
+<!--            app:showFullScreenButton="false" />-->
 
 
         <Button
