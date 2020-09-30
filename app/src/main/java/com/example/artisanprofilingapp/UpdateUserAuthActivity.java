@@ -103,12 +103,7 @@ public class UpdateUserAuthActivity extends AppCompatActivity {
                         //UNCOMMENT THIS
                         mediaPlayer.stop();
                         Log.d("onclick e rowcount",rowcount);
-                        if (rowcount=="1") {
-                            startActivity(new Intent(UpdateUserAuthActivity.this, NameActivity.class));
-                        }
-                        else{
-                            startActivity(new Intent(UpdateUserAuthActivity.this, UpdateSelectionAcivity.class));
-                        }
+
 
 
                     } else {
@@ -136,7 +131,7 @@ public class UpdateUserAuthActivity extends AppCompatActivity {
         progressDialog.show();
 
         PhoneNoHolder = phone.getEditText().getText().toString().trim();
-        NameHolder = phone.getEditText().getText().toString().trim();
+        NameHolder = name.getEditText().getText().toString().trim();
 
         //private boolean isValidMobile(String phone) {
 //                    boolean flag = android.util.Patterns.PHONE.matcher(PhoneNoHolder).matches();
@@ -160,7 +155,7 @@ public class UpdateUserAuthActivity extends AppCompatActivity {
 
 //String myurl = "https://artisanprofilingapp.000webhostapp.com/phoneno.php?phoneno=" + PhoneNoHolder;
         RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
-
+        Log.d("eirki json", myurl);
         StringRequest stringRequest = new StringRequest(Request.Method.GET, myurl,
                 new Response.Listener<String>() {
                     @Override
@@ -193,8 +188,10 @@ public class UpdateUserAuthActivity extends AppCompatActivity {
     }
 
     private void showJSON(String response) {
+
         ArrayList<HashMap<String, String>> list = new ArrayList<>();
         try {
+            Log.d("eirki dhukche", response);
             JSONObject jsonObject = new JSONObject(response);
             JSONArray result = jsonObject.getJSONArray(Config.JSON_ARRAY);
 
@@ -206,6 +203,12 @@ public class UpdateUserAuthActivity extends AppCompatActivity {
             String id = jo.getString(Config.KEY_ID);
             rowcount = jo.getString(Config.ROW_COUNT);
             Log.d("json e rowcount",jo.getString(Config.ROW_COUNT));
+            if (rowcount.equals("1")) {
+                startActivity(new Intent(UpdateUserAuthActivity.this, NameActivity.class));
+            }
+            else{
+                startActivity(new Intent(UpdateUserAuthActivity.this, UpdateSelectionAcivity.class));
+            }
             Log.d("eirki",id);
             myPref.edit().putString("id",id).apply();
 
