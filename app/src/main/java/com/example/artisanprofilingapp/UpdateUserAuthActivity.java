@@ -6,23 +6,65 @@ import androidx.core.content.ContextCompat;
 
 import android.Manifest;
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.media.MediaPlayer;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.Settings;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.RadioGroup;
+import android.widget.Toast;
+
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+import com.google.android.material.textfield.TextInputLayout;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class UpdateUserAuthActivity extends AppCompatActivity {
+    TextInputLayout phone, name;
+    EditText nam,ph;//to show error msg
+    Button submitbtn;
+    RequestQueue requestQueue;
+    ProgressDialog progressDialog;
+    String PhoneNoHolder, NameHolder;
+    SharedPreferences myPref;
+    private MediaPlayer mediaPlayer;
 
+    String yesOrNo="";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_user_auth);
 
+        phone = (TextInputLayout)findViewById(R.id.phone);
+        name = (TextInputLayout)findViewById(R.id.name);
+        nam = (EditText)findViewById(R.id.nam);
+        ph = (EditText)findViewById(R.id.ph);
+        submitbtn = (Button)findViewById(R.id.submitBtn);
+        mediaPlayer = MediaPlayer.create(this, R.raw.experienceinst);
+        mediaPlayer.start();
 
         String state = Environment.getExternalStorageState();
         if (Environment.MEDIA_MOUNTED.equals(state)) {
@@ -38,7 +80,158 @@ public class UpdateUserAuthActivity extends AppCompatActivity {
                 }
             }
         }
+
+        myPref = getApplicationContext().getSharedPreferences("MyPref",MODE_PRIVATE);
+
+        // Creating Volley newRequestQueue .
+        requestQueue = Volley.newRequestQueue(UpdateUserAuthActivity.this);
+        progressDialog = new ProgressDialog(UpdateUserAuthActivity.this);
+
+        submitbtn.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                ConnectivityManager con = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+                NetworkInfo networkInfo = con.getActiveNetworkInfo();
+                if (networkInfo != null && networkInfo.isConnected()) {
+                    if (!ph.getText().toString().equals("") && !nam.getText().toString().equals("")) {
+
+//                            if (!checkPermission()) {
+//Log.d("hiii","hello");
+//                                requestPermission();
+//                            }
+
+                        //Toast.makeText(MainActivity.this,"হয়েগেছে",Toast.LENGTH_LONG).show();
+//                        if(flag[0]) {
+                        regUser();
+
+
+                        //UNCOMMENT THIS
+                        mediaPlayer.stop();
+                        startActivity(new Intent(UpdateUserAuthActivity.this, NameActivity.class));
+//                        }
+
+                    } else {
+                        ph.setError("ফোন নম্বর টাইপ করুন");
+                    }
+                }
+                else{
+                    Intent intent = new Intent(UpdateUserAuthActivity.this, InternetCheckActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
+            }
+
+
+
+
+        });
+//        Intent i = new Intent(getApplicationContext(), NameActivity.class);
+//        startActivity(i);
     }
+
+    private void regUser() {
+
+        progressDialog.setMessage("Please Wait, We are Inserting Your Data on Server");
+        progressDialog.show();
+
+        PhoneNoHolder = phone.getEditText().getText().toString().trim();
+        NameHolder = phone.getEditText().getText().toString().trim();
+
+        //private boolean isValidMobile(String phone) {
+//                    boolean flag = android.util.Patterns.PHONE.matcher(PhoneNoHolder).matches();
+        //}
+
+        Log.d("eirki phone->",PhoneNoHolder);
+        myPref.edit().putString("phone", PhoneNoHolder).apply();
+        myPref.edit().putString("count", "0").apply();
+
+        PhoneNoHolder = PhoneNoHolder.replaceAll(" ","%20");
+        NameHolder = NameHolder.replaceAll(" ","%20");
+
+
+        String characterFilter = "[^\\p{L}\\p{M}\\p{N}\\p{P}\\p{Z}\\p{Cf}\\p{Cs}\\s]";
+        PhoneNoHolder = PhoneNoHolder.replaceAll(characterFilter,"");
+        NameHolder = NameHolder.replaceAll(characterFilter,"");
+
+        String myurl = "https://artisanprofilingapp.000webhostapp.com/checkUser.php?phoneno=" + PhoneNoHolder + NameHolder;
+//                String myurl = "http://192.168.43.12/Artisans-Profiling/phoneno.php?phoneno=" + PhoneNoHolder;
+
+//String myurl = "https://artisanprofilingapp.000webhostapp.com/phoneno.php?phoneno=" + PhoneNoHolder;
+        RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, myurl,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        // Hiding the progress dialog after all task complete.
+                        showJSON(response);
+                        progressDialog.dismiss();
+                        // Showing response message coming from server.
+                        //Toast.makeText(MainActivity.this, response, Toast.LENGTH_LONG).show();
+                        myPref.edit().putString("track", "1").apply();
+//                                Intent i = new Intent(getApplicationContext(), NameActivity.class);
+//                                startActivity(i);
+
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError volleyError) {
+                        // Hiding the progress dialog after all task complete.
+                        progressDialog.dismiss();
+                        // Showing error message if something goes wrong.
+                        Toast.makeText(UpdateUserAuthActivity.this, volleyError.toString(), Toast.LENGTH_LONG).show();
+
+                    }
+                });
+        queue.add(stringRequest);
+
+
+    }
+
+    private void showJSON(String response) {
+        ArrayList<HashMap<String, String>> list = new ArrayList<>();
+        try {
+            JSONObject jsonObject = new JSONObject(response);
+            JSONArray result = jsonObject.getJSONArray(Config.JSON_ARRAY);
+
+            // for (int i = 0; i < result.length(); i++) {
+            JSONObject jo = result.getJSONObject(0);
+//                String title = jo.getString(Config5.KEY_TITLE);
+//                String date = jo.getString(Config5.KEY_DATE);
+//                String data = jo.getString(Config5.KEY_DATA);
+            String id = jo.getString(Config.KEY_ID);
+            Log.d("eirki",id);
+            myPref.edit().putString("id",id).apply();
+
+
+//                    final HashMap<String, String> employees = new HashMap<>();
+////                employees.put(Config5.KEY_TITLE,  "Date = "+title);
+////                employees.put(Config5.KEY_DATE, date);
+////                employees.put(Config5.KEY_DATA, data);
+//                    employees.put(Config.KEY_ID, id);
+//
+//                    list.add(employees);
+//
+//                    //}
+
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+//                ListAdapter adapter = new SimpleAdapter(
+//                        MainActivity.this, list, R.layout.activity_mylist,
+//                        new String[]{Config5.KEY_ID},
+//                        new int[]{R.id.tvid});
+//
+//                listview.setAdapter(adapter);
+
+
+    }
+
+
+
+
 
     private boolean checkPermission() {
         int result = ContextCompat.checkSelfPermission(UpdateUserAuthActivity.this, Manifest.permission.CAMERA);

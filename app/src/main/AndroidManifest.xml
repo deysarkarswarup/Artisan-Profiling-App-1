@@ -19,9 +19,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".UpdateSelectionAcivity"></activity>
-        <activity android:name=".UpdateUserAuthActivity" />
-        <activity android:name=".UserTypeActivity" />
+        <activity android:name=".UpdateSelectionAcivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity android:name=".UpdateUserAuthActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity android:name=".UserTypeActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
 
         <provider
             android:name="androidx.core.content.FileProvider"
