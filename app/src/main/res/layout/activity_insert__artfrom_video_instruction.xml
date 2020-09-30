@@ -56,20 +56,23 @@
         <!--            android:layout_marginEnd="20dp"-->
         <!--            android:id="@+id/videoview"-->
         <!--            />-->
-
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp"
+            android:id="@+id/youtubeLayout"
+            >
         <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
             android:id="@+id/youtube_player_view"
             android:layout_width="match_parent"
             android:layout_height="250dp"
-
-           
-            android:layout_marginTop="50dp"
-
             app:showYouTubeButton="true"
             app:videoId="S0Q4gqBUs7c"
 
             app:autoPlay="false"
             app:showFullScreenButton="false" />
+    </LinearLayout>
         <Button
             android:id="@+id/submitBtn"
             android:layout_width="match_parent"

@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.MediaController;
 import android.widget.VideoView;
 
@@ -27,6 +28,7 @@ public class Insert_Artfrom_video_instructionActivity extends AppCompatActivity 
     SharedPreferences myPref;
     private MediaPlayer mediaPlayer;
     private YouTubePlayerView yt;
+    private LinearLayout ll;
 //    MediaController mediaController;
 //
 //    private boolean mResumed = false;
@@ -44,6 +46,7 @@ public class Insert_Artfrom_video_instructionActivity extends AppCompatActivity 
         mediaPlayer = MediaPlayer.create(this, R.raw.productvideoinst);
         mediaPlayer.start();
         yt = findViewById(R.id.youtube_player_view);
+        ll = findViewById(R.id.youtubeLayout);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 //        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE);
         myPref = getApplicationContext().getSharedPreferences("MyPref",MODE_PRIVATE);
@@ -56,6 +59,13 @@ public class Insert_Artfrom_video_instructionActivity extends AppCompatActivity 
 //        videoView.requestFocus();
 
 //        onPause();
+
+        ll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mediaPlayer.pause();
+            }
+        });
 
         ConnectivityManager con = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = con.getActiveNetworkInfo();
