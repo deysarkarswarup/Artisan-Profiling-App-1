@@ -107,7 +107,7 @@ public class UpdateUserAuthActivity extends AppCompatActivity {
                             startActivity(new Intent(UpdateUserAuthActivity.this, NameActivity.class));
                         }
                         else{
-                            startActivity(new Intent(UpdateUserAuthActivity.this, SplashScreen.class));
+                            startActivity(new Intent(UpdateUserAuthActivity.this, UpdateSelectionAcivity.class));
                         }
 
 
