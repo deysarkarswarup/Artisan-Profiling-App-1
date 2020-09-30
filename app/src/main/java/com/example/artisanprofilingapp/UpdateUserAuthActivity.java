@@ -51,6 +51,7 @@ public class UpdateUserAuthActivity extends AppCompatActivity {
     String PhoneNoHolder, NameHolder;
     SharedPreferences myPref;
     private MediaPlayer mediaPlayer;
+    String rowcount="0";
 
     String yesOrNo="";
     @Override
@@ -95,20 +96,15 @@ public class UpdateUserAuthActivity extends AppCompatActivity {
                 if (networkInfo != null && networkInfo.isConnected()) {
                     if (!ph.getText().toString().equals("") && !nam.getText().toString().equals("")) {
 
-//                            if (!checkPermission()) {
-//Log.d("hiii","hello");
-//                                requestPermission();
-//                            }
 
-                        //Toast.makeText(MainActivity.this,"হয়েগেছে",Toast.LENGTH_LONG).show();
-//                        if(flag[0]) {
                         regUser();
 
 
                         //UNCOMMENT THIS
                         mediaPlayer.stop();
-                        startActivity(new Intent(UpdateUserAuthActivity.this, NameActivity.class));
-//                        }
+                        Log.d("onclick e rowcount",rowcount);
+
+
 
                     } else {
                         ph.setError("ফোন নম্বর টাইপ করুন");
@@ -131,11 +127,11 @@ public class UpdateUserAuthActivity extends AppCompatActivity {
 
     private void regUser() {
 
-        progressDialog.setMessage("Please Wait, We are Inserting Your Data on Server");
+        progressDialog.setMessage("Fetching Data..");
         progressDialog.show();
 
         PhoneNoHolder = phone.getEditText().getText().toString().trim();
-        NameHolder = phone.getEditText().getText().toString().trim();
+        NameHolder = name.getEditText().getText().toString().trim();
 
         //private boolean isValidMobile(String phone) {
 //                    boolean flag = android.util.Patterns.PHONE.matcher(PhoneNoHolder).matches();
@@ -153,17 +149,19 @@ public class UpdateUserAuthActivity extends AppCompatActivity {
         PhoneNoHolder = PhoneNoHolder.replaceAll(characterFilter,"");
         NameHolder = NameHolder.replaceAll(characterFilter,"");
 
-        String myurl = "https://artisanprofilingapp.000webhostapp.com/checkUser.php?phoneno=" + PhoneNoHolder + NameHolder;
+        String myurl = "https://artisanprofilingapp.000webhostapp.com/checkUser.php?phone=" + PhoneNoHolder +
+                "&name="+ NameHolder;
 //                String myurl = "http://192.168.43.12/Artisans-Profiling/phoneno.php?phoneno=" + PhoneNoHolder;
 
 //String myurl = "https://artisanprofilingapp.000webhostapp.com/phoneno.php?phoneno=" + PhoneNoHolder;
         RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
-
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, myurl,
+        Log.d("eirki json", myurl);
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, myurl,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         // Hiding the progress dialog after all task complete.
+                        Log.d("eirki dhukche", response);
                         showJSON(response);
                         progressDialog.dismiss();
                         // Showing response message coming from server.
@@ -190,8 +188,10 @@ public class UpdateUserAuthActivity extends AppCompatActivity {
     }
 
     private void showJSON(String response) {
+
         ArrayList<HashMap<String, String>> list = new ArrayList<>();
         try {
+            Log.d("eirki dhukche", response);
             JSONObject jsonObject = new JSONObject(response);
             JSONArray result = jsonObject.getJSONArray(Config.JSON_ARRAY);
 
@@ -201,8 +201,17 @@ public class UpdateUserAuthActivity extends AppCompatActivity {
 //                String date = jo.getString(Config5.KEY_DATE);
 //                String data = jo.getString(Config5.KEY_DATA);
             String id = jo.getString(Config.KEY_ID);
+            rowcount = jo.getString(Config.ROW_COUNT);
+            Log.d("json e rowcount",jo.getString(Config.ROW_COUNT));
+            if (rowcount.equals("1")) {
+                startActivity(new Intent(UpdateUserAuthActivity.this, NameActivity.class));
+            }
+            else{
+                startActivity(new Intent(UpdateUserAuthActivity.this, UpdateSelectionAcivity.class));
+            }
             Log.d("eirki",id);
             myPref.edit().putString("id",id).apply();
+
 
 
 //                    final HashMap<String, String> employees = new HashMap<>();

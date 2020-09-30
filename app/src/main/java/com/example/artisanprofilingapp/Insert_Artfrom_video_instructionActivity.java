@@ -63,7 +63,7 @@ public class Insert_Artfrom_video_instructionActivity extends AppCompatActivity 
         ll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mediaPlayer.pause();
+                mediaPlayer.stop();
             }
         });
 
@@ -186,6 +186,12 @@ public class Insert_Artfrom_video_instructionActivity extends AppCompatActivity 
 //                startActivity(i);
 //            }
 //        });
+
+@Override
+public void onUserLeaveHint(){
+    mediaPlayer.stop();
+    super.onUserLeaveHint();
+}
 
     @Override
     public void onBackPressed() {

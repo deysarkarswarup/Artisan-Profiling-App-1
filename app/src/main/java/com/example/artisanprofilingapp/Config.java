@@ -8,6 +8,7 @@ public class Config {
     public static final String UPLOAD_URL1= "https://artisanprofilingapp.000webhostapp.com/productDescriptionVideoUrl.php";
 
     public static final String KEY_ID =  "id";
+    public static final String ROW_COUNT =  "num";
     public static final String JSON_ARRAY = "result";
 
     public static final String ArtFormName = "artFormName";

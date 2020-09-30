@@ -6,11 +6,25 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
+    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="eirki" />
     <option name="TOOL_WINDOW_LOG_LEVEL" value="verbose" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="239a1a4f-c135-4eb9-9a79-73f4d961c39a" name="Default Changelist" comment="">
+<<<<<<< HEAD
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/classAnalysis.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/javaCompile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/artisanprofilingapp/UpdateSelectionAcivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/artisanprofilingapp/UpdateSelectionAcivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/artisanprofilingapp/UpdateUserAuthActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/artisanprofilingapp/UpdateUserAuthActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_update_selection_acivity.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_update_selection_acivity.xml" afterDir="false" />
+=======
       <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/modules/app/app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/app/app.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
@@ -18,6 +32,7 @@
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/artisanprofilingapp/ThankYouActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/artisanprofilingapp/ThankYouActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_insert__artfrom_video_instruction.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_insert__artfrom_video_instruction.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_insert_video_instruction.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_insert_video_instruction.xml" afterDir="false" />
+>>>>>>> b0ad44acde622547039cb24d4c4d1a9f6346e9d4
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -201,7 +216,14 @@
       <option name="project" value="LOCAL" />
       <updated>1599385136787</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="New Update activity added">
+      <created>1601473705881</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1601473705892</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -239,45 +261,45 @@
     </state>
     <state x="541" y="179" key="AndroidCreateXmlResourceDialog/0.0.1366.728@0.0.1366.728" timestamp="1599658450606" />
     <state x="541" y="181" key="AndroidCreateXmlResourceDialog/0.0.1366.738@0.0.1366.738" timestamp="1596373116650" />
-    <state x="103" y="0" key="CommitChangelistDialog2" timestamp="1599385132106">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state x="323" y="0" key="CommitChangelistDialog2" timestamp="1601473700662">
+      <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="103" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1599385132106" />
-    <state x="323" y="0" key="CommitChangelistDialog2/0.0.1366.738@0.0.1366.738" timestamp="1596370016722" />
+    <state x="323" y="0" key="CommitChangelistDialog2/0.0.1366.738@0.0.1366.738" timestamp="1601473700662" />
     <state x="463" y="109" key="FileChooserDialogImpl" timestamp="1598126155437">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="463" y="109" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1598126155437" />
     <state x="463" y="110" key="FileChooserDialogImpl/0.0.1366.738@0.0.1366.738" timestamp="1596369948000" />
-    <state width="1323" height="178" key="GridCell.Tab.0.bottom" timestamp="1598973750265">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state width="1323" height="128" key="GridCell.Tab.0.bottom" timestamp="1601473560137">
+      <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state width="1323" height="178" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1598973750265" />
-    <state width="1323" height="211" key="GridCell.Tab.0.bottom/0.0.1366.738@0.0.1366.738" timestamp="1596405391082" />
-    <state width="1323" height="178" key="GridCell.Tab.0.center" timestamp="1598973750265">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state width="1323" height="128" key="GridCell.Tab.0.bottom/0.0.1366.738@0.0.1366.738" timestamp="1601473560137" />
+    <state width="1323" height="128" key="GridCell.Tab.0.center" timestamp="1601473560137">
+      <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state width="1323" height="178" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1598973750265" />
-    <state width="1323" height="211" key="GridCell.Tab.0.center/0.0.1366.738@0.0.1366.738" timestamp="1596405391081" />
-    <state width="1323" height="178" key="GridCell.Tab.0.left" timestamp="1598973750265">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state width="1323" height="128" key="GridCell.Tab.0.center/0.0.1366.738@0.0.1366.738" timestamp="1601473560137" />
+    <state width="1323" height="128" key="GridCell.Tab.0.left" timestamp="1601473560137">
+      <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state width="1323" height="178" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1598973750265" />
-    <state width="1323" height="211" key="GridCell.Tab.0.left/0.0.1366.738@0.0.1366.738" timestamp="1596405391080" />
-    <state width="1323" height="178" key="GridCell.Tab.0.right" timestamp="1598973750265">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state width="1323" height="128" key="GridCell.Tab.0.left/0.0.1366.738@0.0.1366.738" timestamp="1601473560137" />
+    <state width="1323" height="128" key="GridCell.Tab.0.right" timestamp="1601473560137">
+      <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state width="1323" height="178" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1598973750265" />
-    <state width="1323" height="211" key="GridCell.Tab.0.right/0.0.1366.738@0.0.1366.738" timestamp="1596405391081" />
+    <state width="1323" height="128" key="GridCell.Tab.0.right/0.0.1366.738@0.0.1366.738" timestamp="1601473560137" />
     <state x="263" y="111" key="IDE.errors.dialog" timestamp="1596369991312">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="263" y="111" key="IDE.errors.dialog/0.0.1366.738@0.0.1366.738" timestamp="1596369991312" />
-    <state x="275" y="100" key="Vcs.Push.Dialog.v2" timestamp="1599385147075">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state x="275" y="101" key="Vcs.Push.Dialog.v2" timestamp="1601473709487">
+      <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="275" y="100" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1599385147075" />
-    <state x="275" y="101" key="Vcs.Push.Dialog.v2/0.0.1366.738@0.0.1366.738" timestamp="1596364621283" />
+    <state x="275" y="101" key="Vcs.Push.Dialog.v2/0.0.1366.738@0.0.1366.738" timestamp="1601473709487" />
     <state x="44" y="189" key="com.intellij.ide.util.TipDialog" timestamp="1599655750822">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
