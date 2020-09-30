@@ -51,6 +51,7 @@ public class UpdateUserAuthActivity extends AppCompatActivity {
     String PhoneNoHolder, NameHolder;
     SharedPreferences myPref;
     private MediaPlayer mediaPlayer;
+    String rowcount="0";
 
     String yesOrNo="";
     @Override
@@ -95,20 +96,20 @@ public class UpdateUserAuthActivity extends AppCompatActivity {
                 if (networkInfo != null && networkInfo.isConnected()) {
                     if (!ph.getText().toString().equals("") && !nam.getText().toString().equals("")) {
 
-//                            if (!checkPermission()) {
-//Log.d("hiii","hello");
-//                                requestPermission();
-//                            }
 
-                        //Toast.makeText(MainActivity.this,"হয়েগেছে",Toast.LENGTH_LONG).show();
-//                        if(flag[0]) {
                         regUser();
 
 
                         //UNCOMMENT THIS
                         mediaPlayer.stop();
-                        startActivity(new Intent(UpdateUserAuthActivity.this, NameActivity.class));
-//                        }
+                        Log.d("onclick e rowcount",rowcount);
+                        if (rowcount=="1") {
+                            startActivity(new Intent(UpdateUserAuthActivity.this, NameActivity.class));
+                        }
+                        else{
+                            startActivity(new Intent(UpdateUserAuthActivity.this, SplashScreen.class));
+                        }
+
 
                     } else {
                         ph.setError("ফোন নম্বর টাইপ করুন");
@@ -131,7 +132,7 @@ public class UpdateUserAuthActivity extends AppCompatActivity {
 
     private void regUser() {
 
-        progressDialog.setMessage("Please Wait, We are Inserting Your Data on Server");
+        progressDialog.setMessage("Fetching Data..");
         progressDialog.show();
 
         PhoneNoHolder = phone.getEditText().getText().toString().trim();
@@ -153,17 +154,19 @@ public class UpdateUserAuthActivity extends AppCompatActivity {
         PhoneNoHolder = PhoneNoHolder.replaceAll(characterFilter,"");
         NameHolder = NameHolder.replaceAll(characterFilter,"");
 
-        String myurl = "https://artisanprofilingapp.000webhostapp.com/checkUser.php?phoneno=" + PhoneNoHolder + NameHolder;
+        String myurl = "https://artisanprofilingapp.000webhostapp.com/checkUser.php?phone=" + PhoneNoHolder +
+                "&name="+ NameHolder;
 //                String myurl = "http://192.168.43.12/Artisans-Profiling/phoneno.php?phoneno=" + PhoneNoHolder;
 
 //String myurl = "https://artisanprofilingapp.000webhostapp.com/phoneno.php?phoneno=" + PhoneNoHolder;
         RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
 
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, myurl,
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, myurl,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         // Hiding the progress dialog after all task complete.
+                        Log.d("eirki dhukche", response);
                         showJSON(response);
                         progressDialog.dismiss();
                         // Showing response message coming from server.
@@ -201,8 +204,11 @@ public class UpdateUserAuthActivity extends AppCompatActivity {
 //                String date = jo.getString(Config5.KEY_DATE);
 //                String data = jo.getString(Config5.KEY_DATA);
             String id = jo.getString(Config.KEY_ID);
+            rowcount = jo.getString(Config.ROW_COUNT);
+            Log.d("json e rowcount",jo.getString(Config.ROW_COUNT));
             Log.d("eirki",id);
             myPref.edit().putString("id",id).apply();
+
 
 
 //                    final HashMap<String, String> employees = new HashMap<>();
