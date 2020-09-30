@@ -176,13 +176,15 @@ public class EditPhoneActivity extends AppCompatActivity {
         myPref.edit().putString("phone", PhoneNoHolder).apply();
         myPref.edit().putString("count", "0").apply();
 
+        String idToGet = myPref.getString("id","No data found");
+
 
         PhoneNoHolder = PhoneNoHolder.replaceAll(" ","%20");
 
         String characterFilter = "[^\\p{L}\\p{M}\\p{N}\\p{P}\\p{Z}\\p{Cf}\\p{Cs}\\s]";
         PhoneNoHolder = PhoneNoHolder.replaceAll(characterFilter,"");
 
-        String myurl = "https://artisanprofilingapp.000webhostapp.com/phoneno.php?phoneno=" + PhoneNoHolder;
+        String myurl = "https://artisanprofilingapp.000webhostapp.com/updatePhone.php?id="+idToGet+ "&phone=" + PhoneNoHolder;
 //                String myurl = "http://192.168.43.12/Artisans-Profiling/phoneno.php?phoneno=" + PhoneNoHolder;
 
 //String myurl = "https://artisanprofilingapp.000webhostapp.com/phoneno.php?phoneno=" + PhoneNoHolder;
@@ -230,8 +232,8 @@ public class EditPhoneActivity extends AppCompatActivity {
 //                String date = jo.getString(Config5.KEY_DATE);
 //                String data = jo.getString(Config5.KEY_DATA);
             String id = jo.getString(Config.KEY_ID);
-            Log.d("eirki",id);
-            myPref.edit().putString("id",id).apply();
+//            Log.d("eirki",id);
+//            myPref.edit().putString("id",id).apply();
 
 
 //                    final HashMap<String, String> employees = new HashMap<>();

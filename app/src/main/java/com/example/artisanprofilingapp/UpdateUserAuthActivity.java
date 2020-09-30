@@ -204,14 +204,15 @@ public class UpdateUserAuthActivity extends AppCompatActivity {
             rowcount = jo.getString(Config.ROW_COUNT);
             Log.d("json e rowcount",jo.getString(Config.ROW_COUNT));
             if (rowcount.equals("1")) {
-                startActivity(new Intent(UpdateUserAuthActivity.this, NameActivity.class));
+                startActivity(new Intent(UpdateUserAuthActivity.this, UpdateSelectionAcivity.class));
             }
             else{
-                startActivity(new Intent(UpdateUserAuthActivity.this, UpdateSelectionAcivity.class));
+                startActivity(new Intent(UpdateUserAuthActivity.this, EditPhoneActivity.class));
+                Toast.makeText(UpdateUserAuthActivity.this,
+                        "আপনার এই নাম আর এই ফোন নম্বরের আগে কোনো রেকর্ড নেই ",Toast.LENGTH_LONG).show();
             }
             Log.d("eirki",id);
             myPref.edit().putString("id",id).apply();
-
 
 
 //                    final HashMap<String, String> employees = new HashMap<>();
