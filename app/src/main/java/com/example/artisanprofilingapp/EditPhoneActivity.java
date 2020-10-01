@@ -60,6 +60,7 @@ public class EditPhoneActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_phone);
+        mediaPlayer = MediaPlayer.create(this,R.raw.phoneno);
 
         String state = Environment.getExternalStorageState();
         if (Environment.MEDIA_MOUNTED.equals(state)) {
@@ -139,7 +140,7 @@ public class EditPhoneActivity extends AppCompatActivity {
 
                         //UNCOMMENT THIS
                         mediaPlayer.stop();
-                        startActivity(new Intent(EditPhoneActivity.this, NameActivity.class));
+                        startActivity(new Intent(EditPhoneActivity.this, UpdateSelectionAcivity.class));
 //                        }
 
                     } else {
@@ -173,8 +174,10 @@ public class EditPhoneActivity extends AppCompatActivity {
         //}
 
         Log.d("eirki phone->",PhoneNoHolder);
-        myPref.edit().putString("phone", PhoneNoHolder).apply();
-        myPref.edit().putString("count", "0").apply();
+//        myPref.edit().putString("phone", PhoneNoHolder).apply();
+//        myPref.edit().putString("count", "0").apply();
+
+        String idToGet = myPref.getString("id","No data found");
 
 
         PhoneNoHolder = PhoneNoHolder.replaceAll(" ","%20");
@@ -182,7 +185,7 @@ public class EditPhoneActivity extends AppCompatActivity {
         String characterFilter = "[^\\p{L}\\p{M}\\p{N}\\p{P}\\p{Z}\\p{Cf}\\p{Cs}\\s]";
         PhoneNoHolder = PhoneNoHolder.replaceAll(characterFilter,"");
 
-        String myurl = "https://artisanprofilingapp.000webhostapp.com/phoneno.php?phoneno=" + PhoneNoHolder;
+        String myurl = "https://artisanprofilingapp.000webhostapp.com/updatePhone.php?id="+idToGet+ "&phone=" + PhoneNoHolder;
 //                String myurl = "http://192.168.43.12/Artisans-Profiling/phoneno.php?phoneno=" + PhoneNoHolder;
 
 //String myurl = "https://artisanprofilingapp.000webhostapp.com/phoneno.php?phoneno=" + PhoneNoHolder;
@@ -197,7 +200,7 @@ public class EditPhoneActivity extends AppCompatActivity {
                         progressDialog.dismiss();
                         // Showing response message coming from server.
                         //Toast.makeText(MainActivity.this, response, Toast.LENGTH_LONG).show();
-                        myPref.edit().putString("track", "1").apply();
+//                        myPref.edit().putString("track", "1").apply();
 //                                Intent i = new Intent(getApplicationContext(), NameActivity.class);
 //                                startActivity(i);
 

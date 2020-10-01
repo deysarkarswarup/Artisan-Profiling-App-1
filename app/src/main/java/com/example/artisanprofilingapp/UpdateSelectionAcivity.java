@@ -9,11 +9,12 @@ import android.media.MediaPlayer;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
 public class UpdateSelectionAcivity extends AppCompatActivity {
-    Button phoneno, name, age, address, profilePic, artformPicture,experience, silpo, porichitiVideo,artformVideo;
+    Button phoneno, name, age, address, profilePic, artformPicture,experience, silpo, porichitiVideo,artformVideo,newData;
     private SharedPreferences myPref;
     private MediaPlayer mediaPlayer;
     @Override
@@ -29,8 +30,9 @@ public class UpdateSelectionAcivity extends AppCompatActivity {
         artformPicture = findViewById(R.id.artformPicture);
         experience = findViewById(R.id.experience);
         silpo = findViewById(R.id.silpo);
-        porichitiVideo = findViewById(R.id.porichitiVideo);
-        artformVideo = findViewById(R.id.artformVideo);
+        newData = findViewById(R.id.newData);
+//        porichitiVideo = findViewById(R.id.porichitiVideo);
+//        artformVideo = findViewById(R.id.artformVideo);
 
         myPref = getApplicationContext().getSharedPreferences("MyPref", MODE_PRIVATE);
         mediaPlayer = MediaPlayer.create(this, R.raw.captureselectioninst);
@@ -42,100 +44,107 @@ public class UpdateSelectionAcivity extends AppCompatActivity {
             phoneno.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    myPref.edit().putString("selected", "saree").apply();
-                    myPref.edit().putString("track", "9").apply();
+//                    myPref.edit().putString("selected", "saree").apply();
+//                    myPref.edit().putString("track", "9").apply();
+                    Log.d("eirki", "onClick: ");
                     mediaPlayer.stop();
-                    startActivity(new Intent(getApplicationContext(), EditPhoneActivity.class));
+                    startActivity(new Intent(UpdateSelectionAcivity.this, EditPhoneActivity.class));
                 }
             });
 
             name.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    myPref.edit().putString("selected", "saree").apply();
-                    myPref.edit().putString("track", "9").apply();
+//                    myPref.edit().putString("selected", "saree").apply();
+//                    myPref.edit().putString("track", "9").apply();
                     mediaPlayer.stop();
-                    startActivity(new Intent(getApplicationContext(), EditNameActivity.class));
+                    startActivity(new Intent(UpdateSelectionAcivity.this, EditNameActivity.class));
                 }
             });
 
             age.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    myPref.edit().putString("selected", "saree").apply();
-                    myPref.edit().putString("track", "9").apply();
+//                    myPref.edit().putString("selected", "saree").apply();
+//                    myPref.edit().putString("track", "9").apply();
                     mediaPlayer.stop();
-                    startActivity(new Intent(getApplicationContext(), EditAgeActivity.class));
+                    startActivity(new Intent(UpdateSelectionAcivity.this, EditAgeActivity.class));
                 }
             });
 
             address.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    myPref.edit().putString("selected", "saree").apply();
-                    myPref.edit().putString("track", "9").apply();
+
+//                    myPref.edit().putString("track", "9").apply();
                     mediaPlayer.stop();
-                    startActivity(new Intent(getApplicationContext(), EditAddressActivity.class));
+                    startActivity(new Intent(UpdateSelectionAcivity.this, EditAddressActivity.class));
                 }
             });
 
             experience.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    myPref.edit().putString("selected", "saree").apply();
-                    myPref.edit().putString("track", "9").apply();
+
+//                    myPref.edit().putString("track", "9").apply();
                     mediaPlayer.stop();
-                    startActivity(new Intent(getApplicationContext(), EditExperienceActivity.class));
+                    startActivity(new Intent(UpdateSelectionAcivity.this, EditExperienceActivity.class));
                 }
             });
 
             silpo.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    myPref.edit().putString("selected", "saree").apply();
-                    myPref.edit().putString("track", "9").apply();
+//                    myPref.edit().putString("selected", "saree").apply();
+//                    myPref.edit().putString("track", "9").apply();
                     mediaPlayer.stop();
-                    startActivity(new Intent(getApplicationContext(), Insert_image_instructionActivity.class));
+                    startActivity(new Intent(UpdateSelectionAcivity.this, EditArtformActivity.class));
+                }
+            });
+            newData.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    mediaPlayer.stop();
+                    startActivity(new Intent(UpdateSelectionAcivity.this, UserTypeActivity.class));
+                }
+            });
+//            porichitiVideo.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+////                    myPref.edit().putString("selected", "saree").apply();
+////                    myPref.edit().putString("track", "9").apply();
+//                    mediaPlayer.stop();
+//                    startActivity(new Intent(UpdateSelectionAcivity.this, Insert_image_instructionActivity.class));
+//                }
+//            });
+//
+//            artformVideo.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+////                    myPref.edit().putString("selected", "saree").apply();
+////                    myPref.edit().putString("track", "9").apply();
+//                    mediaPlayer.stop();
+//                    startActivity(new Intent(UpdateSelectionAcivity.this, Insert_image_instructionActivity.class));
+//                }
+//            });
+
+            profilePic.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+//                    myPref.edit().putString("selected", "saree").apply();
+//                    myPref.edit().putString("track", "9").apply();
+                    mediaPlayer.stop();
+                    startActivity(new Intent(UpdateSelectionAcivity.this, EditProfilePicActivity.class));
                 }
             });
 
-            porichitiVideo.setOnClickListener(new View.OnClickListener() {
+            artformPicture.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    myPref.edit().putString("selected", "saree").apply();
-                    myPref.edit().putString("track", "9").apply();
+//                    myPref.edit().putString("selected", "saree").apply();
+//                    myPref.edit().putString("track", "9").apply();
                     mediaPlayer.stop();
-                    startActivity(new Intent(getApplicationContext(), Insert_image_instructionActivity.class));
-                }
-            });
-
-            artformVideo.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    myPref.edit().putString("selected", "saree").apply();
-                    myPref.edit().putString("track", "9").apply();
-                    mediaPlayer.stop();
-                    startActivity(new Intent(getApplicationContext(), Insert_image_instructionActivity.class));
-                }
-            });
-
-            phoneno.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    myPref.edit().putString("selected", "saree").apply();
-                    myPref.edit().putString("track", "9").apply();
-                    mediaPlayer.stop();
-                    startActivity(new Intent(getApplicationContext(), Insert_image_instructionActivity.class));
-                }
-            });
-
-            phoneno.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    myPref.edit().putString("selected", "saree").apply();
-                    myPref.edit().putString("track", "9").apply();
-                    mediaPlayer.stop();
-                    startActivity(new Intent(getApplicationContext(), Insert_image_instructionActivity.class));
+                    startActivity(new Intent(UpdateSelectionAcivity.this, EditImageCaptureActivity.class));
                 }
             });
 

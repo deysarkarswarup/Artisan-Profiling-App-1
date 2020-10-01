@@ -93,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
         // Creating Volley newRequestQueue .
         requestQueue = Volley.newRequestQueue(MainActivity.this);
         progressDialog = new ProgressDialog(MainActivity.this);
-        final boolean[] flag = {true};
+        final boolean[] flag = {false};
         //DELETE THIS
        // startActivity(new Intent(MainActivity.this, ArtformActivity3.class));
 //        mobileno.setOnFocusChangeListener(new View.OnFocusChangeListener() {
@@ -123,6 +123,7 @@ public class MainActivity extends AppCompatActivity {
                     flag[0] = false;
                 }else{
                     //regUser();
+                    flag[0] = true;
                 }
             }
         });
