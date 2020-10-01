@@ -1,5 +1,5 @@
 <?php
-	$con=mysqli_connect("localhost","id14527893_root","grB8e0[@rJ[\OOi=","id14527893_artisansprofiling");
+	$con=mysqli_connect("localhost","root","","artisan-profiling");
 
 	$phone = $_GET['phone'];
 	$name = $_GET['name'];

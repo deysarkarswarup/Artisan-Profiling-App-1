@@ -20,8 +20,7 @@ if(isset($_POST["encoded_string"])){
 		$query = "INSERT INTO `attachmentimage` (productImageName, artisanid) VALUES('" . $image_name . "', '" . $id . "')";
 // 		$query = "UPDATE `attachmentimage` SET `productImageName`='".$image_name."' WHERE `artisanid`='".$id."'" ;
 		
-		$conn = mysqli_connect("localhost","id14527893_root","grB8e0[@rJ[\OOi=","id14527893_artisansprofiling");
-//		$conn = mysqli_connect('localhost', 'root', '','artisan-profiling');
+		$conn = mysqli_connect('localhost', 'root', '','artisan-profiling');
 		$result = mysqli_query($conn, $query) ;
 		
 		if($result){

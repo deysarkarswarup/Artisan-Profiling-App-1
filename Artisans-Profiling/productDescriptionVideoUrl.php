@@ -1,8 +1,5 @@
 <?php
-//$con=new mysqli("localhost","id14527893_root","grB8e0[@rJ[\OOi=","id14527893_artisansprofiling");
- //$con=new mysqli("localhost","root","","artisan-profiling");
-//$con= mysqli_connect("localhost","root","","artisan-profiling");
-$con= mysqli_connect("localhost","id14527893_root","grB8e0[@rJ[\OOi=","id14527893_artisansprofiling");
+$con= mysqli_connect("localhost","root","","artisan-profiling");
 			
 	if($_SERVER['REQUEST_METHOD']=='POST'){
 		$file = $_FILES['myFile']['name'];
