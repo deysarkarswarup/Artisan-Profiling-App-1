@@ -1,7 +1,5 @@
 <?php
- //$con=new mysqli("localhost","root","","artisan-profiling");
 $con= mysqli_connect("localhost","root","","artisan-profiling");
-
 			
 	if($_SERVER['REQUEST_METHOD']=='POST'){
 		$file = $_FILES['myFile']['name'];

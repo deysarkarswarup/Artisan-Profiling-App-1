@@ -1,6 +1,9 @@
 <?php
-		$con=new mysqli("localhost","root","","artisan-profiling");
-		$conn=mysqli_connect("localhost","root","","artisan-profiling");
+
+		$con=new mysqli_connect("localhost","root","","artisan-profiling");
+//		$con=new mysqli("localhost","root","","artisan-profiling");
+	//	$conn=mysqli_connect("localhost","id14527893_root","grB8e0[@rJ[\OOi=","id14527893_artisansprofiling");
+//		$conn=mysqli_connect("localhost","root","","artisan-profiling");
 		$artlearned=$_GET["artlearned"];
 		$hascoworker = $_GET["hascoworker"];
 		$noofcoworker = $_GET["noofcoworker"];
@@ -26,8 +29,13 @@
   echo "0 results";
 }
 
-$st2 = "INSERT INTO `artisanartformrelation` (artisanId, artFormId) VALUES('" . $id . "', '" . $artformIdd . "')";
-		$result4 = mysqli_query($conn, $st2) ;
+$st2 =$con->prepare("UPDATE `artisanartformrelation` SET `artFormId`=? WHERE `artisanId`=?");
+$st2->bind_param("ss", $artformIdd, $id);
+		$st2->execute();
+
+
+//"INSERT INTO `artisanartformrelation` (artisanId, artFormId) VALUES('" . $id . "', '" . $artformIdd . "')";
+//		$result4 = mysqli_query($conn, $st2) ;
 		//echo "data uploaded successfully!";
 		echo "data uploaded successfully!";
 		?>

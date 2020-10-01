@@ -1,5 +1,6 @@
 <?php
 		$con=new mysqli("localhost","root","","artisan-profiling");
+
 //		$st_check=$con->prepare("SELECT * FROM artisan WHERE phone=?");
 //		$st_check->bind_param("s", $_GET["phoneno"]);
 //		$st_check->execute();
