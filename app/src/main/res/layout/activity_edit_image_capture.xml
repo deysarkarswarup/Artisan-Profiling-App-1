@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:fillViewport="false">
+
     <LinearLayout
         android:orientation="vertical"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".MainActivity">
@@ -27,20 +28,23 @@
             android:gravity="center"
             android:textColor="@color/Heading"
             />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
-            android:text="@string/updateSelection"
+            android:layout_marginTop="80dp"
+            android:text="@string/selectimageinfo"
             android:textSize="25sp"
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
+            android:textAlignment="center"
             android:textColor="@color/textColor"
             android:textStyle="italic"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -51,7 +55,7 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/phoneno"
+                android:id="@+id/saree"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="false"
@@ -60,16 +64,16 @@
                 android:layout_weight="0.5"
                 android:background="@drawable/btn_round"
                 android:padding="10dp"
-                android:text="@string/phoneNo"
+                android:text="শাড়ী"
                 android:textSize="30sp" />
             <Button
-                android:id="@+id/name"
+                android:id="@+id/kurta"
                 android:layout_width="0dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginLeft="10dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.5"
-                android:text="@string/nam"
+                android:text="কুর্তা"
                 android:textSize="30sp"
                 android:padding="10dp"
                 android:background="@drawable/btn_round"
@@ -85,7 +89,7 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/age"
+                android:id="@+id/tshirt"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="false"
@@ -94,16 +98,16 @@
                 android:layout_weight="0.5"
                 android:background="@drawable/btn_round"
                 android:padding="10dp"
-                android:text="@string/ageupdate"
+                android:text="টি-শার্ট"
                 android:textSize="30sp" />
             <Button
-                android:id="@+id/address"
+                android:id="@+id/showPiece"
                 android:layout_width="0dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginLeft="10dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.5"
-                android:text="@string/addressupdate"
+                android:text="শো পিস্"
                 android:textSize="30sp"
                 android:padding="10dp"
                 android:background="@drawable/btn_round"
@@ -119,7 +123,7 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/profilePic"
+                android:id="@+id/bag"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="false"
@@ -128,113 +132,21 @@
                 android:layout_weight="0.5"
                 android:background="@drawable/btn_round"
                 android:padding="10dp"
-                android:text="প্রোফাইল ফটো"
+                android:text="ব্যাগ"
                 android:textSize="30sp" />
             <Button
-                android:id="@+id/artformPicture"
+                android:id="@+id/goina"
                 android:layout_width="0dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginLeft="10dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.5"
-                android:text="আর্টফর্ম ফটো"
-                android:textSize="30sp"
-                android:padding="10dp"
-                android:background="@drawable/btn_round"
-
-                android:layout_marginTop="0dp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="20dp"
-            android:layout_alignParentBottom="true"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/experience"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="false"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_weight="0.5"
-                android:background="@drawable/btn_round"
-                android:padding="10dp"
-                android:text="অভিজ্ঞতা"
-                android:textSize="30sp" />
-            <Button
-                android:id="@+id/silpo"
-                android:layout_width="0dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.5"
-                android:text="শিল্প"
+                android:text="গয়না"
                 android:textSize="30sp"
                 android:padding="10dp"
                 android:background="@drawable/btn_round"
                 android:layout_marginTop="0dp" />
         </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="20dp"
-            android:layout_alignParentBottom="true"
-            android:orientation="horizontal">
-
-
-            <Button
-                android:id="@+id/newData"
-                android:layout_width="0dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.5"
-                android:text="নতুন তথ্য"
-                android:textSize="30sp"
-                android:padding="10dp"
-                android:background="@drawable/btn_round"
-                android:layout_marginTop="0dp" />
-        </LinearLayout>
-<!--        <LinearLayout-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginTop="20dp"-->
-<!--            android:layout_marginBottom="20dp"-->
-<!--            android:layout_alignParentBottom="true"-->
-<!--            android:orientation="horizontal">-->
-
-<!--            <Button-->
-<!--                android:id="@+id/porichitiVideo"-->
-<!--                android:layout_width="0dp"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_alignParentTop="false"-->
-<!--                android:layout_marginLeft="10dp"-->
-<!--                android:layout_marginRight="10dp"-->
-<!--                android:layout_weight="0.5"-->
-<!--                android:background="@drawable/btn_round"-->
-<!--                android:padding="10dp"-->
-<!--                android:text="পরিচিতি ভিডিও"-->
-<!--                android:textSize="30sp" />-->
-<!--            <Button-->
-<!--                android:id="@+id/artformVideo"-->
-<!--                android:layout_width="0dp"-->
-<!--                android:layout_marginRight="10dp"-->
-<!--                android:layout_marginLeft="10dp"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_weight="0.5"-->
-<!--                android:text="আর্টফর্ম ভিডিও"-->
-<!--                android:textSize="30sp"-->
-<!--                android:padding="10dp"-->
-<!--                android:background="@drawable/btn_round"-->
-<!--                android:layout_marginTop="0dp" />-->
-<!--        </LinearLayout>-->
-
-
 
     </LinearLayout>
 </ScrollView>

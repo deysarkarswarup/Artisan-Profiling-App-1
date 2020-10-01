@@ -42,9 +42,6 @@ public class AddressActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_address);
 
-
-
-
         district = findViewById(R.id.district);
         addressLine1 = findViewById(R.id.addressLine1);
         addressLine2 = findViewById(R.id.addressLine2);
