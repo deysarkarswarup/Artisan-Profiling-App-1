@@ -16,7 +16,7 @@ import android.widget.Button;
 public class UpdateSelectionAcivity extends AppCompatActivity {
     Button phoneno, name, age, address, profilePic, artformPicture,experience, silpo, porichitiVideo,artformVideo,newData;
     private SharedPreferences myPref;
-    private MediaPlayer mediaPlayer;
+//    private MediaPlayer mediaPlayer;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,8 +35,8 @@ public class UpdateSelectionAcivity extends AppCompatActivity {
 //        artformVideo = findViewById(R.id.artformVideo);
 
         myPref = getApplicationContext().getSharedPreferences("MyPref", MODE_PRIVATE);
-        mediaPlayer = MediaPlayer.create(this, R.raw.captureselectioninst);
-        mediaPlayer.start();
+//        mediaPlayer = MediaPlayer.create(this, R.raw.captureselectioninst);
+//        mediaPlayer.start();
         ConnectivityManager con = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = con.getActiveNetworkInfo();
 
@@ -47,7 +47,7 @@ public class UpdateSelectionAcivity extends AppCompatActivity {
 //                    myPref.edit().putString("selected", "saree").apply();
 //                    myPref.edit().putString("track", "9").apply();
                     Log.d("eirki", "onClick: ");
-                    mediaPlayer.stop();
+//                    mediaPlayer.stop();
                     startActivity(new Intent(UpdateSelectionAcivity.this, EditPhoneActivity.class));
                 }
             });
@@ -57,7 +57,7 @@ public class UpdateSelectionAcivity extends AppCompatActivity {
                 public void onClick(View v) {
 //                    myPref.edit().putString("selected", "saree").apply();
 //                    myPref.edit().putString("track", "9").apply();
-                    mediaPlayer.stop();
+//                    mediaPlayer.stop();
                     startActivity(new Intent(UpdateSelectionAcivity.this, EditNameActivity.class));
                 }
             });
@@ -67,7 +67,7 @@ public class UpdateSelectionAcivity extends AppCompatActivity {
                 public void onClick(View v) {
 //                    myPref.edit().putString("selected", "saree").apply();
 //                    myPref.edit().putString("track", "9").apply();
-                    mediaPlayer.stop();
+//                    mediaPlayer.stop();
                     startActivity(new Intent(UpdateSelectionAcivity.this, EditAgeActivity.class));
                 }
             });
@@ -77,7 +77,7 @@ public class UpdateSelectionAcivity extends AppCompatActivity {
                 public void onClick(View v) {
 
 //                    myPref.edit().putString("track", "9").apply();
-                    mediaPlayer.stop();
+//                    mediaPlayer.stop();
                     startActivity(new Intent(UpdateSelectionAcivity.this, EditAddressActivity.class));
                 }
             });
@@ -87,7 +87,7 @@ public class UpdateSelectionAcivity extends AppCompatActivity {
                 public void onClick(View v) {
 
 //                    myPref.edit().putString("track", "9").apply();
-                    mediaPlayer.stop();
+//                    mediaPlayer.stop();
                     startActivity(new Intent(UpdateSelectionAcivity.this, EditExperienceActivity.class));
                 }
             });
@@ -97,14 +97,14 @@ public class UpdateSelectionAcivity extends AppCompatActivity {
                 public void onClick(View v) {
 //                    myPref.edit().putString("selected", "saree").apply();
 //                    myPref.edit().putString("track", "9").apply();
-                    mediaPlayer.stop();
+//                    mediaPlayer.stop();
                     startActivity(new Intent(UpdateSelectionAcivity.this, EditArtformActivity.class));
                 }
             });
             newData.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    mediaPlayer.stop();
+//                    mediaPlayer.stop();
                     startActivity(new Intent(UpdateSelectionAcivity.this, UserTypeActivity.class));
                 }
             });
@@ -133,7 +133,7 @@ public class UpdateSelectionAcivity extends AppCompatActivity {
                 public void onClick(View v) {
 //                    myPref.edit().putString("selected", "saree").apply();
 //                    myPref.edit().putString("track", "9").apply();
-                    mediaPlayer.stop();
+//                    mediaPlayer.stop();
                     startActivity(new Intent(UpdateSelectionAcivity.this, EditProfilePicActivity.class));
                 }
             });
@@ -143,7 +143,7 @@ public class UpdateSelectionAcivity extends AppCompatActivity {
                 public void onClick(View v) {
 //                    myPref.edit().putString("selected", "saree").apply();
 //                    myPref.edit().putString("track", "9").apply();
-                    mediaPlayer.stop();
+//                    mediaPlayer.stop();
                     startActivity(new Intent(UpdateSelectionAcivity.this, EditImageCaptureActivity.class));
                 }
             });
@@ -161,12 +161,12 @@ public class UpdateSelectionAcivity extends AppCompatActivity {
 
         @Override
         public void onBackPressed() {
-            mediaPlayer.stop();
+//            mediaPlayer.stop();
             super.onBackPressed();
         }
         @Override
         public void onUserLeaveHint(){
-            mediaPlayer.stop();
+//            mediaPlayer.stop();
             super.onUserLeaveHint();
         }
 

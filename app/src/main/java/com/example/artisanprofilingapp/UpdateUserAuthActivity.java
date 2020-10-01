@@ -50,7 +50,7 @@ public class UpdateUserAuthActivity extends AppCompatActivity {
     ProgressDialog progressDialog;
     String PhoneNoHolder, NameHolder;
     SharedPreferences myPref;
-    private MediaPlayer mediaPlayer;
+//    private MediaPlayer mediaPlayer;
     String rowcount="0";
 
     String yesOrNo="";
@@ -64,8 +64,8 @@ public class UpdateUserAuthActivity extends AppCompatActivity {
         nam = (EditText)findViewById(R.id.nam);
         ph = (EditText)findViewById(R.id.ph);
         submitbtn = (Button)findViewById(R.id.submitBtn);
-        mediaPlayer = MediaPlayer.create(this, R.raw.experienceinst);
-        mediaPlayer.start();
+       // mediaPlayer = MediaPlayer.create(this, R.raw.experienceinst);
+//        mediaPlayer.start();
 
         String state = Environment.getExternalStorageState();
         if (Environment.MEDIA_MOUNTED.equals(state)) {
@@ -101,7 +101,7 @@ public class UpdateUserAuthActivity extends AppCompatActivity {
 
 
                         //UNCOMMENT THIS
-                        mediaPlayer.stop();
+//                        mediaPlayer.stop();
                         Log.d("onclick e rowcount",rowcount);
 
 
