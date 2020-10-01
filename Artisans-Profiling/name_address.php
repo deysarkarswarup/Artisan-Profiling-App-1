@@ -1,5 +1,6 @@
 <?php
-		$con=new mysqli("localhost","root","","artisan-profiling");
+$con=new mysqli("localhost","id14527893_root","grB8e0[@rJ[\OOi=","id14527893_artisansprofiling");
+//		$con=new mysqli("localhost","root","","artisan-profiling");
 
 		$name = $_GET["name"];
 		$b = $_GET["district"];
@@ -20,4 +21,4 @@
 		$st1->execute();
 
 		echo "data uploaded successfully!";
-?>
+		?>

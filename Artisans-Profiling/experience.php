@@ -1,8 +1,9 @@
 <?php
-		$con=mysqli_connect("localhost","root","","artisan-profiling");
+	//	$con=mysqli_connect("localhost","root","","artisan-profiling");
 	//	$con1= new mysqli("localhost","root","","artisan-profiling");
 
-
+$con=mysqli_connect("localhost","id14527893_root","grB8e0[@rJ[\OOi=","id14527893_artisansprofiling");
+//$con1=new mysqli("localhost","id14527893_root","grB8e0[@rJ[\OOi=","id14527893_artisansprofiling");
 		
 		$ex = $_GET['exp'];
 		$org = $_GET['orgmember'];
@@ -29,7 +30,6 @@
 
 		$query3 = "UPDATE `extras` SET `orgmember`='$org' WHERE `artisanid`='$id'";
 		$result3 = mysqli_query($con,$query3);
-		echo "data uploaded successfully!";
 
 		//$st2=$con->prepare("SELECT * FROM `artform` WHERE `artFormName`=? ");
 		//$st2->bind_param("s", $artform);
