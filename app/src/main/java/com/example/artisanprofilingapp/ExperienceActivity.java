@@ -87,7 +87,7 @@ public class ExperienceActivity extends AppCompatActivity {
                         //Toast.makeText(MainActivity.this,"হয়েগেছে",Toast.LENGTH_LONG).show();
                         regUser();
                         mediaPlayer.stop();
-                        Intent i = new Intent(ExperienceActivity.this, ImageCaptureSelection.class);
+                        Intent i = new Intent(ExperienceActivity.this, DirectionToCaptureImageActivity.class);
                         startActivity(i);
                     } else {
                         nam.setError("আপনার অভিজ্ঞতা টাইপ করুন");
