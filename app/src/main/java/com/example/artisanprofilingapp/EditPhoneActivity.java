@@ -60,6 +60,7 @@ public class EditPhoneActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_phone);
+        mediaPlayer = MediaPlayer.create(this,R.raw.phoneno);
 
         String state = Environment.getExternalStorageState();
         if (Environment.MEDIA_MOUNTED.equals(state)) {
@@ -139,7 +140,7 @@ public class EditPhoneActivity extends AppCompatActivity {
 
                         //UNCOMMENT THIS
                         mediaPlayer.stop();
-                        startActivity(new Intent(EditPhoneActivity.this, NameActivity.class));
+                        startActivity(new Intent(EditPhoneActivity.this, UpdateSelectionAcivity.class));
 //                        }
 
                     } else {
@@ -173,8 +174,8 @@ public class EditPhoneActivity extends AppCompatActivity {
         //}
 
         Log.d("eirki phone->",PhoneNoHolder);
-        myPref.edit().putString("phone", PhoneNoHolder).apply();
-        myPref.edit().putString("count", "0").apply();
+//        myPref.edit().putString("phone", PhoneNoHolder).apply();
+//        myPref.edit().putString("count", "0").apply();
 
         String idToGet = myPref.getString("id","No data found");
 
@@ -199,7 +200,7 @@ public class EditPhoneActivity extends AppCompatActivity {
                         progressDialog.dismiss();
                         // Showing response message coming from server.
                         //Toast.makeText(MainActivity.this, response, Toast.LENGTH_LONG).show();
-                        myPref.edit().putString("track", "1").apply();
+//                        myPref.edit().putString("track", "1").apply();
 //                                Intent i = new Intent(getApplicationContext(), NameActivity.class);
 //                                startActivity(i);
 
@@ -232,8 +233,8 @@ public class EditPhoneActivity extends AppCompatActivity {
 //                String date = jo.getString(Config5.KEY_DATE);
 //                String data = jo.getString(Config5.KEY_DATA);
             String id = jo.getString(Config.KEY_ID);
-//            Log.d("eirki",id);
-//            myPref.edit().putString("id",id).apply();
+            Log.d("eirki",id);
+            myPref.edit().putString("id",id).apply();
 
 
 //                    final HashMap<String, String> employees = new HashMap<>();

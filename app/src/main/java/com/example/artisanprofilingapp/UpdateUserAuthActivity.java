@@ -207,7 +207,7 @@ public class UpdateUserAuthActivity extends AppCompatActivity {
                 startActivity(new Intent(UpdateUserAuthActivity.this, UpdateSelectionAcivity.class));
             }
             else{
-                startActivity(new Intent(UpdateUserAuthActivity.this, EditPhoneActivity.class));
+                startActivity(new Intent(UpdateUserAuthActivity.this, UpdateUserAuthActivity.class));
                 Toast.makeText(UpdateUserAuthActivity.this,
                         "আপনার এই নাম আর এই ফোন নম্বরের আগে কোনো রেকর্ড নেই ",Toast.LENGTH_LONG).show();
             }

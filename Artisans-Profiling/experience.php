@@ -29,7 +29,6 @@
 
 		$query3 = "UPDATE `extras` SET `orgmember`='$org' WHERE `artisanid`='$id'";
 		$result3 = mysqli_query($con,$query3);
-		echo "data uploaded successfully!";
 
 		//$st2=$con->prepare("SELECT * FROM `artform` WHERE `artFormName`=? ");
 		//$st2->bind_param("s", $artform);

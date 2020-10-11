@@ -1,5 +1,5 @@
 <?php
-		$con=new mysqli("localhost","root","","artisan-profiling");
+		$con=mysqli_connect("localhost","root","","artisan-profiling");
 
 		
 		$a =$_GET["id"];

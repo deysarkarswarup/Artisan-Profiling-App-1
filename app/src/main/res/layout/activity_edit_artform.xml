@@ -9,7 +9,7 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         tools:context=".MainActivity">
         <!--    android:background="@drawable/bg">-->
         <LinearLayout
@@ -25,6 +25,7 @@
             android:textSize="30sp"
             android:layout_gravity="center"
             android:gravity="center"
+
             android:textColor="@color/Heading"
             />
 
@@ -32,7 +33,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="100dp"
-            android:text="@string/exp"
+            android:text="@string/artformString"
             android:textSize="25sp"
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
@@ -43,28 +44,24 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/experi"
+        <TextView
+            android:id="@+id/txtVw"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-
+            android:layout_gravity="center"
             android:layout_marginTop="50dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:paddingLeft="10dp"
-            android:paddingRight="0dp"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox" >
+            android:text="শিল্প:"
+            android:textStyle="bold"
+            android:textSize="25dp" />
+        <Spinner
+            android:id="@+id/spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:layout_alignBottom="@+id/txtVw"
+            android:layout_toRightOf="@+id/txtVw" />
 
-            <EditText
-                android:id="@+id/nam"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/expHint"
-                android:maxLength="5"
-                android:inputType="number"
-                />
-        </com.google.android.material.textfield.TextInputLayout>
 
         <Button
             android:id="@+id/submitBtn"
@@ -76,6 +73,7 @@
             android:textSize="30sp"
             android:padding="10dp"
             android:background="@drawable/btn_round"
-            android:layout_marginTop="40dp" />
+            android:layout_marginTop="90dp" />
+
     </LinearLayout>
 </ScrollView>

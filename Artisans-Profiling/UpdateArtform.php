@@ -1,5 +1,7 @@
 <?php
-$con=new mysqli("localhost","root","","artisan-profiling");
+
+$con=new mysqli_connect("localhost","root","","artisan-profiling");
+//$con=new mysqli("localhost","root","","artisan-profiling");
 $sql = "SELECT * FROM artform";
 $res = mysqli_query($con,$sql);
 $result = array();

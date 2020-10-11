@@ -25,6 +25,7 @@
             android:textSize="30sp"
             android:layout_gravity="center"
             android:gravity="center"
+
             android:textColor="@color/Heading"
             />
 
@@ -32,7 +33,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="100dp"
-            android:text="@string/exp"
+            android:text="@string/silpoo"
             android:textSize="25sp"
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
@@ -45,7 +46,7 @@
 
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/experi"
+            android:id="@+id/artlearned"
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
 
@@ -60,9 +61,9 @@
                 android:id="@+id/nam"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/expHint"
-                android:maxLength="5"
-                android:inputType="number"
+                android:hint="@string/typehere"
+                android:maxLength="100"
+                android:inputType="text"
                 />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -77,5 +78,6 @@
             android:padding="10dp"
             android:background="@drawable/btn_round"
             android:layout_marginTop="40dp" />
+
     </LinearLayout>
 </ScrollView>

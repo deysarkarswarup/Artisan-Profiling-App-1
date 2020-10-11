@@ -387,7 +387,7 @@ private void requestPermission() {
                                     public void onClick(DialogInterface dialog, int id) {
                                         mediaPlayer.stop();
                                         //ActivityCompat.requestPermissions((Activity) context, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, Integer.parseInt(WRITE_EXTERNAL_STORAGE));
-                                        Intent i = new Intent(ProfilePicActivity.this, Insert_image_instructionActivity.class);
+                                        Intent i = new Intent(ProfilePicActivity.this, ProfilePicActivity.class);
                                         i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                                         startActivity(i);
                                     }
