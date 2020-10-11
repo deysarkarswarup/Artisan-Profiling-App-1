@@ -15,7 +15,7 @@ $row = mysqli_fetch_array($res);
 		'num' => strval($row_count),
 		'id' => $row[0]
 	));
-// echo "success";
+
 	echo json_encode(array("result"=>$result));
 
 }
