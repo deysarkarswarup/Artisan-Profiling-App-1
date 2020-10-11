@@ -9,7 +9,7 @@ $con= mysqli_connect("localhost","root","","artisan-profiling");
 				//$phno=$_POST['phoneno='];
 		$location = "intro/";
 		// echo $temp_name;
-	//	etar output ta ekbar boltoh hmm
+	
 		//$str="9433040463_intro.mp4";
 		$id = preg_split("/\*/",$file);
 		//echo $phn[0]
@@ -19,7 +19,7 @@ $con= mysqli_connect("localhost","root","","artisan-profiling");
 		//$nm = $_GET["name"];
 		// $st=$con->prepare("UPDATE `artisan` SET `artisanVideoUrl`=? WHERE `id`=?");
 		// $st->bind_param("ss", $loc, $id[0]);
-		// $st->execute(); hoyechilo ota?haaa
+		// $st->execute(); 
 		// echo $file_name;
 		// echo $loc;
 		$i = $id[1];
@@ -29,9 +29,6 @@ $con= mysqli_connect("localhost","root","","artisan-profiling");
 	}else{
 		echo "Error";
 	}
-//issues run kora, file name ta dekhhmmmm eitai dekhache filename e
-//volley timeout error in experience.php
-//video not previewing in new phone
-//need to update php files for insert statement 
+
 	?>
 
