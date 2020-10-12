@@ -16,7 +16,7 @@ public class DirectionToCaptureImageActivity2 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_direction_to_capture_image);
+        setContentView(R.layout.activity_direction_to_capture_image2);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         nextBtn = findViewById(R.id.nextBtn);
         mediaPlayer = MediaPlayer.create(this, R.raw.directiontocapturevideo);
