@@ -20,12 +20,12 @@ public class DirectionToCaptureImageActivity2 extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         nextBtn = findViewById(R.id.nextBtn);
         mediaPlayer = MediaPlayer.create(this, R.raw.captureimageinst2);
-        //mediaPlayer.start();
+        mediaPlayer.start();
         //At the end
         nextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-          //      mediaPlayer.stop();
+                mediaPlayer.stop();
                 startActivity(new Intent(DirectionToCaptureImageActivity2.this,ImageCaptureSelection.class));
             }
         });

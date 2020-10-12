@@ -20,11 +20,11 @@ public class DirectionToCaptureVideoActivity2 extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         nextBtn = findViewById(R.id.nextBtn);
         mediaPlayer = MediaPlayer.create(this, R.raw.capturevideoinst2);
-        //mediaPlayer.start();
+        mediaPlayer.start();
         nextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-          //      mediaPlayer.stop();
+                mediaPlayer.stop();
                 startActivity(new Intent(DirectionToCaptureVideoActivity2.this, Insert_video_instructionActivity.class));
 
             }

@@ -34,7 +34,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="100dp"
-            android:text="কি ভাবে আঙ্করিং করবেন এবং ক্যামেরার দিকে তাকাবেন?
+            android:text="কি ভাবে আঙ্করিং করবেন এবং ক্যামেরার দিকে তাকাবেন?\n\n
 চুল পরিপাটি থাকবে, পারলে একটু মেক আপ করবেন, ভাল পোশাক পড়বেন, আপনার পেছনের ব্যাকগ্রাউন্ডটি যেন সুন্দর হয়"
             android:textSize="25sp"
             android:paddingLeft="20dp"
