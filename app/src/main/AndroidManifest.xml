@@ -19,8 +19,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".DirectionToCaptureVideoActivity2"></activity>
-        <activity android:name=".DirectionToCaptureImageActivity2" />
+        <activity android:name=".DirectionToCaptureVideoActivity2"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity android:name=".DirectionToCaptureImageActivity2"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".DirectionToCaptureVideoActivity"
             android:screenOrientation="portrait"
