@@ -82,7 +82,7 @@ public class ProfilePicActivity extends AppCompatActivity {
                 }
             }
         }
-        //mediaPlayer.start();
+        mediaPlayer.start();
 
         StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
         StrictMode.setVmPolicy(builder.build());
@@ -349,7 +349,7 @@ private void requestPermission() {
             case 666: // Allowed was selected so Permission granted
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
 
-                    Log.d("Jhingalala", "granted");
+//                    Log.d("Jhingalala", "granted");
                     mediaPlayer.start();
 
                     // do your work here
