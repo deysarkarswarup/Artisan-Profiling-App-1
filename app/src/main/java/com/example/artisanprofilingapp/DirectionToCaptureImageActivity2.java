@@ -9,7 +9,8 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 
-public class DirectionToCaptureImageActivity extends AppCompatActivity {
+public class DirectionToCaptureImageActivity2 extends AppCompatActivity {
+
     private Button nextBtn;
     private MediaPlayer mediaPlayer;
     @Override
@@ -25,7 +26,7 @@ public class DirectionToCaptureImageActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 mediaPlayer.stop();
-                startActivity(new Intent(DirectionToCaptureImageActivity.this,DirectionToCaptureImageActivity2.class));
+                startActivity(new Intent(DirectionToCaptureImageActivity2.this,ImageCaptureSelection.class));
             }
         });
 
