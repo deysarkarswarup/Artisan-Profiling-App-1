@@ -34,7 +34,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="100dp"
-            android:text="পন্যের ফোটো তলার সময় সঠিক রঙ নির্বাচন করবেন"
+            android:text="পন্যের ফোটো তলার সময় সঠিক রঙ নির্বাচন করবেন.. কারণ, সঠিক রঙ আপনার তৈরি পন্যের সৌন্দর্যকে অন্য মাত্রায় নিয়ে যেতে পারে"
             android:textSize="25sp"
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
@@ -75,21 +75,21 @@
             android:layout_marginEnd="20dp"
             />
 
-        <TextView
-            android:id="@+id/picInstruction2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="কারণ, সঠিক রঙ আপনার তৈরি পন্যের সৌন্দর্যকে অন্য মাত্রায় নিয়ে যেতে পারে"
-            android:textSize="25sp"
-            android:paddingLeft="20dp"
-            android:paddingRight="20dp"
-            android:textColor="@color/textColor"
-            android:textStyle="italic"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+<!--        <TextView-->
+<!--            android:id="@+id/picInstruction2"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="20dp"-->
+<!--            android:text="কারণ, সঠিক রঙ আপনার তৈরি পন্যের সৌন্দর্যকে অন্য মাত্রায় নিয়ে যেতে পারে"-->
+<!--            android:textSize="25sp"-->
+<!--            android:paddingLeft="20dp"-->
+<!--            android:paddingRight="20dp"-->
+<!--            android:textColor="@color/textColor"-->
+<!--            android:textStyle="italic"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintLeft_toLeftOf="parent"-->
+<!--            app:layout_constraintRight_toRightOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent" />-->
 
 
 
