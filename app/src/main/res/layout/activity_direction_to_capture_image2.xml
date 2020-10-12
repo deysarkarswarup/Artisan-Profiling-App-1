@@ -80,8 +80,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:text="কারণ, সঠিক রঙ আপনার তৈরি পন্যের সৌন্দর্যকে অন্য মাত্রায় নিয়ে যেতে পারে
-"
+            android:text="কারণ, সঠিক রঙ আপনার তৈরি পন্যের সৌন্দর্যকে অন্য মাত্রায় নিয়ে যেতে পারে"
             android:textSize="25sp"
             android:paddingLeft="20dp"
             android:paddingRight="20dp"

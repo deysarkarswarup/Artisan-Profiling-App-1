@@ -9,7 +9,8 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 
-public class DirectionToCaptureVideoActivity extends AppCompatActivity {
+public class DirectionToCaptureVideoActivity2 extends AppCompatActivity {
+
     private Button nextBtn;
     private MediaPlayer mediaPlayer;
     @Override
@@ -19,12 +20,12 @@ public class DirectionToCaptureVideoActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         nextBtn = findViewById(R.id.nextBtn);
         mediaPlayer = MediaPlayer.create(this, R.raw.directiontocapturevideo);
-        mediaPlayer.start();
+        //mediaPlayer.start();
         nextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mediaPlayer.stop();
-                startActivity(new Intent(DirectionToCaptureVideoActivity.this, DirectionToCaptureVideoActivity2.class));
+          //      mediaPlayer.stop();
+                startActivity(new Intent(DirectionToCaptureVideoActivity2.this, Insert_video_instructionActivity.class));
 
             }
         });
