@@ -48,19 +48,66 @@
             android:layout_marginTop="60dp"
             android:paddingLeft="40dp"
             android:paddingRight="40dp"
-            android:text="নিচে অডিও বাটন টিপুন আপনার অডিও রেকর্ড করার জন্য"
+            android:text="নিচে রেকর্ড বাটন টিপুন আপনার অডিও রেকর্ড করার  জন্য"
             android:textColor="@color/textColor"
             android:textSize="30sp" />
 
-        <Button
-            android:id="@+id/start"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginTop="50dp"
-            android:layout_gravity="center"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_marginTop="80dp"
+            android:layout_marginBottom="20dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:orientation="horizontal">
 
-            android:background="@drawable/audio"
+            <Button
+                android:id="@+id/button1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="false"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_weight="0.5"
+                android:background="@drawable/btn_round"
+                android:padding="10dp"
+                android:text="রেকর্ড"
+                android:textSize="25sp" />
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="0dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:text="শেষ"
+                android:textSize="25sp"
+                android:padding="10dp"
+                android:background="@drawable/btn_round"
+                android:layout_marginTop="0dp" />
+
+            <Button
+                android:id="@+id/button3"
+                android:layout_width="0dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:text="শুনুন"
+                android:textSize="25sp"
+                android:padding="10dp"
+                android:background="@drawable/btn_round"
+                android:layout_marginTop="0dp" />
+        </LinearLayout>
+        <Button
+            android:id="@+id/submitBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="90dp"
+            android:layout_marginRight="90dp"
+            android:text="@string/submit"
+            android:textSize="30sp"
             android:padding="10dp"
-            />
+            android:background="@drawable/btn_round"
+            android:layout_marginTop="40dp" />
     </LinearLayout>
 </ScrollView>

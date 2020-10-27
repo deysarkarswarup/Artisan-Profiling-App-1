@@ -6,6 +6,7 @@ public class Config {
 //
     public static final String UPLOAD_URL= "https://artisanprofilingapp.000webhostapp.com/artisanVideoUrl.php";
     public static final String UPLOAD_URL1= "https://artisanprofilingapp.000webhostapp.com/productDescriptionVideoUrl.php";
+    public static final String UPLOAD_URL2= "https://artisanprofilingapp.000webhostapp.com/artisanAudioUrl.php";
 
 
 //    public static final String UPLOAD_URL= "http://artisanapp.xyz/phoneno.php?phoneno=1457896320/artisanVideoUrl.php";
