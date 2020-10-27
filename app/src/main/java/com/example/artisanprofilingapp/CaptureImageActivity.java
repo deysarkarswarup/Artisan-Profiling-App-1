@@ -113,7 +113,7 @@ public class CaptureImageActivity extends AppCompatActivity {
 
     private void getFileUri() {
         //img_type = "yes";
-        image_name = "_"+ dataToGet + ".jpg";
+        image_name = "_1_"+ dataToGet + ".jpg";
         //img_type = ".jpg";
         file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES)
                 + File.separator + count + image_name
@@ -186,7 +186,7 @@ public class CaptureImageActivity extends AppCompatActivity {
 
             myPref.edit().putString("track", "11").apply();
             mediaPlayer.stop();
-            Intent i=new Intent(CaptureImageActivity.this,UserChoiceActivity.class);
+            Intent i=new Intent(CaptureImageActivity.this,CaptureImageActivity2.class);
             startActivity(i);
         }
     }
