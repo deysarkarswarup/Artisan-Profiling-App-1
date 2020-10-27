@@ -19,13 +19,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".CaptureImageActivity4"
+        <activity android:name=".AudioActivity"></activity>
+        <activity
+            android:name=".CaptureImageActivity4"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity android:name=".CaptureImageActivity3"
+        <activity
+            android:name=".CaptureImageActivity3"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity android:name=".CaptureImageActivity2"
+        <activity
+            android:name=".CaptureImageActivity2"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
