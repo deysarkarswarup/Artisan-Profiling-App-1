@@ -193,7 +193,7 @@ public class CaptureImageActivity4 extends AppCompatActivity {
 
 //        StringRequest request = new StringRequest(Request.Method.POST, "http://192.168.43.12/Artisans-Profiling/imageupload.php",
 
-        StringRequest request = new StringRequest(Request.Method.POST, "https://artisanprofilingapp.000webhostapp.com/imageupload.php",
+        StringRequest request = new StringRequest(Request.Method.POST, "https://artisanapp.xyz/imageupload.php",
 
                 new Response.Listener<String>() {
                     @Override
