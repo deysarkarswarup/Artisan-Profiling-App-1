@@ -150,7 +150,7 @@ public class AudioActivity extends AppCompatActivity {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-                mediaPlayer.start();
+                //mediaPlayer.start();
                 Toast.makeText(AudioActivity.this, "Recording Playing",
                         Toast.LENGTH_LONG).show();
             }
