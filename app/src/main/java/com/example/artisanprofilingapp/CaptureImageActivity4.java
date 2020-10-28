@@ -67,7 +67,7 @@ public class CaptureImageActivity4 extends AppCompatActivity {
         dataToGet = myPref.getString("phone","No data found");
         idToGet = myPref.getString("id","No Data found");
         ImageCountToGet = myPref.getString("count","No data found");
-        mediaPlayer = MediaPlayer.create(this, R.raw.captureimageinst);
+        mediaPlayer = MediaPlayer.create(this, R.raw.captureimage4);
         mediaPlayer.start();
 
         StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();

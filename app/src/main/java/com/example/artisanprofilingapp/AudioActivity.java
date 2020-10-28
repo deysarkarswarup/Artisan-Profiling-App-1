@@ -59,7 +59,7 @@ public class AudioActivity extends AppCompatActivity {
         myPref = getApplicationContext().getSharedPreferences("MyPref",MODE_PRIVATE);
         dataToGet = myPref.getString("id","No data found");
         Log.d("hiii", "onCreate: "+dataToGet);
-        mediaPlayer = MediaPlayer.create(this, R.raw.profilevideocaptureinst);
+        mediaPlayer = MediaPlayer.create(this, R.raw.audioinst);
         mediaPlayer.start();
 
         // Creating Volley newRequestQueue .
