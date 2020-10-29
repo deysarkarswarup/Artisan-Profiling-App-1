@@ -34,7 +34,7 @@ public class FormPaintingActivity extends AppCompatActivity {
     SharedPreferences myPref;
     private MediaPlayer mediaPlayer;
     int potaka=0;
-    String productFlag = "13";//T-Shirt
+    String productFlag = "13";//Painting
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -34,7 +34,7 @@ public class FormUtilityActivity extends AppCompatActivity {
     SharedPreferences myPref;
     private MediaPlayer mediaPlayer;
     int potaka=0;
-    String productFlag = "12";//T-Shirt
+    String productFlag = "12";//Utility
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

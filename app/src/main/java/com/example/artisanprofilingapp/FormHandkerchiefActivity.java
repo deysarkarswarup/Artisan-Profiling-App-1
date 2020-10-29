@@ -34,7 +34,7 @@ public class FormHandkerchiefActivity extends AppCompatActivity {
     SharedPreferences myPref;
     private MediaPlayer mediaPlayer;
     int potaka=0;
-    String productFlag = "15";//T-Shirt
+    String productFlag = "15";//Handkerchief
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

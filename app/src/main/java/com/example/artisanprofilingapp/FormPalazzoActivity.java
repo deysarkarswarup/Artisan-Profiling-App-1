@@ -34,7 +34,7 @@ public class FormPalazzoActivity extends AppCompatActivity {
     SharedPreferences myPref;
     private MediaPlayer mediaPlayer;
     int potaka=0;
-    String productFlag = "6";//T-Shirt
+    String productFlag = "6";//Palazzo
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
