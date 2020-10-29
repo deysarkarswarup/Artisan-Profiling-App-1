@@ -69,7 +69,7 @@ public class FormKurtaActivity extends AppCompatActivity {
         // Creating Volley newRequestQueue .
         requestQueue = Volley.newRequestQueue(FormKurtaActivity.this);
         progressDialog = new ProgressDialog(FormKurtaActivity.this);
-        mediaPlayer = MediaPlayer.create(this, R.raw.addressinst);
+        mediaPlayer = MediaPlayer.create(this, R.raw.forminst);
         mediaPlayer.start();
 
         skip.setOnClickListener(new View.OnClickListener() {

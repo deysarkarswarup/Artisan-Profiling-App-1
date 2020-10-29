@@ -66,7 +66,7 @@ public class FormCushionCoverActivity extends AppCompatActivity {
         // Creating Volley newRequestQueue .
         requestQueue = Volley.newRequestQueue(FormCushionCoverActivity.this);
         progressDialog = new ProgressDialog(FormCushionCoverActivity.this);
-        mediaPlayer = MediaPlayer.create(this, R.raw.addressinst);
+        mediaPlayer = MediaPlayer.create(this, R.raw.forminst);
         mediaPlayer.start();
 
         skip.setOnClickListener(new View.OnClickListener() {

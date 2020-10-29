@@ -68,7 +68,7 @@ public class FormGoinaActivity extends AppCompatActivity {
         // Creating Volley newRequestQueue .
         requestQueue = Volley.newRequestQueue(FormGoinaActivity.this);
         progressDialog = new ProgressDialog(FormGoinaActivity.this);
-        mediaPlayer = MediaPlayer.create(this, R.raw.addressinst);
+        mediaPlayer = MediaPlayer.create(this, R.raw.forminst);
         mediaPlayer.start();
 
         skip.setOnClickListener(new View.OnClickListener() {
