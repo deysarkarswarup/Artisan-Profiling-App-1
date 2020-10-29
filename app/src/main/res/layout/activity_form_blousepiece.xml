@@ -76,7 +76,7 @@
                 />
         </com.google.android.material.textfield.TextInputLayout>
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/material"
+            android:id="@+id/measurement"
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
 
@@ -90,13 +90,13 @@
                 android:id="@+id/nam2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Material"
+                android:hint="Measurement"
                 android:maxLength="200"
                 android:inputType="text"
                 />
         </com.google.android.material.textfield.TextInputLayout>
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/length"
+            android:id="@+id/material"
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
 
@@ -111,14 +111,14 @@
                 android:id="@+id/nam3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Available Sizes"
+                android:hint="Material"
                 android:maxLength="200"
                 android:inputType="text"
                 />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/pendentmeasurement"
+            android:id="@+id/artwork"
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
 
@@ -133,36 +133,11 @@
                 android:id="@+id/nam4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Paint Material"
+                android:hint="Artwork"
                 android:maxLength="200"
                 android:inputType="text"
                 />
         </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/artworktype"
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-
-            android:layout_marginTop="50dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:paddingLeft="10dp"
-            android:paddingRight="0dp"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox" >
-
-            <EditText
-                android:id="@+id/nam6"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Art work type"
-                android:maxLength="200"
-                android:inputType="text"
-
-                />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
 
         <Button
             android:id="@+id/submitBtn"

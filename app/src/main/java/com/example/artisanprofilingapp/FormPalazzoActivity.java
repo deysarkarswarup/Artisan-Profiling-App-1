@@ -234,7 +234,7 @@ public class FormPalazzoActivity extends AppCompatActivity {
 //                        +"&id="+ idToGet+ "&addressExp="+ AddressExpHolder + "&age="+ ageToGet;
 
                 String myurl = "https://artisanapp.xyz/productDescriptionForm.php?productname="+ DataHolder3
-                        +"&measurement="+ DataHolder4 +"&material="+ DataHolder5 +"&artwork="+ DataHolder6
+                        +"&material="+ DataHolder4 +"&avaiablesize="+ DataHolder5 +"&artworktype="+ DataHolder6
                         +"&artisanid="+ idToGet+ "&productFlag=" +productFlag;
 
                 RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
