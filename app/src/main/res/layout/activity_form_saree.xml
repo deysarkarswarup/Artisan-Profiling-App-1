@@ -113,7 +113,7 @@
                 android:layout_height="wrap_content"
                 android:hint="Measurement"
                 android:maxLength="200"
-                android:inputType="number"
+                android:inputType="text"
                 />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -135,7 +135,7 @@
                 android:layout_height="wrap_content"
                 android:hint="Blouse piece"
                 android:maxLength="200"
-                android:inputType="number"
+                android:inputType="text"
                 />
         </com.google.android.material.textfield.TextInputLayout>
 

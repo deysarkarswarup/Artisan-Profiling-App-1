@@ -92,7 +92,7 @@
                 android:layout_height="wrap_content"
                 android:hint="Material"
                 android:maxLength="200"
-                android:inputType="number"
+                android:inputType="text"
                 />
         </com.google.android.material.textfield.TextInputLayout>
         <com.google.android.material.textfield.TextInputLayout
@@ -113,7 +113,7 @@
                 android:layout_height="wrap_content"
                 android:hint="Length"
                 android:maxLength="200"
-                android:inputType="number"
+                android:inputType="text"
                 />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -135,7 +135,7 @@
                 android:layout_height="wrap_content"
                 android:hint="Pendent Measurement"
                 android:maxLength="200"
-                android:inputType="number"
+                android:inputType="text"
                 />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -157,7 +157,7 @@
                 android:layout_height="wrap_content"
                 android:hint="Earring measurement"
                 android:maxLength="200"
-                android:inputType="number"
+                android:inputType="text"
                 />
         </com.google.android.material.textfield.TextInputLayout>
         <com.google.android.material.textfield.TextInputLayout
@@ -181,7 +181,7 @@
                 android:inputType="text"
 
                 />
-            
+
         </com.google.android.material.textfield.TextInputLayout>
 
 
