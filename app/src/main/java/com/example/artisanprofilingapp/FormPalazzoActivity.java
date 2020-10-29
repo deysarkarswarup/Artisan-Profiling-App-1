@@ -25,38 +25,39 @@ import com.android.volley.toolbox.Volley;
 import com.google.android.material.textfield.TextInputLayout;
 
 public class FormPalazzoActivity extends AppCompatActivity {
-    TextInputLayout codeno, productid, productname, material, length, pendentmeasurement, earringmeasurement,artworktype;
-    EditText nam1, nam2, nam3,nam4, nam5, nam6;//to show error msg
+    TextInputLayout codeno, productid, productname, measurement, material, artwork;
+    EditText nam1, nam2, nam3,nam4;//to show error msg
     Button submitbtn,skip;
     RequestQueue requestQueue;
     ProgressDialog progressDialog;
-    String DataHolder2, DataHolder3, DataHolder4, DataHolder5, DataHolder6, DataHolder7, DataHolder8;
+    String DataHolder3, DataHolder4, DataHolder5, DataHolder6;
     SharedPreferences myPref;
     private MediaPlayer mediaPlayer;
     int potaka=0;
-    String productFlag = "6";//Palazzo
+    String productFlag = "6";//T-Shirt
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_form_palazzo);
 
+
         //codeno = findViewById(R.id.codeno);
 //        productid = findViewById(R.id.productid);
         productname = findViewById(R.id.productname);
+        measurement = findViewById(R.id.measurement);
         material = findViewById(R.id.material);
-        length = findViewById(R.id.length);
-//        pendentmeasurement = findViewById(R.id.pendentmeasurement);
-        artworktype = findViewById(R.id.artworktype);
+        artwork = findViewById(R.id.artwork);
+//        artworktype = findViewById(R.id.artworktype);
 
 
         //nam = findViewById(R.id.nam);//to show error msg
         nam1 = findViewById(R.id.nam1);//to show error msg
         nam2 = findViewById(R.id.nam1);//to show error msg
         nam3 = findViewById(R.id.nam3);//to show error msg
-//        nam4 = findViewById(R.id.nam4);//to show error msg
+        nam4 = findViewById(R.id.nam4);//to show error msg
 //        nam5 = findViewById(R.id.nam5);
-        nam6 = findViewById(R.id.nam6);
+//        nam6 = findViewById(R.id.nam6);
         submitbtn = findViewById(R.id.submitBtn);
         skip = findViewById(R.id.skip);
 
@@ -134,15 +135,15 @@ public class FormPalazzoActivity extends AppCompatActivity {
                     } else {
                         nam3.setError("টাইপ করুন");
                     }
-//                    if (!nam4.getText().toString().equals("")) {
-//                        potaka++;
-//                        //Toast.makeText(MainActivity.this,"হয়েগেছে",Toast.LENGTH_LONG).show();
-////                    regUser();
-////                    Intent i=new Intent(AddressActivity.this,ProfilePicActivity.class);
-////                    startActivity(i);
-//                    } else {
-//                        nam4.setError("টাইপ করুন");
-//                    }
+                    if (!nam4.getText().toString().equals("")) {
+                        potaka++;
+                        //Toast.makeText(MainActivity.this,"হয়েগেছে",Toast.LENGTH_LONG).show();
+//                    regUser();
+//                    Intent i=new Intent(AddressActivity.this,ProfilePicActivity.class);
+//                    startActivity(i);
+                    } else {
+                        nam4.setError("টাইপ করুন");
+                    }
 //                    if (!nam5.getText().toString().equals("")) {
 //                        potaka++;
 //                        //Toast.makeText(MainActivity.this,"হয়েগেছে",Toast.LENGTH_LONG).show();
@@ -150,13 +151,13 @@ public class FormPalazzoActivity extends AppCompatActivity {
 //                    } else {
 //                        nam5.setError("টাইপ করুন");
 //                    }
-                    if (!nam6.getText().toString().equals("")) {
-                        potaka++;
-                        //Toast.makeText(MainActivity.this,"হয়েগেছে",Toast.LENGTH_LONG).show();
-
-                    } else {
-                        nam6.setError("টাইপ করুন");
-                    }
+//                    if (!nam6.getText().toString().equals("")) {
+//                        potaka++;
+//                        //Toast.makeText(MainActivity.this,"হয়েগেছে",Toast.LENGTH_LONG).show();
+//
+//                    } else {
+//                        nam6.setError("টাইপ করুন");
+//                    }
 
                     if (potaka==4){
                         regUser();
@@ -183,14 +184,14 @@ public class FormPalazzoActivity extends AppCompatActivity {
             private void regUser() {
                 progressDialog.setMessage("Please Wait, We are Inserting Your Data on Server");
                 progressDialog.show();
-
+//                productname, measurement, material, artwork
 //                DataHolder2 = productid.getEditText().getText().toString().trim();
                 DataHolder3 = productname.getEditText().getText().toString().trim();
-                DataHolder4 = material.getEditText().getText().toString().trim();
-                DataHolder5 = length.getEditText().getText().toString().trim();
-//                DataHolder6 = pendentmeasurement.getEditText().getText().toString().trim();
+                DataHolder4 = measurement.getEditText().getText().toString().trim();
+                DataHolder5 = material.getEditText().getText().toString().trim();
+                DataHolder6 = artwork.getEditText().getText().toString().trim();
 //                DataHolder7 = earringmeasurement.getEditText().getText().toString().trim();
-                DataHolder8 = artworktype.getEditText().getText().toString().trim();
+//                DataHolder8 = artworktype.getEditText().getText().toString().trim();
 
                 //Log.d("eirki",DataHolder1);
                 //myPref.edit().putString("phone", PhoneNoHolder).apply();
@@ -208,10 +209,10 @@ public class FormPalazzoActivity extends AppCompatActivity {
                 DataHolder3 = DataHolder3.replaceAll(" ","%20");
                 DataHolder4 = DataHolder4.replaceAll(" ","%20");
                 DataHolder5 = DataHolder5.replaceAll(" ","%20");
-//                DataHolder6 = DataHolder6.replaceAll(" ","%20");
+                DataHolder6 = DataHolder6.replaceAll(" ","%20");
                 idToGet = idToGet.replaceAll(" ","%20");
 //                DataHolder7 = DataHolder7.replaceAll(" ","%20");
-                DataHolder8 = DataHolder8.replaceAll(" ","%20");
+//                DataHolder8 = DataHolder8.replaceAll(" ","%20");
                 //ageToGet = ageToGet.replaceAll(" ","%20");
 
                 String characterFilter = "[^\\p{L}\\p{M}\\p{N}\\p{P}\\p{Z}\\p{Cf}\\p{Cs}\\s]";
@@ -222,9 +223,9 @@ public class FormPalazzoActivity extends AppCompatActivity {
                 DataHolder4 = DataHolder4.replaceAll(characterFilter,"");
                 DataHolder5 = DataHolder5.replaceAll(characterFilter,"");
                 idToGet = idToGet.replaceAll(characterFilter,"");
-//                DataHolder6 = DataHolder6.replaceAll(characterFilter,"");
+                DataHolder6 = DataHolder6.replaceAll(characterFilter,"");
 //                DataHolder7 = DataHolder7.replaceAll(characterFilter,"");
-                DataHolder8 = DataHolder8.replaceAll(characterFilter,"");
+//                DataHolder8 = DataHolder8.replaceAll(characterFilter,"");
                 //ageToGet = ageToGet.replaceAll(characterFilter,"");
 
 
@@ -233,9 +234,8 @@ public class FormPalazzoActivity extends AppCompatActivity {
 //                        +"&id="+ idToGet+ "&addressExp="+ AddressExpHolder + "&age="+ ageToGet;
 
                 String myurl = "https://artisanapp.xyz/productDescriptionForm.php?productname="+ DataHolder3
-                        +"&material="+ DataHolder4 +"&availablesize="+ DataHolder5
-                        + "&artworktype=" + DataHolder8+ "&artisanid="+ idToGet+
-                        "&productFlag=" +productFlag;
+                        +"&measurement="+ DataHolder4 +"&material="+ DataHolder5 +"&artwork="+ DataHolder6
+                        +"&artisanid="+ idToGet+ "&productFlag=" +productFlag;
 
                 RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
                 StringRequest stringRequest = new StringRequest(Request.Method.GET, myurl,

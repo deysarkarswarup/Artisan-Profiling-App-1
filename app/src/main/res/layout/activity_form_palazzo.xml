@@ -76,7 +76,7 @@
                 />
         </com.google.android.material.textfield.TextInputLayout>
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/material"
+            android:id="@+id/measurement"
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
 
@@ -96,7 +96,7 @@
                 />
         </com.google.android.material.textfield.TextInputLayout>
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/length"
+            android:id="@+id/material"
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
 
@@ -111,36 +111,14 @@
                 android:id="@+id/nam3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Available Sizes"
+                android:hint="Available Size"
                 android:maxLength="200"
                 android:inputType="text"
                 />
         </com.google.android.material.textfield.TextInputLayout>
 
-<!--        <com.google.android.material.textfield.TextInputLayout-->
-<!--            android:id="@+id/pendentmeasurement"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_width="match_parent"-->
-
-<!--            android:layout_marginTop="50dp"-->
-<!--            android:layout_marginLeft="20dp"-->
-<!--            android:layout_marginRight="20dp"-->
-<!--            android:paddingLeft="10dp"-->
-<!--            android:paddingRight="0dp"-->
-<!--            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox" >-->
-
-<!--            <EditText-->
-<!--                android:id="@+id/nam4"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:hint="Paint Material"-->
-<!--                android:maxLength="200"-->
-<!--                android:inputType="text"-->
-<!--                />-->
-<!--        </com.google.android.material.textfield.TextInputLayout>-->
-
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/artworktype"
+            android:id="@+id/artwork"
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
 
@@ -152,17 +130,14 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox" >
 
             <EditText
-                android:id="@+id/nam6"
+                android:id="@+id/nam4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Art work type"
+                android:hint="Artwork type"
                 android:maxLength="200"
                 android:inputType="text"
-
                 />
-
         </com.google.android.material.textfield.TextInputLayout>
-
 
         <Button
             android:id="@+id/submitBtn"
