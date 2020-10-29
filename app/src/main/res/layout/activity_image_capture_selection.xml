@@ -148,7 +148,7 @@
                 android:layout_marginTop="0dp" />
         </LinearLayout>
         <Button
-            android:id="@+id/other"
+            android:id="@+id/others"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="90dp"

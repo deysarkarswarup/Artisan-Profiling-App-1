@@ -27,7 +27,7 @@ public class ImageCaptureSelection extends AppCompatActivity {
         showpiece = findViewById(R.id.showPiece);
         bag = findViewById(R.id.bag);
         goina = findViewById(R.id.goina);
-        other = findViewById(R.id.other);
+        other = findViewById(R.id.others);
         myPref = getApplicationContext().getSharedPreferences("MyPref", MODE_PRIVATE);
         mediaPlayer = MediaPlayer.create(this, R.raw.captureselectioninst);
         mediaPlayer.start();
@@ -93,9 +93,9 @@ public class ImageCaptureSelection extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     myPref.edit().putString("selected", "other").apply();
-                    myPref.edit().putString("track", "9").apply();//kora hoini.. pore korbo
+                    //myPref.edit().putString("track", "9").apply();//kora hoini.. pore korbo
                     mediaPlayer.stop();
-                    startActivity(new Intent(getApplicationContext(), CaptureImageActivity.class));
+                    startActivity(new Intent(getApplicationContext(), ProductSelectionActivity.class));
                 }
             });
 

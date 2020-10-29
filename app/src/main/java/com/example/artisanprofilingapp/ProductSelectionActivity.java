@@ -13,7 +13,7 @@ import android.view.View;
 import android.widget.Button;
 
 public class ProductSelectionActivity extends AppCompatActivity {
-    Button saree, goina, bag, tshirt, wrapperskirt, palazzo, cushioncover, leatherbag, blousepiece, kurta, showpiece,
+    Button saree, goina, bag, tshirt, wrapperskirt, palazzo, cushioncover, leatherbag, blousepiece, kurta, homedecor,
             utility, painting, stoles, handkerchief;
     private SharedPreferences myPref;
     private MediaPlayer mediaPlayer;
@@ -33,7 +33,7 @@ public class ProductSelectionActivity extends AppCompatActivity {
         leatherbag = findViewById(R.id.leatherbag);
         blousepiece = findViewById(R.id.blousepiece);
         kurta = findViewById(R.id.kurta);
-        showpiece = findViewById(R.id.showPiece);
+        homedecor = findViewById(R.id.homedecor);
         utility = findViewById(R.id.utility);
         painting = findViewById(R.id.painting);
         stoles = findViewById(R.id.stoles);
@@ -51,7 +51,7 @@ public class ProductSelectionActivity extends AppCompatActivity {
                     myPref.edit().putString("selected", "saree").apply();
                     myPref.edit().putString("track", "9").apply();
                     mediaPlayer.stop();
-                    startActivity(new Intent(getApplicationContext(), Insert_image_instructionActivity.class));
+                    startActivity(new Intent(getApplicationContext(), FormSareeActivity.class));
                 }
             });
             goina.setOnClickListener(new View.OnClickListener() {
@@ -60,7 +60,7 @@ public class ProductSelectionActivity extends AppCompatActivity {
                     myPref.edit().putString("selected", "goina").apply();
                     myPref.edit().putString("track", "9").apply();
                     mediaPlayer.stop();
-                    startActivity(new Intent(getApplicationContext(), Insert_image_instructionActivity.class));
+                    startActivity(new Intent(getApplicationContext(), FormGoinaActivity.class));
                 }
             });
             bag.setOnClickListener(new View.OnClickListener() {
@@ -69,7 +69,7 @@ public class ProductSelectionActivity extends AppCompatActivity {
                     myPref.edit().putString("selected", "bag").apply();
                     myPref.edit().putString("track", "9").apply();
                     mediaPlayer.stop();
-                    startActivity(new Intent(getApplicationContext(), Insert_image_instructionActivity.class));
+                    startActivity(new Intent(getApplicationContext(), FormBagActivity.class));
                 }
             });
             tshirt.setOnClickListener(new View.OnClickListener() {
@@ -78,7 +78,7 @@ public class ProductSelectionActivity extends AppCompatActivity {
                     myPref.edit().putString("selected", "tshirt").apply();
                     myPref.edit().putString("track", "9").apply();
                     mediaPlayer.stop();
-                    startActivity(new Intent(getApplicationContext(), Insert_image_instructionActivity.class));
+                    startActivity(new Intent(getApplicationContext(), FormTshirtActivity.class));
                 }
             });
 
@@ -89,7 +89,7 @@ public class ProductSelectionActivity extends AppCompatActivity {
                     myPref.edit().putString("selected", "other").apply();
                     myPref.edit().putString("track", "9").apply();//kora hoini.. pore korbo
                     mediaPlayer.stop();
-                    startActivity(new Intent(getApplicationContext(), CaptureImageActivity.class));
+                    startActivity(new Intent(getApplicationContext(), FormWrapperSkirtActivity.class));
                 }
             });
 
@@ -100,7 +100,7 @@ public class ProductSelectionActivity extends AppCompatActivity {
                     myPref.edit().putString("selected", "other").apply();
                     myPref.edit().putString("track", "9").apply();//kora hoini.. pore korbo
                     mediaPlayer.stop();
-                    startActivity(new Intent(getApplicationContext(), CaptureImageActivity.class));
+                    startActivity(new Intent(getApplicationContext(), FormPalazzoActivity.class));
                 }
             });
 
@@ -111,7 +111,7 @@ public class ProductSelectionActivity extends AppCompatActivity {
                     myPref.edit().putString("selected", "other").apply();
                     myPref.edit().putString("track", "9").apply();//kora hoini.. pore korbo
                     mediaPlayer.stop();
-                    startActivity(new Intent(getApplicationContext(), CaptureImageActivity.class));
+                    startActivity(new Intent(getApplicationContext(), FormCushionCoverActivity.class));
                 }
             });
 
@@ -122,7 +122,7 @@ public class ProductSelectionActivity extends AppCompatActivity {
                     myPref.edit().putString("selected", "other").apply();
                     myPref.edit().putString("track", "9").apply();//kora hoini.. pore korbo
                     mediaPlayer.stop();
-                    startActivity(new Intent(getApplicationContext(), CaptureImageActivity.class));
+                    startActivity(new Intent(getApplicationContext(), FormLeatherbagActivity.class));
                 }
             });
 
@@ -133,7 +133,7 @@ public class ProductSelectionActivity extends AppCompatActivity {
                     myPref.edit().putString("selected", "other").apply();
                     myPref.edit().putString("track", "9").apply();//kora hoini.. pore korbo
                     mediaPlayer.stop();
-                    startActivity(new Intent(getApplicationContext(), CaptureImageActivity.class));
+                    startActivity(new Intent(getApplicationContext(), FormBlousepieceActivity.class));
                 }
             });
 
@@ -143,17 +143,17 @@ public class ProductSelectionActivity extends AppCompatActivity {
                     myPref.edit().putString("selected", "kurta").apply();
                     myPref.edit().putString("track", "9").apply();
                     mediaPlayer.stop();
-                    startActivity(new Intent(getApplicationContext(), Insert_image_instructionActivity.class));
+                    startActivity(new Intent(getApplicationContext(), FormKurtaActivity.class));
                 }
             });
 
-            showpiece.setOnClickListener(new View.OnClickListener() {
+            homedecor.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     myPref.edit().putString("selected", "showpiece").apply();
                     myPref.edit().putString("track", "9").apply();
                     mediaPlayer.stop();
-                    startActivity(new Intent(getApplicationContext(), Insert_image_instructionActivity.class));
+                    startActivity(new Intent(getApplicationContext(), FormShowpieceActivity.class));
                 }
             });
 
@@ -163,7 +163,7 @@ public class ProductSelectionActivity extends AppCompatActivity {
                     myPref.edit().putString("selected", "other").apply();
                     myPref.edit().putString("track", "9").apply();//kora hoini.. pore korbo
                     mediaPlayer.stop();
-                    startActivity(new Intent(getApplicationContext(), CaptureImageActivity.class));
+                    startActivity(new Intent(getApplicationContext(), FormUtilityActivity.class));
                 }
             });
 
@@ -174,7 +174,7 @@ public class ProductSelectionActivity extends AppCompatActivity {
                     myPref.edit().putString("selected", "other").apply();
                     myPref.edit().putString("track", "9").apply();//kora hoini.. pore korbo
                     mediaPlayer.stop();
-                    startActivity(new Intent(getApplicationContext(), CaptureImageActivity.class));
+                    startActivity(new Intent(getApplicationContext(), FormPaintingActivity.class));
                 }
             });
 
@@ -185,7 +185,7 @@ public class ProductSelectionActivity extends AppCompatActivity {
                     myPref.edit().putString("selected", "other").apply();
                     myPref.edit().putString("track", "9").apply();//kora hoini.. pore korbo
                     mediaPlayer.stop();
-                    startActivity(new Intent(getApplicationContext(), CaptureImageActivity.class));
+                    startActivity(new Intent(getApplicationContext(), FormStolesActivity.class));
                 }
             });
 
@@ -196,7 +196,7 @@ public class ProductSelectionActivity extends AppCompatActivity {
                     myPref.edit().putString("selected", "other").apply();
                     myPref.edit().putString("track", "9").apply();//kora hoini.. pore korbo
                     mediaPlayer.stop();
-                    startActivity(new Intent(getApplicationContext(), CaptureImageActivity.class));
+                    startActivity(new Intent(getApplicationContext(), FormHandkerchiefActivity.class));
                 }
             });
 

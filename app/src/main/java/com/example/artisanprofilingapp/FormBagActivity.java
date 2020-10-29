@@ -9,6 +9,6 @@ public class FormBagActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_form_bag2);
+        setContentView(R.layout.activity_form_bag);
     }
 }
