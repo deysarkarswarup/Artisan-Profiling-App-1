@@ -26,34 +26,37 @@ import com.google.android.material.textfield.TextInputLayout;
 
 public class FormSareeActivity extends AppCompatActivity {
     TextInputLayout codeno, productid, productname, fabric, measurement, blousepiece, artworktype;
-    EditText nam, nam1, nam3,nam4, nam5, nam6;//to show error msg
-    Button submitbtn;
+    EditText nam,nam2, nam1, nam3,nam4, nam5, nam6;//to show error msg
+    Button submitbtn,skip;
     RequestQueue requestQueue;
     ProgressDialog progressDialog;
     String DataHolder1, DataHolder2, DataHolder3, DataHolder4, DataHolder5, DataHolder6, DataHolder7;
     SharedPreferences myPref;
     private MediaPlayer mediaPlayer;
     int potaka=0;
+    String productFlag = "1";//saree
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_form_saree);
 
-        codeno = findViewById(R.id.codeno);
-        productid = findViewById(R.id.productid);
+//        codeno = findViewById(R.id.codeno);
+//        productid = findViewById(R.id.productid);
         productname = findViewById(R.id.productname);
         fabric = findViewById(R.id.fabric);
         measurement = findViewById(R.id.measurement);
         blousepiece = findViewById(R.id.blousepiece);
         artworktype = findViewById(R.id.artworktype);
 
-        nam = findViewById(R.id.nam);//to show error msg
+
         nam1 = findViewById(R.id.nam1);//to show error msg
+        nam2 = findViewById(R.id.nam2);//to show error msg
         nam3 = findViewById(R.id.nam3);//to show error msg
         nam4 = findViewById(R.id.nam4);//to show error msg
         nam5 = findViewById(R.id.nam5);
         nam6 = findViewById(R.id.nam6);
         submitbtn = findViewById(R.id.submitBtn);
+        skip = findViewById(R.id.skip);
 
         //Initialize of SharedPref
         myPref = getApplicationContext().getSharedPreferences("MyPref",MODE_PRIVATE);
@@ -64,6 +67,26 @@ public class FormSareeActivity extends AppCompatActivity {
         mediaPlayer = MediaPlayer.create(this, R.raw.addressinst);
         mediaPlayer.start();
 
+        skip.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ConnectivityManager con = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+                NetworkInfo networkInfo = con.getActiveNetworkInfo();
+                if (networkInfo != null && networkInfo.isConnected()) {
+
+                    Intent i=new Intent(FormSareeActivity.this,AudioActivity.class);
+                    startActivity(i);
+
+
+                }
+                else{
+                    Intent intent = new Intent(FormSareeActivity.this, InternetCheckActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
+            }
+        });
+
         submitbtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
@@ -72,24 +95,24 @@ public class FormSareeActivity extends AppCompatActivity {
                 ConnectivityManager con = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
                 NetworkInfo networkInfo = con.getActiveNetworkInfo();
                 if (networkInfo != null && networkInfo.isConnected()) {
-                    if (!nam.getText().toString().equals("")) {
+                    if (!nam1.getText().toString().equals("")) {
                         potaka = 1;
                         //Toast.makeText(MainActivity.this,"হয়েগেছে",Toast.LENGTH_LONG).show();
 //                    regUser();
 //                    Intent i=new Intent(AddressActivity.this,ProfilePicActivity.class);
 //                    startActivity(i);
                     } else {
-                        nam.setError("টাইপ করুন");
+                        nam1.setError("টাইপ করুন");
                     }
 
-                    if (!nam1.getText().toString().equals("")) {
+                    if (!nam2.getText().toString().equals("")) {
                         potaka++;
                         //Toast.makeText(MainActivity.this,"হয়েগেছে",Toast.LENGTH_LONG).show();
 //                    regUser();
 //                    Intent i=new Intent(AddressActivity.this,ProfilePicActivity.class);
 //                    startActivity(i);
                     } else {
-                        nam1.setError("টাইপ করুন");
+                        nam2.setError("টাইপ করুন");
                     }
                     if (!nam3.getText().toString().equals("")) {
                         potaka++;
@@ -144,15 +167,15 @@ public class FormSareeActivity extends AppCompatActivity {
                 progressDialog.show();
 
 
-                DataHolder1 = codeno.getEditText().getText().toString().trim();
-                DataHolder2 = productid.getEditText().getText().toString().trim();
+//                DataHolder1 = codeno.getEditText().getText().toString().trim();
+//                DataHolder2 = productid.getEditText().getText().toString().trim();
                 DataHolder3 = productname.getEditText().getText().toString().trim();
                 DataHolder4 = fabric.getEditText().getText().toString().trim();
                 DataHolder5 = measurement.getEditText().getText().toString().trim();
                 DataHolder6 = blousepiece.getEditText().getText().toString().trim();
                 DataHolder7 = artworktype.getEditText().getText().toString().trim();
 
-                Log.d("eirki",DataHolder1);
+//                Log.d("eirki",DataHolder1);
                 //myPref.edit().putString("phone", PhoneNoHolder).apply();
                 //String dataToGet = myPref.getString("phone","No data found");
                 String idToGet = myPref.getString("id","No data found");
@@ -163,8 +186,8 @@ public class FormSareeActivity extends AppCompatActivity {
                 Log.d("eirki age->",ageToGet);
 
                 //nameToGet = nameToGet.replaceAll(" ","%20");
-                DataHolder1 = DataHolder1.replaceAll(" ","%20");
-                DataHolder2 = DataHolder2.replaceAll(" ","%20");
+//                DataHolder1 = DataHolder1.replaceAll(" ","%20");
+//                DataHolder2 = DataHolder2.replaceAll(" ","%20");
                 DataHolder3 = DataHolder3.replaceAll(" ","%20");
                 DataHolder4 = DataHolder4.replaceAll(" ","%20");
                 DataHolder5 = DataHolder5.replaceAll(" ","%20");
@@ -175,8 +198,8 @@ public class FormSareeActivity extends AppCompatActivity {
 
                 String characterFilter = "[^\\p{L}\\p{M}\\p{N}\\p{P}\\p{Z}\\p{Cf}\\p{Cs}\\s]";
                 //nameToGet = nameToGet.replaceAll(characterFilter,"");
-                DataHolder1 = DataHolder1.replaceAll(characterFilter,"");
-                DataHolder2 = DataHolder2.replaceAll(characterFilter,"");
+//                DataHolder1 = DataHolder1.replaceAll(characterFilter,"");
+//                DataHolder2 = DataHolder2.replaceAll(characterFilter,"");
                 DataHolder3 = DataHolder3.replaceAll(characterFilter,"");
                 DataHolder4 = DataHolder4.replaceAll(characterFilter,"");
                 DataHolder5 = DataHolder5.replaceAll(characterFilter,"");
@@ -190,11 +213,9 @@ public class FormSareeActivity extends AppCompatActivity {
 //                        +"&addressLine2="+ AddressHolder3 +"&pinCode="+ AddressHolder4 +"&landMark="+ AddressHolder5
 //                        +"&id="+ idToGet+ "&addressExp="+ AddressExpHolder + "&age="+ ageToGet;
 
-                String myurl = "https://artisanapp.xyz/productDescriptionForm.php?codeno=" + DataHolder1 + "&productid=" + DataHolder2 +"&productname="+ DataHolder3
+                String myurl = "https://artisanapp.xyz/productDescriptionForm.php?productname="+ DataHolder3
                         +"&fabric="+ DataHolder4 +"&measurement="+ DataHolder5 +"&blousepiece="+ DataHolder6
-                        +"&artworktype="+ DataHolder7+ "&artisanid="+ idToGet;
-
-
+                        +"&artworktype="+ DataHolder7+ "&artisanid="+ idToGet+ "&productFlag=" +productFlag;
 
                 RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
                 StringRequest stringRequest = new StringRequest(Request.Method.GET, myurl,
