@@ -25,7 +25,7 @@ import com.android.volley.toolbox.Volley;
 import com.google.android.material.textfield.TextInputLayout;
 
 public class FormKurtaActivity extends AppCompatActivity {
-    TextInputLayout codeno, productid, productname, material, length, pendentmeasurement, earringmeasurement,artworktype, sleeve;
+    TextInputLayout codeno, productid, productname, availablesize, fabric, artwork, collartype,sleeve, measurement;
     EditText nam1, nam2, nam3,nam4, nam5, nam6, nam7;//to show error msg
     Button submitbtn,skip;
     RequestQueue requestQueue;
@@ -44,12 +44,12 @@ public class FormKurtaActivity extends AppCompatActivity {
         //codeno = findViewById(R.id.codeno);
 //        productid = findViewById(R.id.productid);
         productname = findViewById(R.id.productname);
-        material = findViewById(R.id.material);
-        length = findViewById(R.id.length);
-        pendentmeasurement = findViewById(R.id.pendentmeasurement);
-        earringmeasurement = findViewById(R.id.earringmeasurement);
+        availablesize = findViewById(R.id.availablesize);
+        fabric = findViewById(R.id.fabric);
+        artwork = findViewById(R.id.artwork);
+        collartype = findViewById(R.id.collartype);
         sleeve = findViewById(R.id.sleeve);
-        artworktype = findViewById(R.id.artworktype);
+        measurement = findViewById(R.id.measurement);
 
 
         //nam = findViewById(R.id.nam);//to show error msg
@@ -193,15 +193,15 @@ public class FormKurtaActivity extends AppCompatActivity {
             private void regUser() {
                 progressDialog.setMessage("Please Wait, We are Inserting Your Data on Server");
                 progressDialog.show();
-
+//                productname, availablesize, fabric, artwork, collartype,sleeve, measurement
 //                DataHolder2 = productid.getEditText().getText().toString().trim();
                 DataHolder3 = productname.getEditText().getText().toString().trim();
-                DataHolder4 = material.getEditText().getText().toString().trim();
-                DataHolder5 = length.getEditText().getText().toString().trim();
-                DataHolder6 = pendentmeasurement.getEditText().getText().toString().trim();
-                DataHolder7 = earringmeasurement.getEditText().getText().toString().trim();
+                DataHolder4 = availablesize.getEditText().getText().toString().trim();
+                DataHolder5 = fabric.getEditText().getText().toString().trim();
+                DataHolder6 = artwork.getEditText().getText().toString().trim();
+                DataHolder7 = collartype.getEditText().getText().toString().trim();
                 DataHolder8 = sleeve.getEditText().getText().toString().trim();
-                DataHolder9 = artworktype.getEditText().getText().toString().trim();
+                DataHolder9 = measurement.getEditText().getText().toString().trim();
 
                 //Log.d("eirki",DataHolder1);
                 //myPref.edit().putString("phone", PhoneNoHolder).apply();
