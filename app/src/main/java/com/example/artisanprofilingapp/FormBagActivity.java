@@ -34,7 +34,7 @@ public class FormBagActivity extends AppCompatActivity {
     SharedPreferences myPref;
     private MediaPlayer mediaPlayer;
     int potaka=0;
-    String productFlag = "3";//goina
+    String productFlag = "3";//Bag
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
