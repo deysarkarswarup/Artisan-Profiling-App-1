@@ -228,14 +228,21 @@ public class FormPalazzoActivity extends AppCompatActivity {
 //                DataHolder8 = DataHolder8.replaceAll(characterFilter,"");
                 //ageToGet = ageToGet.replaceAll(characterFilter,"");
 
+                Log.d("msg",DataHolder3);
+                Log.d("msg",DataHolder4);
+                Log.d("msg",DataHolder5);
+                Log.d("msg",DataHolder6);
+
 
 //                String myurl = "http://192.168.43.12/Artisans-Profiling/name_address.php?name=" + nameToGet + "&district=" + AddressHolder1 +"&addressLine1="+ AddressHolder2
 //                        +"&addressLine2="+ AddressHolder3 +"&pinCode="+ AddressHolder4 +"&landMark="+ AddressHolder5
 //                        +"&id="+ idToGet+ "&addressExp="+ AddressExpHolder + "&age="+ ageToGet;
 
                 String myurl = "https://artisanapp.xyz/productDescriptionForm.php?productname="+ DataHolder3
-                        +"&material="+ DataHolder4 +"&avaiablesize="+ DataHolder5 +"&artworktype="+ DataHolder6
+                        +"&material="+ DataHolder4 +"&availablesize="+ DataHolder5 +"&artworktype="+ DataHolder6
                         +"&artisanid="+ idToGet+ "&productFlag=" +productFlag;
+
+                Log.d("msg",myurl);
 
                 RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
                 StringRequest stringRequest = new StringRequest(Request.Method.GET, myurl,
