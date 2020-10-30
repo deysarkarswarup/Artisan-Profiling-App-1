@@ -61,10 +61,12 @@ public class ThankYouActivity extends AppCompatActivity {
     public void onBackPressed() {
         mediaPlayer.stop();
         super.onBackPressed();
+        myPref.edit().putString("track","0").apply();
     }
     @Override
     public void onUserLeaveHint(){
         mediaPlayer.stop();
         super.onUserLeaveHint();
+        myPref.edit().putString("track","0").apply();
     }
 }
