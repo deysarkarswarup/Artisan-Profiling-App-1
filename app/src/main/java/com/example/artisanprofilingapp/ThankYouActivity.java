@@ -21,9 +21,9 @@ public class ThankYouActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_thank_you);
         finish = (Button) findViewById(R.id.finish);
-        newentry = (Button) findViewById(R.id.newEntry);
+//        newentry = (Button) findViewById(R.id.newEntry);
         myPref = getApplicationContext().getSharedPreferences("MyPref",MODE_PRIVATE);
-        mediaPlayer = MediaPlayer.create(this, R.raw.thankyouinst);
+//        mediaPlayer = MediaPlayer.create(this, R.raw.thankyouinst);
         mediaPlayer.start();
         myPref.edit().putString("track","19").apply();
         ConnectivityManager con = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -41,15 +41,15 @@ public class ThankYouActivity extends AppCompatActivity {
                 }
             });
 
-            newentry.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    myPref.edit().putString("track","0").apply();
-                    mediaPlayer.stop();
-                    Intent i = new Intent(ThankYouActivity.this, UserTypeActivity.class);
-                    startActivity(i);
-                }
-            });
+//            newentry.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View view) {
+//                    myPref.edit().putString("track","0").apply();
+//                    mediaPlayer.stop();
+//                    Intent i = new Intent(ThankYouActivity.this, UserTypeActivity.class);
+//                    startActivity(i);
+//                }
+//            });
         }
         else{
             Intent intent = new Intent(ThankYouActivity.this, InternetCheckActivity.class);
