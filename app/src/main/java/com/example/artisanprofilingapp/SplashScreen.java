@@ -48,7 +48,8 @@ public class SplashScreen extends AppCompatActivity {
                     if (s != null)
                         switch (s) {
                             case "0":
-                                startActivity(new Intent(SplashScreen.this, UserTypeActivity.class));
+//                                startActivity(new Intent(SplashScreen.this, UserTypeActivity.class));
+                                startActivity(new Intent(SplashScreen.this, FetchingDataActivity.class));
                                 break;
 //                            case "1":
 //                                i = new Intent(SplashScreen.this, MainActivity.class);
