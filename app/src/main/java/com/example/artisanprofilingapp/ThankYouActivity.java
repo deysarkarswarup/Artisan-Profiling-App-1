@@ -23,7 +23,7 @@ public class ThankYouActivity extends AppCompatActivity {
         finish = (Button) findViewById(R.id.finish);
 //        newentry = (Button) findViewById(R.id.newEntry);
         myPref = getApplicationContext().getSharedPreferences("MyPref",MODE_PRIVATE);
-//        mediaPlayer = MediaPlayer.create(this, R.raw.thankyouinst);
+        mediaPlayer = MediaPlayer.create(this, R.raw.thankyouinst);
         mediaPlayer.start();
         myPref.edit().putString("track","19").apply();
         ConnectivityManager con = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);

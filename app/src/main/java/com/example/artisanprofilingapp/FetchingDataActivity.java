@@ -27,6 +27,7 @@ public class FetchingDataActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fetching_data);
 
+        finish = (Button) findViewById(R.id.finish);
         myPref = getApplicationContext().getSharedPreferences("MyPref",MODE_PRIVATE);
         idToGet = myPref.getString("id","No data found");
         webView = findViewById(R.id.webView);
