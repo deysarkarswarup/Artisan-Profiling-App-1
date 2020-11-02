@@ -61,6 +61,7 @@ public class EditCaptureImageActivity4 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_capture_image4);
+        button = (Button) findViewById(R.id.start);
         myPref = getApplicationContext().getSharedPreferences("MyPref",MODE_PRIVATE);
         dataToGet = myPref.getString("phone","No data found");
         idToGet = myPref.getString("id","No Data found");

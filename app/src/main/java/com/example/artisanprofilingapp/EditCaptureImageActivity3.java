@@ -61,6 +61,7 @@ public class EditCaptureImageActivity3 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_capture_image3);
+        button = (Button) findViewById(R.id.start);
         myPref = getApplicationContext().getSharedPreferences("MyPref",MODE_PRIVATE);
         dataToGet = myPref.getString("phone","No data found");
         idToGet = myPref.getString("id","No Data found");
@@ -181,7 +182,7 @@ public class EditCaptureImageActivity3 extends AppCompatActivity {
 
             myPref.edit().putString("track", "11").apply();
             mediaPlayer.stop();
-            Intent i=new Intent(EditCaptureImageActivity3.this,EditCaptureImageActivity3.class);
+            Intent i=new Intent(EditCaptureImageActivity3.this,EditCaptureImageActivity4.class);
             startActivity(i);
         }
     }
