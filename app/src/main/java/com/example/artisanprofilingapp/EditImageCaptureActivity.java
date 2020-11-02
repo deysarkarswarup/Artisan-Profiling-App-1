@@ -95,7 +95,7 @@ public class EditImageCaptureActivity extends AppCompatActivity {
                     myPref.edit().putString("selected", "other").apply();
                     //myPref.edit().putString("track", "9").apply();//kora hoini.. pore korbo
                     mediaPlayer.stop();
-                    startActivity(new Intent(getApplicationContext(), EditImageCaptureActivity.class));
+                    startActivity(new Intent(getApplicationContext(), EditCaptureImageActivity.class));
                 }
             });
 
