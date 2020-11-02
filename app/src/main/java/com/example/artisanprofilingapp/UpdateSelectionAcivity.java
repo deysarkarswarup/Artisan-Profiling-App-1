@@ -144,7 +144,8 @@ public class UpdateSelectionAcivity extends AppCompatActivity {
 //                    myPref.edit().putString("selected", "saree").apply();
 //                    myPref.edit().putString("track", "9").apply();
                     mediaPlayer.stop();
-                    startActivity(new Intent(UpdateSelectionAcivity.this, EditImageCaptureActivity.class));
+                    myPref.edit().putString("update","1").apply();
+                    startActivity(new Intent(UpdateSelectionAcivity.this, ImageCaptureSelection.class));
                 }
             });
 

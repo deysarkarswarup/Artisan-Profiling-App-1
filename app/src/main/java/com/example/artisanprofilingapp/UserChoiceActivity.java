@@ -45,8 +45,15 @@ public class UserChoiceActivity extends AppCompatActivity {
                 public void onClick(View view) {
                     myPref.edit().putString("track", "18").apply();
                     mediaPlayer.stop();
-                    Intent i = new Intent(UserChoiceActivity.this, FetchingDataActivity.class);
-                    startActivity(i);
+                    String update = myPref.getString("update","0");
+                    if(update == "0") {
+                        Intent i = new Intent(UserChoiceActivity.this, FetchingDataActivity.class);
+                        startActivity(i);
+                    }
+                    else{
+                        Intent i = new Intent(UserChoiceActivity.this, UpdateSelectionAcivity.class);
+                        startActivity(i);
+                    }
                 }
             });
         }
