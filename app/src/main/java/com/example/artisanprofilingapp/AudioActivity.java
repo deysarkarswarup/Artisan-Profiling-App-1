@@ -60,6 +60,7 @@ public class AudioActivity extends AppCompatActivity {
         dataToGet = myPref.getString("id","No data found");
         Log.d("hiii", "onCreate: "+dataToGet);
         mediaPlayer = MediaPlayer.create(this, R.raw.audioinst);
+
         mediaPlayer.start();
 
         // Creating Volley newRequestQueue .
@@ -145,7 +146,7 @@ public class AudioActivity extends AppCompatActivity {
                     fileName = AudioSavePathInDevice;
                     uploadAudio();
                     mediaPlayer.setDataSource(AudioSavePathInDevice);
-                    mediaPlayer.prepare();
+//                    mediaPlayer.prepare();
                     Log.d("hmm",AudioSavePathInDevice);
                 } catch (IOException e) {
                     e.printStackTrace();

@@ -12,6 +12,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import java.io.IOException;
+
 public class UserChoiceActivity extends AppCompatActivity {
 
     Button yes,no;
@@ -26,6 +28,8 @@ public class UserChoiceActivity extends AppCompatActivity {
         no = (Button) findViewById(R.id.noBtn);
         myPref = getApplicationContext().getSharedPreferences("MyPref",MODE_PRIVATE);
         mediaPlayer = MediaPlayer.create(this, R.raw.userchoiceforclickingmorepictures);
+
+
         mediaPlayer.start();
         ConnectivityManager con = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = con.getActiveNetworkInfo();
