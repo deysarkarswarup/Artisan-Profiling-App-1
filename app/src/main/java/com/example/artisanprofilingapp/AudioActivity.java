@@ -63,13 +63,11 @@ public class AudioActivity extends AppCompatActivity {
 
         mediaPlayer.start();
 
-        // Creating Volley newRequestQueue .
         requestQueue = Volley.newRequestQueue(AudioActivity.this);
         progressDialog = new ProgressDialog(AudioActivity.this);
 
         buttonStop.setEnabled(false);
         buttonPlayLastRecordAudio.setEnabled(false);
-//        buttonStopPlayingRecording.setEnabled(false);
 
         random = new Random();
 
@@ -123,14 +121,9 @@ public class AudioActivity extends AppCompatActivity {
                 buttonStop.setEnabled(false);
                 buttonPlayLastRecordAudio.setEnabled(true);
                 buttonStart.setEnabled(true);
-  //              buttonStopPlayingRecording.setEnabled(false);
 
                 Toast.makeText(AudioActivity.this, "Recording Completed",
                         Toast.LENGTH_LONG).show();
-//                uri = intent.getData();
-//                file = new File(getRealPathFromURI(uri));
-//                Log.d("hmm", file.toString());
-//                uploadVideo();
             }
         });
 

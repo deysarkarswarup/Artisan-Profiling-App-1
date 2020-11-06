@@ -78,44 +78,31 @@ public class AddressActivity extends AppCompatActivity {
                 if (networkInfo != null && networkInfo.isConnected()) {
                    if (!nam.getText().toString().equals("")) {
                         potaka = 1;
-                        //Toast.makeText(MainActivity.this,"হয়েগেছে",Toast.LENGTH_LONG).show();
-//                    regUser();
-//                    Intent i=new Intent(AddressActivity.this,ProfilePicActivity.class);
-//                    startActivity(i);
+
                     } else {
                         nam.setError("টাইপ করুন");
                     }
 
                     if (!nam1.getText().toString().equals("")) {
                         potaka++;
-                        //Toast.makeText(MainActivity.this,"হয়েগেছে",Toast.LENGTH_LONG).show();
-//                    regUser();
-//                    Intent i=new Intent(AddressActivity.this,ProfilePicActivity.class);
-//                    startActivity(i);
+
                     } else {
                         nam1.setError("টাইপ করুন");
                     }
                     if (!nam3.getText().toString().equals("")) {
                         potaka++;
-                        //Toast.makeText(MainActivity.this,"হয়েগেছে",Toast.LENGTH_LONG).show();
-//                    regUser();
-//                    Intent i=new Intent(AddressActivity.this,ProfilePicActivity.class);
-//                    startActivity(i);
+
                     } else {
                         nam3.setError("টাইপ করুন");
                     }
                     if (!nam4.getText().toString().equals("")) {
                         potaka++;
-                        //Toast.makeText(MainActivity.this,"হয়েগেছে",Toast.LENGTH_LONG).show();
-//                    regUser();
-//                    Intent i=new Intent(AddressActivity.this,ProfilePicActivity.class);
-//                    startActivity(i);
+
                     } else {
                         nam4.setError("টাইপ করুন");
                     }
                     if (!nam5.getText().toString().equals("")) {
                         potaka++;
-                        //Toast.makeText(MainActivity.this,"হয়েগেছে",Toast.LENGTH_LONG).show();
 
                     } else {
                         nam5.setError("টাইপ করুন");
@@ -130,9 +117,7 @@ public class AddressActivity extends AppCompatActivity {
                     else {
                         Toast.makeText(AddressActivity.this,"সব ফিল্ড টাইপ করুন",Toast.LENGTH_LONG).show();
                     }
-//                && !nam1.getText().toString().equals("")
-//                        && !nam3.getText().toString().equals("") && !nam4.getText().toString().equals("")
-//                        && !nam5.getText().toString().equals("")
+
                 }
 
                 else{
@@ -155,8 +140,6 @@ public class AddressActivity extends AppCompatActivity {
                 AddressExpHolder = addressExp.getEditText().getText().toString().trim();
 
                 Log.d("eirki",AddressHolder1);
-                //myPref.edit().putString("phone", PhoneNoHolder).apply();
-                //String dataToGet = myPref.getString("phone","No data found");
                 String idToGet = myPref.getString("id","No data found");
                 String nameToGet = myPref.getString("name","No data found");
                 String ageToGet = myPref.getString("age","No data found");
@@ -185,10 +168,6 @@ public class AddressActivity extends AppCompatActivity {
                 AddressExpHolder = AddressExpHolder.replaceAll(characterFilter,"");
                 ageToGet = ageToGet.replaceAll(characterFilter,"");
 
-
-//                String myurl = "http://192.168.43.12/Artisans-Profiling/name_address.php?name=" + nameToGet + "&district=" + AddressHolder1 +"&addressLine1="+ AddressHolder2
-//                        +"&addressLine2="+ AddressHolder3 +"&pinCode="+ AddressHolder4 +"&landMark="+ AddressHolder5
-//                        +"&id="+ idToGet+ "&addressExp="+ AddressExpHolder + "&age="+ ageToGet;
 
                 String myurl = "https://artisanapp.xyz/name_address.php?name=" + nameToGet + "&district=" + AddressHolder1 +"&addressLine1="+ AddressHolder2
                         +"&addressLine2="+ AddressHolder3 +"&pinCode="+ AddressHolder4 +"&landMark="+ AddressHolder5
